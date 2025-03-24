@@ -15,11 +15,30 @@
 *.log
 
 # Dependencies
-/node_modules
-/vendor
+node_modules
+vendor
 
 # Editor files
 /.fleet
 /.nova
 /.vscode
 /.zed
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+.svelte-kit
+build
+dist
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+*storybook.log

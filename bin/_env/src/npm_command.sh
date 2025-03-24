@@ -1,3 +1,3 @@
 CMD="${other_args[*]}"
 
-dockerSsh node "npm ${CMD}"
+dockerSsh app "npm ${CMD}"

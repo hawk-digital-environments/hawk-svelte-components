@@ -1,2 +1,2 @@
-SERVICE_NAME=app
-$DOCKER_COMPOSE_EXECUTABLE build ${SERVICE_NAME}
+dockerSsh app "npm install"
+dockerSsh app "npm run build"

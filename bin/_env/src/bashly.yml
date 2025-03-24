@@ -39,7 +39,7 @@ commands:
       - name: service
         help: Allows you to define which service you want to connect to
   - name: build
-    help: builds the docker image for local testing
+    help: Installs the npm dependencies and builds the library for local use
   - name: rebuild-cli
     help: rebuilds the bashly application you are currently using, based on the
       sources
@@ -58,3 +58,5 @@ commands:
   - name: npm
     help: runs a certain npm command for the project
     catch_all: true
+  - name: open
+    help: opens the project in the browser
