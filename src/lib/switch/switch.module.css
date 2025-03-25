@@ -20,7 +20,7 @@
 }
 
 input:where([type="checkbox"][role="switch"]):focus {
-  outline: 2px solid #4F61DF;
+  outline: 2px solid var(--focus);
   outline-offset: 5px;
 }
 
