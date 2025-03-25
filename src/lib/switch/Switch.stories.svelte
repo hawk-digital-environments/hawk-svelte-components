@@ -1,16 +1,13 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
-  import Button from "./Switch.svelte";
+  import Switch from "./Switch.svelte";
   import { fn } from "@storybook/test";
 
   const { Story } = defineMeta({
     title: "HAWK/Switch",
-    component: Button,
+    component: Switch,
     tags: ["autodocs"],
     argTypes: {},
-    args: {
-      onClick: fn(),
-    },
   });
 </script>
 

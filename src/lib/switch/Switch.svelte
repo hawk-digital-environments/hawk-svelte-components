@@ -5,9 +5,26 @@
   interface Props {
     checked?: boolean;
     disabled?: boolean;
+    label?: string;
+    labelPosition?: "left" | "right";
   }
 
-  const { checked = false, disabled = false }: Props = $props();
+  const {
+    checked = false,
+    disabled = false,
+    label = "Label",
+    labelPosition = "left",
+  }: Props = $props();
+
+  const switchWrapperClasses = $derived(
+    classNames(style.wrapper, {
+      [style.wrapperLabelRight]: labelPosition === "right",
+      [style.disabled]: disabled,
+    }),
+  );
 </script>
 
-<input type="checkbox" role="switch" {checked} />
+<div class={switchWrapperClasses}>
+  <label for="switch">{label}</label>
+  <input type="checkbox" role="switch" id="switch" {checked} {disabled} />
+</div>
