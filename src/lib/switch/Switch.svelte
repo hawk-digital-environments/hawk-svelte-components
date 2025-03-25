@@ -25,6 +25,8 @@
 </script>
 
 <div class={switchWrapperClasses}>
-  <label for="switch">{label}</label>
+  {#if label}
+    <label for="switch">{label}</label>
+  {/if}
   <input type="checkbox" role="switch" id="switch" {checked} {disabled} />
 </div>
