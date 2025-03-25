@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 7px;
+  gap: 10px;
   font-family: "Montserrat", sans-serif;
   color: #1D183D;
 }
@@ -13,6 +13,15 @@
 
 .disabled {
   opacity: 0.35;
+}
+
+.wrapper:has(input:where([type="checkbox"][role="switch"]):focus) {
+  gap: calc(10px + 7px);
+}
+
+input:where([type="checkbox"][role="switch"]):focus {
+  outline: 2px solid #4F61DF;
+  outline-offset: 5px;
 }
 
 input:where([type="checkbox"][role="switch"]) {
