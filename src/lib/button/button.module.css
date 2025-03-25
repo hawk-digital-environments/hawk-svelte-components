@@ -36,10 +36,8 @@
 
 .button:focus {
   border: 0;
-  outline: 3px solid #fff;
-  padding: 15px;
-  outline-offset: -5px;
-  transform: translateY(-5px);
+  outline: 3px solid #4F61DF;
+  outline-offset: 5px;
 }
 
 button.typeFilled.disabled {
