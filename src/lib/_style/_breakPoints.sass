@@ -1,0 +1,149 @@
+// BREAKPOINTS
+// ==================================================
+// Min sizes
+$breakpointXxsMin: 0 !default
+$breakpointXsMin: 0 !default
+$breakpointSmMin: 550px !default
+$breakpointMdMin: 768px !default
+$breakpointLgMin: 992px !default
+$breakpointXlMin: 1200px !default
+
+// Max sizes
+$breakpointXxsMax: 300px !default
+$breakpointXsMax: $breakpointSmMin - 1px !default
+$breakpointSmMax: $breakpointMdMin - 1px !default
+$breakpointMdMax: $breakpointLgMin - 1px !default
+$breakpointLgMax: $breakpointXlMin - 1px !default
+$breakpointXlMax: 999999px !default
+
+// DYNAMIC
+// ==================================================
+=bpSmallerThan($width)
+  @media (max-width: $width)
+    @content
+
+=bpBiggerThan($width)
+  @media (min-width: $width)
+    @content
+
+=bpBetween($widthA, $widthB)
+  @if $widthB > $widthA
+    @media (min-width: $widthA) and (max-width: $widthB)
+      @content
+  @else
+    @media (min-width: $widthB) and (max-width: $widthA)
+      @content
+
+// XXS
+// ==================================================
+=bpXxs()
+  +bpBetween($breakpointXxsMin, $breakpointXxsMax)
+    @content
+
+=bpBiggerThanXxs()
+  +bpBiggerThan($breakpointXxsMax)
+    @content
+
+=bpXxsAndBigger()
+  @content
+
+// XS
+// ==================================================
+=bpSmallerThanXs()
+  +bpSmallerThan($breakpointXsMin)
+    @content
+
+=bpXsAndSmaller()
+  +bpSmallerThan($breakpointXsMax)
+    @content
+
+=bpXs()
+  +bpBetween($breakpointXsMin, $breakpointXsMax)
+    @content
+
+=bpXsAndBigger()
+  +bpBiggerThan($breakpointXsMin)
+    @content
+
+=bpBiggerThanXs()
+  +bpBiggerThan($breakpointXsMax)
+    @content
+
+// SM
+// ==================================================
+=bpSmallerThanSm()
+  +bpSmallerThan($breakpointSmMin)
+    @content
+
+=bpSmAndSmaller()
+  +bpSmallerThan($breakpointSmMax)
+    @content
+
+=bpSm()
+  +bpBetween($breakpointSmMin, $breakpointSmMax)
+    @content
+
+=bpSmAndBigger()
+  +bpBiggerThan($breakpointSmMin)
+    @content
+
+=bpBiggerThanSm()
+  +bpBiggerThan($breakpointSmMax)
+    @content
+
+// MD
+// ==================================================
+=bpSmallerThanMd()
+  +bpSmallerThan($breakpointMdMin)
+    @content
+
+=bpMdAndSmaller()
+  +bpSmallerThan($breakpointMdMax)
+    @content
+
+=bpMd()
+  +bpBetween($breakpointMdMin, $breakpointMdMax)
+    @content
+
+=bpMdAndBigger()
+  +bpBiggerThan($breakpointMdMin)
+    @content
+
+=bpBiggerThanMd()
+  +bpBiggerThan($breakpointMdMax)
+    @content
+
+// LG
+// ==================================================
+=bpSmallerThanLg()
+  +bpSmallerThan($breakpointLgMin)
+    @content
+
+=bpLgAndSmaller()
+  +bpSmallerThan($breakpointLgMax)
+    @content
+
+=bpLg()
+  +bpBetween($breakpointLgMin, $breakpointLgMax)
+    @content
+
+=bpLgAndBigger()
+  +bpBiggerThan($breakpointLgMin)
+    @content
+
+=bpBiggerThanLg()
+  +bpBiggerThan($breakpointLgMax)
+    @content
+
+// XL
+// ==================================================
+=bpSmallerThanXl()
+  +bpSmallerThan($breakpointXlMin)
+    @content
+
+=bpXlAndSmaller()
+  @content
+
+=bpXl()
+  +bpBetween($breakpointXlMin, $breakpointXlMax)
+    @content
