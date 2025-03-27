@@ -1,6 +1,7 @@
 <script lang="ts">
-    import {type IconName, icons} from './iconDefinition';
+    import {type IconName, icons} from './iconDefinition.ts';
     import type {SVGAttributes} from 'svelte/elements';
+    import style from './Icon.module.sass';
 
     interface Props extends SVGAttributes<SVGSVGElement> {
         /**
@@ -23,10 +24,12 @@
         type = 'outline',
         size = 'medium',
         fill = 'none',
+        class: classNames,
+        className: className,
         ...restProps
     }: Props = $props();
 
-    const icon = $derived(icons.get(iconName)[type])
+    const icon = $derived(icons.get(iconName)![type])
     const viewBox = $derived(`0 0 ${icon.w} ${icon.h}`);
     const sizes = $derived.by(() => {
         switch (size) {
@@ -40,7 +43,7 @@
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg"
-     class:icon
+     class={[style.icon, classNames, className]}
      width="{sizes.w}"
      height="{sizes.h}"
      viewBox={viewBox}
@@ -50,9 +53,3 @@
     <title id="title">Icon: {icon.t}</title>
     {@html icon.c}
 </svg>
-
-<style lang="sass">
-  .icon
-    display: inline-block
-    color: currentColor
-</style>

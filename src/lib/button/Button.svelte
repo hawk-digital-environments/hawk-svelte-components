@@ -1,63 +1,104 @@
 <script lang="ts">
-  import style from "./button.module.css";
-  import classNames from "classnames";
+    import {type Snippet} from 'svelte';
+    import type {IconName} from '../icon/iconDefinition.ts';
+    import type {MouseEventHandler} from 'svelte/elements';
+    import Link from '../link/Link.svelte';
+    import Icon from '../icon/Icon.svelte';
+    import style from './Button.module.sass';
 
-  interface Props {
-    // does cool stuff with colors
-    type?: "filled" | "outlined" | "text" | "link" | "raised";
-    /** Hello World */
-    size?: "small" | "large";
-    label?: string;
-    icon?: string;
-    iconPosition?: "left" | "right";
-    iconOnly?: boolean;
-    link?: string;
-    linkTarget?: string;
-    disabled: boolean;
-    onClick?: () => void;
-  }
+    interface Props {
+        /**
+         * Determines the size of the button
+         */
+        size?: "small" | "large";
 
-  const {
-    type = "filled",
-    size = "small",
-    label = "Button",
-    icon = "+",
-    iconPosition = "left",
-    iconOnly = false,
-    link = "",
-    linkTarget = "_blank",
-    disabled = false,
-    onClick,
-  }: Props = $props();
+        /**
+         * Determines the visual type of the button. There is a "hidden" >link< type that is
+         * automatically applied when a "link" value is provided
+         */
+        type?: "filled" | "outlined" | "text" | "raised";
 
-  const buttonClasses = $derived(
-    classNames(style.button, {
-      [style.sizeLarge]: size === "large",
-      [style.sizeSmall]: size === "small",
+        /**
+         * The label of the button can be passed as children
+         */
+        children?: Snippet;
 
-      [style.typeFilled]: type === "filled",
-      [style.typeOutlined]: type === "outlined",
-      [style.typeText]: type === "text",
-      [style.typeLink]: type === "link",
-      [style.typeRaised]: type === "raised",
+        /**
+         * The name of an optional icon to display
+         */
+        icon?: IconName;
 
-      [style.iconPositionLeft]: iconPosition === "left",
-      [style.iconPositionRight]: iconPosition === "right",
-      [style.iconOnly]: iconOnly,
+        /**
+         * Determines the position of the icon
+         */
+        iconPosition?: "left" | "right" | "above" | "iconOnly";
 
-      [style.disabled]: disabled,
-    }),
-  );
+        /**
+         * An optional link to navigate to, if set the button will render as an anchor tag,
+         * also the "type" will be set to "link"
+         */
+        link?: string;
+
+        /**
+         * The target of the link, defaults to "_self". Omitted when the button is not a link
+         */
+        linkTarget?: string;
+
+        /**
+         * Disables the button if set to true, both visually and functionally.
+         * When disabled, neither the link, nor the onclick event will be triggered.
+         */
+        disabled?: boolean;
+
+        /**
+         * The onclick event handler. Will also be triggered when the button is a link.
+         * If the button is a link the e.preventDefault() method can be used to prevent the default behavior.
+         */
+        onclick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+    }
+
+    const {
+        size = 'small',
+        type: typeRaw = 'filled',
+        link,
+        linkTarget,
+        icon,
+        iconPosition = 'left',
+        children,
+        disabled = false,
+        onclick
+    }: Props = $props();
+
+    const type = $derived(link ? 'link' : typeRaw);
+    const buttonClasses = $derived({
+        [style.button]: true,
+        [style.iconPositionLeft]: iconPosition === 'left',
+        [style.iconPositionRight]: iconPosition === 'right',
+        [style.iconPositionAbove]: iconPosition === 'above',
+        [style.iconPositionIconOnly]: iconPosition === 'iconOnly',
+        [style.sizeLarge]: size === 'large',
+        [style.typeFilled]: type === 'filled',
+        [style.typeOutlined]: type === 'outlined',
+        [style.typeText]: type === 'text',
+        [style.typeLink]: type === 'link',
+        [style.typeRaised]: type === 'raised',
+        [style.disabled]: disabled
+    });
 </script>
 
+{#snippet content()}
+    {#if icon}
+        <Icon icon={icon} size="small" class={style.icon}/>
+    {/if}
+    <span class="label">{@render children?.()}</span>
+{/snippet}
+
 {#if link}
-  <a href={link} target={linkTarget} class={buttonClasses}>
-    <span class="icon">{icon}</span>
-    <span class="label">{label}</span>
-  </a>
+    <Link href={link} target={linkTarget} class={buttonClasses} disabled={disabled} onclick={onclick}>
+        {@render content()}
+    </Link>
 {:else}
-  <button type="button" class={buttonClasses} {disabled} onclick={onClick}>
-    <span class="icon">{icon}</span>
-    <span class="label">{label}</span>
-  </button>
+    <button type="button" class={buttonClasses} disabled={disabled} onclick={onclick}>
+        {@render content()}
+    </button>
 {/if}

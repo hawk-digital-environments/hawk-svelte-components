@@ -1,0 +1,125 @@
+$gradient: #{var(--button-gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))}
+
+$shadowHover: #{var(--button-shadow-hover, 0px 4px 55px 0px rgba(0, 0, 0, 0.04) inset)}
+$shadowHoverFilled: #{var(--button-shadow-hover-filled, 0px 35px 4px 30px rgba(255, 255, 255, 0.25) inset)}
+$shadowActive: #{var(--button-shadow-active, 0px 75px 4px 80px rgba(0, 0, 0, 0.07) inset)}
+$shadowActiveFilled: #{var(--button-shadow-active-filled, 0px 35px 4px 0px rgba(0, 0, 0, 0.15) inset)}
+$shadowRaised: #{0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 1px 3px 1px rgba(0, 0, 0, 0.15)}
+
+.button
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  height: var(--button-height-small, 28px)
+  width: max-content
+  border: 0
+  outline: 2px solid transparent
+  border-radius: var(--button-corner-radius, 100px)
+  gap: 8px
+  box-sizing: border-box
+  background: transparent
+  transition: box-shadow 0.3s, outline-color 0.2s, outline-offset 0.2s
+  +fontFamilyPrimary
+  +p
+  +fontSizeS
+  +fontColorLight
+
+  &:not(.disabled):hover
+    cursor: pointer
+    box-shadow: $shadowHover
+
+  &:active
+    box-shadow: $shadowActive
+
+  &:focus
+    border: 0
+    outline-color: var(--clr-primary-main)
+    outline-offset: 5px
+
+  &.disabled
+    cursor: not-allowed
+    +fontColorDark
+    opacity: var(--button-disabled-opacity, 0.35)
+
+  &.sizeLarge
+    +fontSizeL
+    +ph(15px)
+    height: var(--button-height-large, 36px)
+
+  &.type
+    &Filled
+      background: $gradient
+
+      &:hover
+        box-shadow: $shadowHoverFilled
+
+      &:active
+        box-shadow: $shadowActiveFilled
+
+      &.disabled
+        background: var(--clr-primary-dark-10)
+
+    &Outlined
+      border: 1px solid var(--clr-primary-dark-10)
+      +fontColorDark
+
+    &Text
+      border: 0
+      +fontColorDark
+
+    &Link
+      border: 0
+      background: $gradient
+      background-clip: text
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+
+      .icon
+        color: var(--clr-gradient-start)
+
+      &.iconPositionRight
+        .icon
+          color: var(--clr-gradient-end)
+
+    &Raised
+      background: var(--clr-primary-white, #FFF)
+      +fontColorDark
+      box-shadow: $shadowRaised
+
+      &:hover
+        box-shadow: $shadowRaised, $shadowHover
+
+      &:active
+        box-shadow: $shadowRaised, $shadowActive
+
+  &.iconPosition
+    &Right
+      flex-direction: row-reverse
+
+    &Left
+      flex-direction: row
+
+    &Above
+      flex-direction: column
+      gap: 0
+      min-width: var(--button-icon-above-min-width, 50px)
+      min-height: var(--button-icon-above-min-height, 50px)
+
+      .label
+        +mh(-2)
+
+      &.sizeLarge
+        min-width: var(--button-icon-above-min-width-large, 64px)
+        min-height: var(--button-icon-above-min-height-large, 64px)
+
+    &IconOnly
+      min-width: 0
+      width: auto
+      max-width: fit-content
+      aspect-ratio: 1
+
+      .icon
+        position: absolute
+
+      .label
+        display: none
