@@ -10,7 +10,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "storybook dev -p $DOCKER_PROJECT_PORT --no-open",
-    "build-storybook": "storybook build"
+    "build:storybook": "storybook build"
   },
   "files": [
     "dist",
