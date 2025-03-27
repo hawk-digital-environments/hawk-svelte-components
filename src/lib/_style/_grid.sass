@@ -1,0 +1,308 @@
+@use "breakPoints" as *
+@use "sass:map" as map
+@use "sass:math" as math
+@use "sass:meta" as meta
+
+// The number of columns used in the grid by default
+// You can override this by using "of" in your gridItem options
+$gridColumns: 12 !default
+// True to automatically create the flex-box order
+$autoOrder: true !default
+// The number of elements which get their order automatically set
+$autoOrderLength: 4 !default
+// The gutter for both the horizontal and vertical axis
+// You can override this by using "offset" in your gridItem options
+$gutter: 20px !default
+// Optional override to change the vertical
+$gutterVertical: $gutter !default
+$gutterHorizontal: $gutter !default
+
+// Container sizes for the different breakpoints
+$containerWidthXxs: 100% !default
+$containerWidthXs: 100% !default
+$containerWidthSm: 550px !default
+$containerWidthMd: 720px !default
+$containerWidthLg: 960px !default
+$containerWidthXl: 1140px !default
+
+// Small breakpoint container margins (left and right)
+// (Values will be divided by 2, one half left the other half right e.g. 30px gets you 15px left and right)
+$containerMarginXs: 50px !default
+$containerMarginXxs: $containerMarginXs !default
+
+/**
+ * Internal helper to handle the different special values a gutter value may have.
+ *
+@function autoGutterFallback($gutter, $fallback)
+  @if $gutter == false or $gutter == off
+    @return 0
+  @if $gutter == true or $gutter == null or $gutter == auto
+    @return $fallback
+  @return $gutter
+
+/**
+ * This function is used to parse a gutter definition (the same as a margin css-list)
+ * and handle defaults for TRUE or FALSE
+ *
+ * Valid definitions are:
+ * - TRUE -> Default gutter
+ * - FALSE -> No gutter
+ * - 10px -> The gutter on all sides should be 10px in total
+ * - 10px 5px -> The gutter at the top and bottom should be 10px left and right 5px
+ * - 10px 5px 4px 3px -> The gutter at the top should be 10px, right 5px at the bottom 4px and left 3px
+ *
+ * Note that all gutters are divided by two as two elements share the gutter with each other
+ *
+@function parseGutter($gutter, $expectWithVertical: true)
+  $gt: 0px !default
+  $gr: 0px !default
+  $gb: 0px !default
+  $gl: 0px !default
+  @if meta.type-of($gutter) == "list"
+    @if $expectWithVertical == false
+      @if length($gutter) == 2
+        $gl: autoGutterFallback(nth($gutter, 1), $gutterHorizontal)
+        $gr: autoGutterFallback(nth($gutter, 2), $gutterHorizontal)
+    @else
+      @if length($gutter) == 2
+        $gt: autoGutterFallback(nth($gutter, 1), $gutterVertical) * 0.5
+        $gr: autoGutterFallback(nth($gutter, 2), $gutterHorizontal) * 0.5
+        $gb: $gt
+        $gl: $gr
+      @else if length($gutter) == 4
+        $gt: autoGutterFallback(nth($gutter, 1), $gutterVertical) * 0.5
+        $gr: autoGutterFallback(nth($gutter, 2), $gutterHorizontal) * 0.5
+        $gb: autoGutterFallback(nth($gutter, 3), $gutterVertical) * 0.5
+        $gl: autoGutterFallback(nth($gutter, 4), $gutterHorizontal) * 0.5
+  @else if meta.type-of($gutter) == "map"
+    @if $expectWithVertical == false
+      $gr: autoGutterFallback(map.get($gutter, "right"), $gutterHorizontal)
+      $gl: autoGutterFallback(map.get($gutter, "left"), $gutterHorizontal)
+    @else
+      $gt: autoGutterFallback(map.get($gutter, "top"), $gutterVertical) * 0.5
+      $gr: autoGutterFallback(map.get($gutter, "right"), $gutterHorizontal) * 0.5
+      $gb: autoGutterFallback(map.get($gutter, "bottom"), $gutterVertical) * 0.5
+      $gl: autoGutterFallback(map.get($gutter, "left"), $gutterHorizontal) * 0.5
+  @else if $gutter == true or $gutter == auto
+    @if $expectWithVertical == false
+      $gr: $gutterHorizontal
+      $gl: $gr
+    @else
+      $gt: $gutterVertical * 0.5
+      $gr: $gutterHorizontal * 0.5
+      $gb: $gt
+      $gl: $gr
+  @else if $gutter == false OR $gutter == off
+  @else
+    @if $expectWithVertical == false
+      $gr: autoGutterFallback($gutter, $gutterHorizontal)
+      $gl: $gr
+    @else
+      $gt: autoGutterFallback($gutter, $gutterVertical) * 0.5
+      $gr: $gt
+      $gb: $gt
+      $gl: $gt
+
+  // Handle missing units
+  @if math.unit($gt) == ""
+    $gt: $gt + 0px
+  @if math.unit($gr) == ""
+    $gr: $gr + 0px
+  @if math.unit($gb) == ""
+    $gb: $gb + 0px
+  @if math.unit($gl) == ""
+    $gl: $gl + 0px
+
+  // Build output
+  @return (top: $gt, right: $gr, bottom: $gb, left: $gl)
+
+/**
+ * Can be used used to set the order property which move flexbox children around
+ *
+=gridItemOrder($order, $override: true)
+  -ms-flex-order: $order
+  order: $order
+  @if $override
+    -ms-flex-order: $order !important
+    order: $order !important
+
+/**
+ * A helper to convert the target element into a responsive container.
+ * The content will be always centered on the page. The width of the content area can be configured globally.
+ * If you need a special container size you can also override the global values by using the $override parameter
+ *
+ * @param $override A map containing the overrides for one or more breakpoints (xxs: 120px, xs: 260px,...)
+ *
+=container($override: ())
+  position: relative
+  margin: 0 auto
+  // The order is always XS -> XXS -> SM... Because XXS has to overrule the priority of XS!
+  // XS (Both are active without breakpoint, because xs is the bootstrap standard...)
+  @if (map.has-key($override, xs))
+    width: map.get($override, xs)
+  @else
+    width: calc(#{$containerWidthXs} - #{$containerMarginXs})
+  +bpXxs
+    @if (map.has-key($override, xxs))
+      width: map.get($override, xxs)
+    @else
+      width: calc(#{$containerWidthXxs} - #{$containerMarginXxs})
+  +bpSmAndBigger()
+    @if (map.has-key($override, sm))
+      width: map.get($override, sm)
+    @else
+      width: $containerWidthSm
+  +bpMdAndBigger()
+    @if (map.has-key($override, md))
+      width: map.get($override, md)
+    @else
+      width: $containerWidthMd
+  +bpLgAndBigger()
+    @if (map.has-key($override, lg))
+      width: map.get($override, lg)
+    @else
+      width: $containerWidthLg
+  +bpXl()
+    @if (map.has-key($override, xl))
+      width: map.get($override, xl)
+    @else
+      width: $containerWidthXl
+
+/**
+ * Creates a grid wrapper which can contain multiple grid items.
+ * The difference to grid() is, that the wrapper compensates the vertical gutter for the first and
+ * the last row of the grid and not only left and right.
+ *
+ * NOTE: You should ONLY place items in this grid that have have the +gridItemV mixin applied to them.
+ *
+ * @param $gutterCompensation A valid gutter definition for parseGutter() to change/disable
+ *                            the automatic compensation of this grid's first and last rows of items.
+ *                            This is "true" by default.
+ *
+=gridV($gutterCompensation: true)
+  position: relative
+  display: inline-flex
+  flex-direction: row
+  flex-wrap: wrap
+  pointer-events: none
+
+  // Handle gutter
+  $gutter: parseGutter($gutterCompensation)
+  margin: #{-(map.get($gutter, top))} #{-(map.get($gutter, right))} #{-(map.get($gutter, bottom))} #{-(map.get($gutter, left))}
+  width: calc(100% + #{map.get($gutter, left)} + #{map.get($gutter, right)})
+
+  // Handle children
+  & > *
+    position: relative
+    flex-grow: 0
+    flex-shrink: 0
+    pointer-events: all
+
+    // Auto order
+    @if $autoOrder == true
+      +gridItemOrder(999999, false)
+      @for $i from 1 through $autoOrderLength
+        &:nth-child(#{$i})
+          +gridItemOrder($i * 10, false)
+
+/**
+ * Creates a grid wrapper which can contain multiple grid items.
+ *
+ * NOTE: You should NOT place items in this grid that have the +gridItemV mixin applied to them
+ *
+ * @param $gutterCompensation A valid gutter definition for parseGutter() to change/disable
+ *                            the automatic compensation of this grid's first and last rows of items.
+ *                            This is "auto" by default.
+ *
+=grid($gutterCompensation: true)
+  +gridV(parseGutter($gutterCompensation, false))
+
+/**
+ * Defines the element as a child of a grid with vertical gutter.
+ *
+ * NOTE: Items of this kind should ONLY be added to a grid that has the +gridItemV applied to it
+ *
+ * @param $span The range this column should take up in its width.
+ *              (Range: 1 - $gridColumns / the value of options.of)
+ * @param $options Can take additional options for this item
+ *                - of:     Can be used to override the default $gridColumns value for this item
+ *                - order:  The numeric order of this item in the element list
+ *                - gutter: A valid gutter definition for parseGutter() to change/disable
+ *                          the gutter of this child
+ *                - offset: The column offset to the item that comes before this item
+ *                - offsetAfter: The same as offset but applies to the item after this item
+ *                - usePadding: By default the margin is used to create the gutters.
+ *                              If this conflicts with your use-case set this to true and the padding is used instead.
+ *
+=gridItemV($span: $gridColumns, $options: ())
+  // Prepare options and gutter
+  $defaults: (of: $gridColumns, order: -1, gutter: true, offset: off, offsetAfter: off, usePadding: false)
+  $options: map.merge($defaults, $options)
+  $g: parseGutter(map.get($options, gutter))
+  $usePadding: map.get($options, usePadding)
+
+  @if $span == false
+    flex-basis: auto
+    @if $usePadding == true
+      padding-left: 0
+    @else
+      margin-left: 0
+
+  @else
+    overflow: inherit
+
+    // Calculate flex basis
+    @if $usePadding == false
+      flex-basis: calc((100% * (#{$span} / #{map.get($options, of)})) - #{(map.get($g, left) + map.get($g, right))})
+    @else
+      flex-basis: calc(100% * (#{$span} / #{map.get($options, of)}))
+
+    // Update margins or padding
+    $margins: map.get($g, top) map.get($g, right) map.get($g, bottom) map.get($g, left)
+    @if $usePadding == true
+      padding: $margins
+    @else
+      margin: $margins
+
+    // Handle offset
+    @if map.get($options, offset) != off
+      @if map.get($options, offset) != 0
+        @if $usePadding == true
+          padding-left: calc((100% / #{map.get($options, of)}) * #{map.get($options, offset)})
+        @else
+          margin-left: calc((100% / #{map.get($options, of)}) * #{map.get($options, offset)} + #{map.get($g, left)})
+
+    // Handle offset to the right
+    @if map.get($options, offsetAfter) != off
+      @if map.get($options, offsetAfter) != 0
+        @if $usePadding == true
+          padding-right: calc((100% / #{map.get($options, of)}) * #{map.get($options, offsetAfter)})
+        @else
+          margin-right: calc((100% / #{map.get($options, of)}) * #{map.get($options, offsetAfter)} + #{map.get($g, right)})
+
+    // Handle order
+    @if map.get($options, order) > 0
+      +gridItemOrder(map.get($options, order), true)
+
+/**
+ * Defines the element as a child of a default grid.
+ *
+ * NOTE: Items of this kind should ONLY be added to a grid that has the +gridItem mixin AND NOT the +gridItemV mixin applied to it
+ *
+ * @param $span The range this column should take up in its width.
+ *              (Range: 1 - $gridColumns / the value of options.of)
+ * @param $options Can take additional options for this item
+ *                - of:     Can be used to override the default $gridColumns value for this item
+ *                - order:  The numeric order of this item in the element list
+ *                - gutter: A valid gutter definition for parseGutter() to change/disable
+ *                          the gutter of this child
+ *                - offset: The column offset to the item that comes before this item
+ *                - offsetAfter: The same as offset but applies to the item after this item
+ *                - usePadding: By default the margin is used to create the gutters.
+ *                              If this conflicts with your use-case set this to true and the padding is used instead.
+ *
+=gridItem($span: $gridColumns, $options: ())
+  $options: map.merge((gutter: true), $options)
+  $gutter: parseGutter(map.get($options, gutter), false)
+  $options: map.merge($options, (gutter: $gutter))
+  +gridItemV($span, $options)
