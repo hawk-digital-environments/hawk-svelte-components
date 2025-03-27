@@ -1,31 +1,87 @@
 <script module>
-  import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Button from './Button.svelte';
-  import { fn } from '@storybook/test';
+    import {defineMeta} from '@storybook/addon-svelte-csf';
+    import Button from './Button.svelte';
+    import {fn} from '@storybook/test';
+    import {allowedIconNames} from '../icon/iconDefinition.js';
 
-  // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-  const { Story } = defineMeta({
-    title: 'Example/Button',
-    component: Button,
-    tags: ['autodocs'],
-    argTypes: {
-      backgroundColor: { control: 'color' },
-      size: {
-        control: { type: 'select' },
-        options: ['small', 'medium', 'large'],
-      },
-    },
-    args: {
-      onClick: fn(),
-    }
-  });
+    const {Story} = defineMeta({
+        title: 'Handson/Button',
+        component: Button,
+        tags: ['autodocs'],
+        argTypes: {
+            icon: {
+                control: {type: 'select'},
+                options: allowedIconNames
+            }
+        },
+        args: {
+            onclick: fn()
+        }
+    });
 </script>
 
-<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Primary" args={{ primary: true, label: 'Button' }} />
+{#snippet label()}
+    Label
+{/snippet}
 
-<Story name="Secondary" args={{ label: 'Button' }} />
+<Story name="Generic" args={{children: label}}/>
 
-<Story name="Large" args={{ size: 'large', label: 'Button' }} />
+<Story name="Filled" args={{size: 'small', disabled: false}}
+       parameters={{controls: {include: ['size', 'disabled']}}}>
+    {#snippet children({size, disabled})}
+        <div style="display: flex; flex-direction: column; gap: 20px">
+            <Button size={size} disabled={disabled}>Label</Button>
+            <Button size={size} icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
+            <Button size={size} icon="plus" iconPosition="left" disabled={disabled}>Label</Button>
+            <Button size={size} icon="plus" iconPosition="above" disabled={disabled}>Label</Button>
+            <Button size={size} icon="plus" iconPosition="iconOnly" disabled={disabled}>Label</Button>
+        </div>
+    {/snippet}
+</Story>
 
-<Story name="Small" args={{ size: 'small', label: 'Button' }} />
+<Story name="Outlined" args={{size: 'small', disabled: false}}
+       parameters={{controls: {include: ['size', 'disabled']}}}>
+    {#snippet children({size, disabled})}
+        <div style="display: flex; flex-direction: column; gap: 20px">
+            <Button size={size} type="outlined" disabled={disabled}>Label</Button>
+            <Button size={size} type="outlined" icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
+            <Button size={size} type="outlined" icon="plus" iconPosition="left" disabled={disabled}>Label</Button>
+            <Button size={size} type="outlined" icon="plus" iconPosition="above" disabled={disabled}>Label</Button>
+            <Button size={size} type="outlined" icon="plus" iconPosition="iconOnly" disabled={disabled}>Label</Button>
+        </div>
+    {/snippet}
+</Story>
+
+<Story name="Text" args={{size: 'small', disabled: false}}
+       parameters={{controls: {include: ['size', 'disabled']}}}>
+    {#snippet children({size, disabled})}
+        <div style="display: flex; flex-direction: column; gap: 20px">
+            <Button size={size} type="text" disabled={disabled}>Label</Button>
+            <Button size={size} type="text" icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
+            <Button size={size} type="text" icon="plus" iconPosition="left" disabled={disabled}>Label</Button>
+            <Button size={size} type="text" icon="plus" iconPosition="above" disabled={disabled}>Label</Button>
+            <Button size={size} type="text" icon="plus" iconPosition="iconOnly" disabled={disabled}>Label</Button>
+        </div>
+    {/snippet}
+</Story>
+
+<Story name="Link" args={{size: 'small', disabled: false}}
+       parameters={{controls: {include: ['size', 'disabled']}}}>
+    {#snippet children({size, disabled})}
+        <div style="display: flex; flex-direction: column; gap: 20px">
+            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" disabled={disabled}>Label</Button>
+            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="right"
+                    disabled={disabled}>Label
+            </Button>
+            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="left"
+                    disabled={disabled}>Label
+            </Button>
+            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="above"
+                    disabled={disabled}>Label
+            </Button>
+            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="iconOnly"
+                    disabled={disabled}>Label
+            </Button>
+        </div>
+    {/snippet}
+</Story>

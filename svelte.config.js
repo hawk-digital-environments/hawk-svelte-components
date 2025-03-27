@@ -1,27 +1,30 @@
 import adapter from '@sveltejs/adapter-auto';
-import {sveltePreprocess} from 'svelte-preprocess';
+import {sass as sassPreprocessor, typescript} from 'svelte-preprocess';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import {cssModules} from 'svelte-preprocess-cssmodules';
+import {sassModuleImportProcessor} from './.svelte/SassModuleImportProcessor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const sassPreprocessorOptions = {
+    prependData: `@use "${path.resolve(__dirname, 'src/lib/_style/mixins.sass')}" as *;`,
+    outputStyle: 'compact'
+};
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    // Consult https://svelte.dev/docs/kit/integrations
-    // for more information about preprocessors
-    preprocess: sveltePreprocess({
-        typescript: false,
-        sass: {
-            prependData: `@use "${path.resolve(__dirname, 'src/lib/_style/mixins.sass')}" as *;`,
-            renderSync: true,
-            outputStyle: 'compressed'
-        }
-    }),
+    preprocess: [
+        typescript(),
+        sassPreprocessor(sassPreprocessorOptions),
+        sassModuleImportProcessor(sassPreprocessorOptions),
+        cssModules({
+            parseExternalStylesheet: true,
+            useAsDefaultScoping: true
+        })
+    ],
 
     kit: {
-        // adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-        // If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-        // See https://svelte.dev/docs/kit/adapters for more information about adapters.
         adapter: adapter()
     }
 };

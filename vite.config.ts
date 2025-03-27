@@ -9,5 +9,14 @@ export default defineConfig({
     ],
     server: {
         port: parseInt(process?.env?.DOCKER_PROJECT_PORT || '8000') || 8000,
+    },
+    css: {
+        modules: false,
+        preprocessorOptions: {
+            sass: {
+                outputStyle: 'compressed',
+                verbose: false
+            }
+        }
     }
 });
