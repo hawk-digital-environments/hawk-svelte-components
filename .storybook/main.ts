@@ -1,7 +1,8 @@
-import type { StorybookConfig } from '@storybook/sveltekit';
+import type {StorybookConfig} from '@storybook/sveltekit';
 
 const config: StorybookConfig = {
   "stories": [
+    "./pages/**/*.mdx",
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|ts|svelte)"
   ],
@@ -15,6 +16,7 @@ const config: StorybookConfig = {
     "name": "@storybook/sveltekit",
     "options": {}
   },
+  staticDirs: [{from: './assets', to: '/storybook-assets'}],
   core: {
     disableTelemetry: true
   }
