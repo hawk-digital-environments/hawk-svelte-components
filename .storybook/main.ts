@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/sveltekit';
+import type {StorybookConfig} from '@storybook/sveltekit';
 
 const config: StorybookConfig = {
   "stories": [
@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     "name": "@storybook/sveltekit",
     "options": {}
   },
+  staticDirs: [{from: './assets', to: '/storybook-assets'}],
   core: {
     disableTelemetry: true
   }

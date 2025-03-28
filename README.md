@@ -1,6 +1,7 @@
 # HAWK Svelte Components
 
-A suite of Svelte components for use in HAWK projects, they are based on the [Handson Design System](https://www.figma.com/design/Zye5x8Egl66Ey0IOBJTPZn/Design-System-redesign?node-id=99-3).
+A suite of Svelte components for use in HAWK projects, they are based on
+the [Handson Design System](https://www.figma.com/design/SNtAs3qx6Xvp9yUSPb3vDB/Design-System-redesign).
 
 ## Installation
 
