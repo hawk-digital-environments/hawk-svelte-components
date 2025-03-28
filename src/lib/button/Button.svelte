@@ -2,7 +2,7 @@
     import {type Snippet} from 'svelte';
     import type {IconName} from '../icon/iconDefinition.ts';
     import type {MouseEventHandler} from 'svelte/elements';
-    import Link from '../link/Link.svelte';
+    import Link from '../util/link/Link.svelte';
     import Icon from '../icon/Icon.svelte';
     import style from './Button.module.sass';
 
