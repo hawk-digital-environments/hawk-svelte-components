@@ -1,6 +1,6 @@
 {
   "name": "@hawk-hhg/svelte-components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "vite build && npm run prepack",
     "preview": "vite preview",
