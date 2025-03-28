@@ -23,7 +23,6 @@ jobs:
         with:
           version-file: './package.json'
           github-token: ${{ secrets.github_token }}
-          output-file: 'false'
 
       - uses: actions/setup-node@v4
         with:
