@@ -47,7 +47,7 @@
         }
     });
 
-    const uniqueId = $derived(('ig-' + iconName + '-' + gradient?.join('-')).replace(/[^A-Za-z0-9\-]/gi, ''));
+    const uniqueId = $props.id();
 
     const gradientMarkup = $derived.by(() => {
         if (!gradient || gradient.length !== 2) {
