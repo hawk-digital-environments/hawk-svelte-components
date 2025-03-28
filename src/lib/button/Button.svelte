@@ -84,11 +84,18 @@
         [style.typeRaised]: type === 'raised',
         [style.disabled]: disabled
     });
+
+    const iconGradient = $derived(
+        icon &&
+        (iconPosition === 'above' && type === 'link') || (iconPosition === 'iconOnly')
+            ? ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
+            : undefined
+    );
 </script>
 
 {#snippet content()}
     {#if icon}
-        <Icon icon={icon} size="small" class={style.icon}/>
+        <Icon icon={icon} size="small" class={style.icon} gradient={iconGradient}/>
     {/if}
     <span class="label">{@render children?.()}</span>
 {/snippet}
