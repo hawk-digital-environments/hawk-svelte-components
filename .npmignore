@@ -1,0 +1,9 @@
+.github
+.storybook
+.svelte-kit
+.vite
+bin
+docker
+node_modules
+Dockerfile
+docker-compose.yml
