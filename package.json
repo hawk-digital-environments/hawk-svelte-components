@@ -67,8 +67,5 @@
   },
   "keywords": [
     "svelte"
-  ],
-  "dependencies": {
-    "classnames": "^2.5.1"
-  }
+  ]
 }
