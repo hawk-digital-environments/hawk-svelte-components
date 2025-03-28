@@ -12,6 +12,9 @@
             icon: {
                 control: {type: 'select'},
                 options: allowedIconNames
+            },
+            gradient: {
+                control: {type: 'object'}
             }
         },
         args: {
@@ -21,3 +24,4 @@
 </script>
 
 <Story name="Generic" args={{ }}/>
+<Story name="Gradient" args={{ gradient: ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']}}/>

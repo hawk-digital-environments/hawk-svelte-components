@@ -17,6 +17,11 @@
          * Sizes: small: 16x16, medium: 20x20
          */
         size?: 'small' | 'medium';
+        /**
+         * Sets a gradient for the icon (works both for outline and filled icons)
+         * The gradient is always applied horizontally, the first value is the left color, the second the right color
+         */
+        gradient?: [string, string];
     }
 
     const {
@@ -26,6 +31,7 @@
         fill = 'none',
         class: classNames,
         className: className,
+        gradient,
         ...restProps
     }: Props = $props();
 
@@ -40,16 +46,41 @@
                 return {w: '20', h: '20'};
         }
     });
+
+    const uniqueId = $derived(('ig-' + iconName + '-' + gradient?.join('-')).replace(/[^A-Za-z0-9\-]/gi, ''));
+
+    const gradientMarkup = $derived.by(() => {
+        if (!gradient || gradient.length !== 2) {
+            return '';
+        }
+
+        const gradientId = uniqueId + '-gradient';
+
+        return `
+<style>
+#${uniqueId} * {fill: url(#${gradientId});}
+</style>
+<defs>
+    <linearGradient id="${gradientId}">
+        <stop offset="0%" stop-color="${gradient[0]}"/>
+        <stop offset="100%" stop-color="${gradient[1]}"/>
+    </linearGradient>
+</defs>
+`;
+    });
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg"
-     class={[style.icon, classNames, className]}
+     class={[style.icon, type === 'filled' && style.filled, classNames, className]}
      width="{sizes.w}"
      height="{sizes.h}"
      viewBox={viewBox}
      fill={fill}
      aria-labelledby="title"
      {...restProps}>
+    {@html gradientMarkup}
     <title id="title">Icon: {icon.t}</title>
-    {@html icon.c}
+    <g id={uniqueId}>
+        {@html icon.c}
+    </g>
 </svg>

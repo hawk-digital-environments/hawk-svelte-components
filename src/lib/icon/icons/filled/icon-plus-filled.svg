@@ -1,10 +1,9 @@
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_53908_9274)">
-<path d="M10 2V18" stroke="#575756" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2 10H18" stroke="#575756" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g clip-path="url(#clip0_53955_11476)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.75 2C11.75 1.0335 10.9665 0.25 10 0.25C9.0335 0.25 8.25 1.0335 8.25 2V8.25H2C1.0335 8.25 0.25 9.0335 0.25 10C0.25 10.9665 1.0335 11.75 2 11.75H8.25V18C8.25 18.9665 9.0335 19.75 10 19.75C10.9665 19.75 11.75 18.9665 11.75 18V11.75H18C18.9665 11.75 19.75 10.9665 19.75 10C19.75 9.0335 18.9665 8.25 18 8.25H11.75V2Z" fill="#575756"/>
 </g>
 <defs>
-<clipPath id="clip0_53908_9274">
+<clipPath id="clip0_53955_11476">
 <rect width="20" height="20" fill="white"/>
 </clipPath>
 </defs>
