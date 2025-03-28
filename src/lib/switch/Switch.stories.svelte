@@ -18,10 +18,10 @@
 
 <Story name="Variants" args="{{}}">
     {#snippet fancyLabel()}
-        <strong>Hello!</strong>
+        <strong>Hello</strong> world!
     {/snippet}
     {#snippet children(args)}
-        <div style="display: flex; flex-wrap: wrap; gap: 0; max-width: 320px; gap: 20px">
+        <div style="display: flex; flex-wrap: wrap; gap: 0; max-width: 420px; gap: 20px">
             <div style="flex-basis: calc(50% - 20px); text-align: right">
                 <Switch label="Label" checked labelPosition="left"/>
             </div>
@@ -33,6 +33,12 @@
             </div>
             <div style="flex-basis: calc(50% - 20px)">
                 <Switch label="Label" labelPosition="right"/>
+            </div>
+            <div style="flex-basis: calc(50% - 20px); text-align: right">
+                <Switch label="Label" labelPosition="left" required/>
+            </div>
+            <div style="flex-basis: calc(50% - 20px)">
+                <Switch label="Label" labelPosition="right" required/>
             </div>
             <div style="flex-basis: calc(50% - 20px); text-align: right">
                 <Switch checked labelPosition="left"/>
