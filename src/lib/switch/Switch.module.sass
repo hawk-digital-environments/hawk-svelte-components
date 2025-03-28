@@ -1,0 +1,116 @@
+@property --switch-gradient-start
+  syntax: '<color>'
+  initial-value: transparent
+  inherits: true
+
+@property --switch-gradient-end
+  syntax: '<color>'
+  initial-value: transparent
+  inherits: true
+
+$switchWidth: 52px
+$switchHeight: 32px
+$switchPadding: 7px
+$handleWidth: 20px
+
+.wrapper
+  display: inline-flex
+  align-items: center
+  width: max-content
+  gap: 10px
+  height: $switchHeight
+
+  &.labelRight
+    flex-direction: row-reverse
+
+  .handle
+    position: absolute
+    display: flex
+    align-content: center
+    justify-content: center
+    left: $switchPadding
+    line-height: 0
+    transition: left 0.3s ease, background 0.3s
+    pointer-events: none
+    background: var(--switch-color-handle-off, var(--clr-primary-medium))
+    border-radius: 100%
+    width: $handleWidth
+    height: $handleWidth
+
+    .iconOff,
+    .iconOn
+      position: absolute
+      padding: 3px
+      --sgs: var(--switch-gradient-start)
+      --sge: var(--switch-gradient-end)
+      transition: transform 0.3s ease, opacity 0.3s ease
+
+    .iconOff
+      color: var(--switch-color-icon-off, var(--clr-primary-white))
+      transform: rotate(0deg) scale(1)
+      opacity: 1
+
+    .iconOn
+      transform: rotate(-180deg) scale(0)
+      opacity: 0
+
+  .slider
+    position: relative
+    display: flex
+    align-items: center
+
+    &:has(input:checked)
+      --switch-gradient-start: var(--clr-gradient-start)
+      --switch-gradient-end: var(--clr-gradient-end)
+
+      .handle
+        left: calc(#{$switchWidth - $handleWidth - $switchPadding})
+        background: var(--switch-color-handle-on, var(--clr-primary-white))
+
+      .iconOff
+        transform: rotate(180deg) scale(0)
+        opacity: 0
+
+      .iconOn
+        transform: rotate(0deg) scale(1)
+        opacity: 1
+
+  .input
+    appearance: none
+    position: relative
+    font-size: inherit
+    box-sizing: content-box
+    width: $switchWidth
+    height: $switchHeight
+    border-radius: 100px
+    margin: auto
+    color: #fff
+    cursor: pointer
+    border: 1px solid var(--switch-border-color, var(--clr-primary-dark-10))
+    outline: 2px solid transparent
+    outline-offset: 0
+    background: linear-gradient(90deg, var(--switch-gradient-start) -10%, var(--switch-gradient-end) 100%)
+    transition: box-shadow 0.3s, background 0.3s, outline-color 0.2s, outline-offset 0.2s, --switch-gradient-start 0.2s, --switch-gradient-end 0.4s
+
+    &:focus
+      outline-color: var(--switch-focus-color, var(--clr-primary-main))
+      outline-offset: 3px
+
+    &:checked
+      border-color: transparent
+      border-width: 0
+      padding: 1px
+
+  // Special handling for disabled state
+  &.disabled
+    cursor: not-allowed
+
+    .iconOff,
+    .iconOn
+      color: var(--switch-color-icon-disabled, var(--clr-primary-dark-10))
+
+    .input
+      cursor: not-allowed
+      --switch-gradient-start: var(--switch-background-disabled, var(--clr-primary-dark-10))
+      --switch-gradient-end: var(--switch-background-disabled, var(--clr-primary-dark-10))
+      border-color: transparent

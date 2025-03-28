@@ -2,7 +2,7 @@
     import {type Snippet} from 'svelte';
     import type {IconName} from '../icon/iconDefinition.ts';
     import type {MouseEventHandler} from 'svelte/elements';
-    import Link from '../link/Link.svelte';
+    import Link from '../util/link/Link.svelte';
     import Icon from '../icon/Icon.svelte';
     import style from './Button.module.sass';
 
@@ -84,11 +84,18 @@
         [style.typeRaised]: type === 'raised',
         [style.disabled]: disabled
     });
+
+    const iconGradient = $derived(
+        icon &&
+        (iconPosition === 'above' && type === 'link') || (iconPosition === 'iconOnly')
+            ? ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
+            : undefined
+    );
 </script>
 
 {#snippet content()}
     {#if icon}
-        <Icon icon={icon} size="small" class={style.icon}/>
+        <Icon icon={icon} size="small" class={style.icon} gradient={iconGradient}/>
     {/if}
     <span class="label">{@render children?.()}</span>
 {/snippet}
