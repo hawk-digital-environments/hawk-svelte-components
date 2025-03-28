@@ -1,0 +1,13 @@
+.label
+  +fontBody
+  +fontSizeL
+
+  &.disabled
+    opacity: 0.35
+    cursor: not-allowed
+
+.required
+  background: var(--form-label-gradient, var(--gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%)))
+  background-clip: text
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
