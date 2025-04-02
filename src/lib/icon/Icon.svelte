@@ -14,9 +14,9 @@
         type?: 'filled' | 'outline';
         /**
          * The size of the icon (default: medium)
-         * Sizes: small: 16x16, medium: 20x20
+         * Sizes: small: 16x16, medium: 20x20, large: 24x24
          */
-        size?: 'small' | 'medium';
+        size?: 'small' | 'medium' | 'large';
         /**
          * Sets a gradient for the icon (works both for outline and filled icons)
          * The gradient is always applied horizontally, the first value is the left color, the second the right color
@@ -41,6 +41,8 @@
         switch (size) {
             case 'small':
                 return {w: '16', h: '16'};
+            case 'large':
+                return {w: '24', h: '24'};
             case 'medium':
             default:
                 return {w: '20', h: '20'};

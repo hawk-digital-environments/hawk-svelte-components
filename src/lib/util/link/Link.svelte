@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type {HTMLAnchorAttributes} from 'svelte/elements';
+    import type {HTMLAnchorAttributes, MouseEventHandler} from 'svelte/elements';
     import * as svelte from 'svelte';
 
     /**
@@ -24,7 +24,7 @@
         /**
          * The onclick event handler
          */
-        onclick?: (event: MouseEvent) => void;
+        onclick?: MouseEventHandler<HTMLAnchorElement>;
 
         /**
          * The children to render inside the link

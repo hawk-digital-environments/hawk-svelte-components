@@ -85,9 +85,9 @@
         [style.disabled]: disabled
     });
 
-    const iconGradient = $derived(
+    const iconGradient: [string, string] | undefined = $derived(
         icon &&
-        (iconPosition === 'above' && type === 'link') || (iconPosition === 'iconOnly')
+        ((iconPosition === 'above' || iconPosition === 'iconOnly') && type === 'link')
             ? ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
             : undefined
     );
