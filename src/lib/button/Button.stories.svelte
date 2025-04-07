@@ -2,17 +2,14 @@
     import {defineMeta} from '@storybook/addon-svelte-csf';
     import Button from './Button.svelte';
     import {fn} from '@storybook/test';
-    import {allowedIconNames} from '../icon/iconDefinition.js';
+    import {iconArgType} from '$lib/icon/iconDefinition.js';
 
     const {Story} = defineMeta({
         title: 'Handson/Button',
         component: Button,
         tags: ['autodocs'],
         argTypes: {
-            icon: {
-                control: {type: 'select'},
-                options: allowedIconNames
-            }
+            icon: iconArgType()
         },
         args: {
             onclick: fn()

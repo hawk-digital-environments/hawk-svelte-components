@@ -19,9 +19,11 @@
         size?: 'small' | 'medium' | 'large';
         /**
          * Sets a gradient for the icon (works both for outline and filled icons)
-         * The gradient is always applied horizontally, the first value is the left color, the second the right color
+         * The gradient is always applied horizontally, the first value is the left color, the second the right color.
+         * This works with css variables, too!
+         * If "default" is passed, the default gradient colors are used, so the same as: ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
          */
-        gradient?: [string, string];
+        gradient?: [string, string] | 'default';
     }
 
     const {
@@ -52,7 +54,12 @@
     const uniqueId = $props.id();
 
     const gradientMarkup = $derived.by(() => {
-        if (!gradient || gradient.length !== 2) {
+        let _gradient = gradient;
+        if (_gradient === 'default') {
+            _gradient = ['var(--clr-gradient-start)', 'var(--clr-gradient-end)'];
+        }
+
+        if (!_gradient || _gradient.length !== 2) {
             return '';
         }
 
@@ -64,8 +71,8 @@
 </style>
 <defs>
     <linearGradient id="${gradientId}">
-        <stop offset="0%" stop-color="${gradient[0]}"/>
-        <stop offset="100%" stop-color="${gradient[1]}"/>
+        <stop offset="0%" stop-color="${_gradient[0]}"/>
+        <stop offset="100%" stop-color="${_gradient[1]}"/>
     </linearGradient>
 </defs>
 `;

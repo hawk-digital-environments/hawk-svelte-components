@@ -85,11 +85,10 @@
         [style.disabled]: disabled
     });
 
-    const iconGradient: [string, string] | undefined = $derived(
+    const iconGradient: 'default' | undefined = $derived(
         icon &&
         ((iconPosition === 'above' || iconPosition === 'iconOnly') && type === 'link')
-            ? ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
-            : undefined
+            ? 'default' : undefined
     );
 </script>
 
