@@ -82,7 +82,7 @@ interface IconSet {
 function buildIconDefinition(filledDirectory: string, outlineDirectory: string, outFile: string) {
     console.log('Building icon set...');
     const icons = gatherSets(filledDirectory, outlineDirectory);
-    const content = getGeneratedWarning() + generateAllowedList(icons) + generateIconMap(icons);
+    const content = getGeneratedWarning() + generateAllowedList(icons) + generateIconMap(icons) + generateIconArgType();
     fs.writeFileSync(outFile, content);
     console.log('Icon set built.');
 }
@@ -186,4 +186,24 @@ function generateIconInfo(realName: string, path: string): IconInfo | null {
     const height = parseInt(svgTag.getAttribute('height') ?? '0');
 
     return {w: width, h: height, c: svgTag.innerHTML, t: makeHumanReadable(realName)};
+}
+
+function generateIconArgType(): string {
+    return `
+/**
+ * A helper for Storybook to generate the icon select control.
+ * We need to add the stupid space to the name to make it work without printing out stuff like { [native code]: 'icon' }.
+ */
+export function iconArgType(): any {
+    return {
+        control: {
+            type: 'select',
+            labels: allowedIconNames.reduce(
+                (acc, i) => ({...acc, [i + ' ']: i}), {}
+            )
+        },
+        options: allowedIconNames
+    };
+}
+`;
 }
