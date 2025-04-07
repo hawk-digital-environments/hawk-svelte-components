@@ -11,7 +11,13 @@
         argTypes: {
             icon: iconArgType(),
             gradient: {
-                control: {type: 'object'}
+                control: {type: 'select', labels: {default: 'Default', redGreen: '["red", "green"]'}},
+                options: ['none', 'default', 'redGreen'],
+                mapping: {
+                    none: null,
+                    default: 'default',
+                    redGreen: ['red', 'green']
+                }
             }
         },
         args: {
@@ -22,7 +28,7 @@
 </script>
 
 <Story name="Generic" args={{ }}/>
-<Story name="Gradient" args={{ gradient: ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']}}/>
+<Story name="Gradient" args={{ gradient: 'default'}}/>
 <Story name="All Icons" parameters={{controls: {include: ['size', 'disabled']}}}>
     {#snippet children(args)}
         <div style="display: flex; max-width: 100%; width: 600px; gap: 20px; flex-wrap: wrap">
