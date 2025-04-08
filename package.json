@@ -1,6 +1,7 @@
 {
   "name": "@hawk-hhg/svelte-components",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "vite build && npm run prepack",
     "preview": "vite preview",
@@ -9,6 +10,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "storybook dev -p $DOCKER_PROJECT_PORT --no-open",
+    "dev:ssl": "storybook dev -p $DOCKER_PROJECT_PORT --no-open --https --ssl-cert /etc/ssl/certs/cert.pem --ssl-key /etc/ssl/certs/key.pem",
     "build:storybook": "storybook build"
   },
   "files": [

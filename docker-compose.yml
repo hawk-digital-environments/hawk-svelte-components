@@ -11,10 +11,13 @@ services:
         - DOCKER_UID=${DOCKER_UID:-1000}
     restart: no
     volumes:
+      - ./docker/certs:/etc/ssl/certs
       - ./:/var/www/html
     extra_hosts:
       - host.docker.internal:host-gateway
     environment:
+      - DOCKER_PROJECT_INSTALLED=${DOCKER_PROJECT_INSTALLED:-"false"}
+      - DOCKER_PROJECT_DOMAIN=${DOCKER_PROJECT_DOMAIN:-"localhost"}
       - DOCKER_PROJECT_PORT=${DOCKER_PROJECT_PORT:-8000}
     healthcheck:
       test: curl --fail http://localhost:${DOCKER_PROJECT_PORT:-8000} || exit 1

@@ -18,6 +18,10 @@ const config: StorybookConfig = {
   staticDirs: [{from: './assets', to: '/storybook-assets'}],
   core: {
     disableTelemetry: true
+  },
+  viteFinal(config) {
+    config.server.allowedHosts = true;
+    return config;
   }
 };
 export default config;
