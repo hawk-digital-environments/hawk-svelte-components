@@ -6,9 +6,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "paths": {
-      "/*": [
-        "./core/*"
-      ],
       "@/*": [
         "./core/*"
       ]
