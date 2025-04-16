@@ -1,0 +1,21 @@
+.formMessages
+  margin-left: 16px
+  margin-top: 4px
+
+  &.disabled
+    opacity: 0.5
+
+  .error,
+  .description
+    +fontBody
+    +fontSizeS
+
+    p
+      margin: 0
+      padding: 0
+
+  .error
+    +fontColorError
+    display: inline-flex
+    align-items: center
+    gap: 5px

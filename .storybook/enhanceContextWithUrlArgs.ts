@@ -18,7 +18,11 @@ function parseUrlArgs(argsString: string) {
 
         // Handle special values
         if (rawValue.startsWith('!')) {
-            if (rawValue === '!null') {
+            if (rawValue === '!false') {
+                value = false;
+            } else if (rawValue === '!true') {
+                value = true;
+            } else if (rawValue === '!null') {
                 value = null;
             } else if (rawValue === '!undefined') {
                 value = undefined;

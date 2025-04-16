@@ -1,0 +1,147 @@
+.container
+  position: relative
+  display: block
+  flex-direction: column
+  width: fit-content
+
+  &.block
+    &, .layoutWrap
+      width: 100%
+
+.layoutWrap
+  position: relative
+  display: flex
+  align-items: flex-end
+  border-radius: var(--input-border-radius, var(--radius-textfield, 10px))
+  border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
+  background: var(--input-background, var(--clr-primary-white))
+  padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
+  max-width: 100%
+  width: fit-content
+  top: 0
+  transition-duration: 0.2s
+  transition-timing-function: ease-in
+  transition-property: border-radius, border-color, margin, top, background
+
+  // The "before" element is used as a highlight. It is always visible but has a zero width, so we can animate it
+  &:before
+    content: ""
+    display: block
+    width: 0
+    height: calc(100% + 2px)
+    background: transparent
+    position: absolute
+    left: -1px
+    top: -1px
+    transition: background 0.3s, width 0.3s
+
+  // The "after" element is used for the focus border. It is always visible but has a zero width, so we can animate it
+  &:after
+    content: ""
+    display: block
+    width: 0
+    height: 2px
+    background: transparent
+    position: absolute
+    transition: background 0.3s, width 0.3s
+    left: -1px
+    bottom: -1px
+
+  &:hover
+    &, .label, &.float .label
+      background: #F5F5F5
+
+    &.disabled
+      background: inherit
+
+      &.float .label
+        background: var(--clr-primary-white)
+
+  &:has(:focus)
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+    border-color: transparent
+
+    &:after
+      width: calc(100% + 2px)
+      height: 2px
+      background: var(--input-focus-border-color, var(--clr-primary-main))
+
+  &.float
+    .label
+      background: var(--clr-primary-white)
+      border-radius: 2px
+      +fontSizeXs
+      margin-top: calc(-1 * var(--font-line-height-l) * 0.6)
+
+    &.hasIconLeft .label
+      max-width: calc(100% + 25px)
+      transform: translateX(-25px)
+
+    &.hasIconRight .label
+      max-width: calc(100% + 25px)
+
+    &.hasIconLeft.hasIconRight .label
+      max-width: calc(100% + 50px)
+
+    .label + .input
+      margin-top: 1px
+
+  &.disabled
+    cursor: not-allowed
+    opacity: 0.6
+
+    .iconRight,
+    .iconLeft
+      color: var(--input-color-icon-disabled, var(--clr-primary-medium))
+
+  &.error
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+
+    &:before
+      width: 6px
+      background: var(--input-clr-error, var(--clr-primary-error))
+
+  .inputLabelWrap
+    display: table
+    width: 100%
+    min-height: var(--font-line-height-l)
+
+  .input
+    +fontBody
+    display: block
+    border: 0
+    outline: 0
+    transition-timing-function: ease-in
+    transition-duration: 0.2s
+    transition-property: margin
+    width: 100%
+    background: transparent
+
+  .label + .input
+    margin-top: calc(-1 * var(--font-line-height-l))
+
+  .label
+    position: relative
+    display: block
+    transition-timing-function: ease-in
+    transition-duration: 0.2s
+    transition-property: font-size, line-height, background, padding, margin, transform, max-width
+    z-index: 2
+    width: fit-content
+    transform-origin: left bottom
+    background: transparent
+    padding: 1px 4px
+    left: 0
+
+  .iconRight,
+  .iconLeft
+    flex-shrink: 0
+    margin-bottom: 2px
+
+  .iconLeft
+    +mr(5px)
+
+  .iconRight
+    +ml(5px)

@@ -2,12 +2,14 @@
     import type {Snippet} from 'svelte';
     import type {HTMLLabelAttributes} from 'svelte/elements';
     import style from './FormLabel.module.sass';
+    import SnippetOrString from '../snippetOrString/SnippetOrString.svelte';
 
+    // @ts-ignore
     interface Props extends HTMLLabelAttributes {
         /**
          * The label text. If not provided, the label will not be rendered.
          */
-        children?: Snippet;
+        children?: Snippet | string;
 
         /**
          * Whether the label is required.
@@ -24,17 +26,17 @@
         children,
         required = false,
         disabled = false,
-        className,
         class: classNames,
         ...restProps
     }: Props = $props();
 </script>
 
 {#if children}
-    <label class={[style.label, classNames, className, disabled && style.disabled]} {...restProps}>
-        {@render children()}
+    <label class={[style.label, classNames, disabled && style.disabled]} {...restProps}>
         {#if required}
-            <span aria-hidden="true" class={style.required}>*</span>
+            <SnippetOrString value={children}/>&nbsp;<span aria-hidden="true" class={style.required}>*</span>
+        {:else}
+            <SnippetOrString value={children}/>
         {/if}
     </label>
 {/if}
