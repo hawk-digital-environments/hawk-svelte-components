@@ -21,7 +21,7 @@ jobs:
 
       - uses: TriPSs/conventional-changelog-action@v5
         with:
-          version-file: './package.json'
+          version-file: "./package.json"
           github-token: ${{ secrets.github_token }}
 
       - uses: actions/setup-node@v4
