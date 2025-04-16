@@ -25,35 +25,24 @@
 
 <Story name="Generic" args={{label: 'Label'}}/>
 <Story name="Error" args={{error: 'This is an error', label: 'Label'}}/>
-<Story name="Sizing" args={{}}>
+<Story name="Sizing" args={{iconLeft: 'externalLink', iconRight: 'star', required: true}}
+       parameters={{controls: {exclude: ['label']}}}>
     {#snippet children({id, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
             <Input {...args}
-                   label="hello mit ganz vielen tollen Worten und Umbruch und noch mehr Wörtern und noch mehr anderen Wörtern um viele Zeilen zu testen"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
-            <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
+                   label="hello mit ganz vielen tollen Worten und Umbruch und noch mehr Wörtern und noch mehr anderen Wörtern um viele Zeilen zu testen"/>
+            <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"/>
             <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"
                    required/>
-            <Input {...args} label="hello"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
+            <Input {...args} label="hello"/>
         </div>
         <div style="width: 100%; display: flex; gap: 20px; flex-direction: column">
             <Input {...args}
-                   label="hello mit ganz vielen tollen Worten und Umbruch und noch mehr Wörtern und noch mehr anderen Wörtern um viele Zeilen zu testen"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
-            <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
+                   label="hello mit ganz vielen tollen Worten und Umbruch und noch mehr Wörtern und noch mehr anderen Wörtern um viele Zeilen zu testen"/>
+            <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"/>
             <Input {...args} label="hello mit ganz vielen tollen Worten und Umbruch und noch"
                    required/>
-            <Input {...args} label="hello"
-                   required iconLeft="externalLink"
-                   iconRight="chevronRight"/>
+            <Input {...args} label="hello"/>
         </div>
     {/snippet}
 </Story>
