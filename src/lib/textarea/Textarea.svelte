@@ -4,6 +4,7 @@
     import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import type {HTMLAttributes, HTMLTextareaAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
+    import {mergeProps} from '../util/mergeProps';
 
     interface Props extends HTMLTextareaAttributes {
         /**
@@ -56,25 +57,13 @@
         id,
         error,
         description,
-        onfocus,
-        onblur,
-        value,
+        value = $bindable(''),
         placeholder,
-        class: className,
         ...restProps
     }: Props = $props();
 
     let focused = $state(false);
-    const _onfocus = $derived((e: FocusEvent) => {
-        focused = true;
-        onfocus?.(e as any);
-    });
-    const _onblur = $derived((e: FocusEvent) => {
-        focused = false;
-        onblur?.(e as any);
-    });
     let float = $derived.by(() => focused === true || !!value || !!placeholder);
-
     const uniqueId = $props.id();
     const inputId = id || uniqueId;
 </script>
@@ -84,15 +73,23 @@
 
 {#snippet inputSnippet(floatingClass)}
     <textarea
-            class={[ floatingClass, className ]}
+            {...mergeProps(
+                restProps,
+                {
+                    class: floatingClass,
+                    onblur: () => {
+                        focused = false;
+                    },
+                    onfocus: () => {
+                        focused = true;
+                    }
+                }
+            )}
             bind:value={value}
             id={inputId}
             placeholder={placeholder}
-            {...restProps}
             disabled={disabled}
             required={required}
-            onfocus={_onfocus}
-            onblur={_onblur}
     ></textarea>
 {/snippet}
 

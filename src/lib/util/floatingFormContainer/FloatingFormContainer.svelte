@@ -5,6 +5,8 @@
     import Icon from '../../icon/Icon.svelte';
     import style from './FloatingFormContainer.module.sass';
     import FormMessages from '../formMessages/FormMessages.svelte';
+    import {mergeProps} from '../mergeProps.ts';
+    import {scale} from 'svelte/transition';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -18,6 +20,30 @@
          * to apply to the <input> element.
          */
         input: Snippet<[string]>;
+
+        /**
+         * If given, the container will allow the element to open a "dropdown" with the giving content.
+         * Use the "dropdownOpen" prop to control the open state of the dropdown.
+         */
+        dropdown?: Snippet<[{ item: string, itemSelected: string, itemDisabled: string, itemLabel: string }]>;
+
+        /**
+         * If true, the dropdown will be open.
+         * If false, the dropdown will be closed.
+         * If the dropdown is not set, this will be ignored.
+         */
+        dropdownOpen?: boolean;
+
+        /**
+         * Additional props to apply to the dropdown container
+         * Only used if the "dropdown" prop is set.
+         */
+        dropdownProps?: HTMLAttributes<HTMLDivElement> & Record<string, any>;
+
+        /**
+         * An optional snippet to render between the layout wrap and the messages
+         */
+        beforeMessages?: Snippet;
 
         /**
          * An optional icon to display to the left of the input
@@ -54,6 +80,12 @@
         float?: boolean;
 
         /**
+         * Allows the outside world to control the focus of the field.
+         * This does NOT set the focus, but only applies the visual state
+         */
+        visualFocus?: boolean;
+
+        /**
          * An optional description to display below the label. Can be either a string or a snippet
          */
         description?: string | Snippet;
@@ -68,12 +100,27 @@
          * True to render the container in a disabled state
          */
         disabled?: boolean;
+
+        /**
+         * This will be called when any layout component of the container has been clicked!
+         * This does not include the input element or the label!
+         * @param event
+         */
+        onclick?: any;
+
+        /**
+         * Additional props to apply to the layout wrapper div
+         */
+        layoutWrapProps?: HTMLAttributes<HTMLDivElement> & Record<string, any>;
     }
 
     const {
         label,
         input,
-        class: className,
+        beforeMessages,
+        dropdown,
+        dropdownProps,
+        dropdownOpen = false,
         iconLeft,
         iconLeftProps,
         iconRight,
@@ -83,41 +130,78 @@
         error,
         description,
         disabled,
+        visualFocus,
+        layoutWrapProps,
         ...restProps
     }: Props = $props();
 
-    let container: HTMLDivElement;
-    $effect(() => {
-        if (container) {
-            container.addEventListener('click', e => {
-                if (e.target instanceof HTMLDivElement || e.target instanceof HTMLSpanElement || (e.target as any)?.tagName === 'svg') {
-                    (container.querySelector('input,select,textarea') as HTMLElement)?.focus();
-                }
-            });
-        }
-    });
-
     const iconLeftClass = $derived(iconLeftProps?.class);
     const iconRightClass = $derived(iconRightProps?.class);
+
+    // Because the real "input" element is only a part of our layout container
+    // this click handler will focus the element on click on the outer container
+    const onContainerClick = function (e: MouseEvent) {
+        if (e.currentTarget instanceof HTMLElement) {
+            const input = e.currentTarget.querySelector('input,select,textarea');
+            if (input instanceof HTMLElement) {
+                input.focus();
+            }
+        }
+    };
+
+    let containerEl: HTMLDivElement;
+    let layoutWrapEl: HTMLDivElement;
+    let inputLabelWrapEl: HTMLDivElement;
+    let dropdownEl: HTMLDivElement | undefined = $state(undefined);
+
+    export function getContainerElement(): HTMLDivElement {
+        return containerEl;
+    }
+
+    export function getLayoutWrapElement(): HTMLDivElement {
+        return layoutWrapEl;
+    }
+
+    export function getInputLabelWrapElement(): HTMLDivElement {
+        return inputLabelWrapEl;
+    }
+
+    export function getDropdownElement(): HTMLDivElement | undefined {
+        return dropdownEl;
+    }
 </script>
 
-<div class={[
-    className,
-    style.container,
-    block && style.block
-    ]} {...restProps}>
-    <div class={[
-        style.layoutWrap,
-        !!iconLeft && style.hasIconLeft,
-        !!iconRight && style.hasIconRight,
-        float && style.float,
-        error && style.error,
-        disabled && style.disabled
-    ]} bind:this={container}>
+<div bind:this={containerEl}
+     {...mergeProps(
+         restProps,
+         {
+             class: [
+                 style.container,
+                 block && style.block,
+             ],
+             onclick: onContainerClick,
+         }
+     )}>
+    <div bind:this={layoutWrapEl}
+         {...mergeProps(layoutWrapProps,
+             {
+                 class: [
+                     style.layoutWrap,
+                     !!iconLeft && style.hasIconLeft,
+                     !!iconRight && style.hasIconRight,
+                     !!visualFocus && style.visualFocus,
+                     float && style.float,
+                     error && style.error,
+                     disabled && style.disabled,
+                     !!dropdown && style.hasDropdown
+                 ]
+             })}
+    >
         {#if !!iconLeft}
             <Icon icon={iconLeft} {...iconLeftProps} class={[iconLeftClass, style.iconLeft]}/>
         {/if}
-        <div class={style.inputLabelWrap}>
+        <div bind:this={inputLabelWrapEl} class={style.inputLabelWrap}
+             onclickcapture={(e: MouseEvent) => e.preventDefault()}>
             {@render label?.(style.label)}
             {@render input?.(style.input)}
         </div>
@@ -125,5 +209,24 @@
             <Icon icon={iconRight} {...iconRightProps} class={[iconRightClass, style.iconRight]}/>
         {/if}
     </div>
+    {#if !!dropdown && dropdownOpen}
+        <div
+                bind:this={dropdownEl}
+                transition:scale={{duration: 100}}
+                {...mergeProps(
+                    {
+                        class: [style.dropdown]
+                    },
+                    dropdownProps
+                )}>
+            {@render dropdown({
+                item: style.dropdownItem,
+                itemSelected: style.dropdownItemSelected,
+                itemDisabled: style.dropdownItemDisabled,
+                itemLabel: style.dropdownItemLabel,
+            })}
+        </div>
+    {/if}
+    {@render beforeMessages?.()}
     <FormMessages {description} {error} {disabled}/>
 </div>

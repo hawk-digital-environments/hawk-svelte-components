@@ -2,6 +2,7 @@
     import {type IconName, icons} from './iconDefinition.ts';
     import type {SVGAttributes} from 'svelte/elements';
     import style from './Icon.module.sass';
+    import {mergeProps} from '../util/mergeProps.ts';
 
     interface Props extends SVGAttributes<SVGSVGElement> {
         /**
@@ -24,6 +25,11 @@
          * If "default" is passed, the default gradient colors are used, so the same as: ['var(--clr-gradient-start)', 'var(--clr-gradient-end)']
          */
         gradient?: [string, string] | 'default';
+
+        /**
+         * An optional title to show when hovering the icon
+         */
+        title?: string;
     }
 
     const {
@@ -31,9 +37,8 @@
         type = 'outline',
         size = 'medium',
         fill = 'none',
-        class: classNames,
-        className: className,
         gradient,
+        title,
         ...restProps
     }: Props = $props();
 
@@ -64,11 +69,10 @@
         }
 
         const gradientId = uniqueId + '-gradient';
+        const style = '<' + 'style>#' + uniqueId + ' * {fill: url(#' + gradientId + ');}</' + 'style>';
 
         return `
-<style>
-#${uniqueId} * {fill: url(#${gradientId});}
-</style>
+${style}
 <defs>
     <linearGradient id="${gradientId}">
         <stop offset="0%" stop-color="${_gradient[0]}"/>
@@ -80,15 +84,22 @@
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg"
-     class={[style.icon, type === 'filled' && style.filled, classNames, className]}
-     width="{sizes.w}"
-     height="{sizes.h}"
-     viewBox={viewBox}
-     fill={fill}
+     {...mergeProps(
+         {
+             width: sizes.w,
+             height: sizes.h,
+             viewBox,
+             fill
+         },
+         restProps,
+         {
+             class: [style.icon, type === 'filled' && style.filled]
+         }
+     )}
      aria-labelledby="title"
-     {...restProps}>
+>
     {@html gradientMarkup}
-    <title id="title">Icon: {icon.t}</title>
+    <title id="title">{title || `Icon: ${icon.t}`}</title>
     <g id={uniqueId}>
         {@html icon.c}
     </g>

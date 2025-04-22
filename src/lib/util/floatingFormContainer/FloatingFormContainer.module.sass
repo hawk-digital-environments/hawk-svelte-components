@@ -1,27 +1,46 @@
+$minWidth: 200px
+
 .container
   position: relative
   display: block
-  flex-direction: column
   width: fit-content
+  min-width: $minWidth
 
   &.block
     &, .layoutWrap
       width: 100%
 
+  // Dropdown special
+  // Menu open
+  &:has(.dropdown[data-open])
+    // Open default -> NOT IF TOP
+    &:has(.dropdown[data-side="bottom"])
+      .layoutWrap.hasDropdown
+        border-bottom-left-radius: 0
+        border-bottom-right-radius: 0
+
+  // Menu closed
+  &:not(:has(.dropdown))
+    .layoutWrap.hasDropdown
+      border-radius: var(--input-border-radius, 10px)
+
 .layoutWrap
   position: relative
   display: flex
   align-items: flex-end
-  border-radius: var(--input-border-radius, var(--radius-textfield, 10px))
+  border-radius: var(--input-border-radius, 10px)
   border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
   background: var(--input-background, var(--clr-primary-white))
   padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
   max-width: 100%
+  min-width: $minWidth
   width: fit-content
   top: 0
+  outline: 0 solid transparent
+  outline-offset: -2px
   transition-duration: 0.2s
   transition-timing-function: ease-in
-  transition-property: border-radius, border-color, margin, top, background
+  transition-property: border-radius, outline-width, outline-color, margin, top, background
 
   // The "before" element is used as a highlight. It is always visible but has a zero width, so we can animate it
   &:before
@@ -49,7 +68,7 @@
 
   &:hover
     &, .label, &.float .label
-      background: #F5F5F5
+      background: var(--input-hover-color, var(--clr-primary-dark-10-faded))
 
     &.disabled
       background: inherit
@@ -57,15 +76,19 @@
       &.float .label
         background: var(--clr-primary-white)
 
-  &:has(:focus)
-    border-bottom-left-radius: 0
-    border-bottom-right-radius: 0
-    border-color: transparent
+  &:has(:focus),
+  &.visualFocus
+    outline-color: var(--input-focus-border-color, var(--clr-primary-main))
+    outline-width: 2px
 
-    &:after
-      width: calc(100% + 2px)
-      height: 2px
-      background: var(--input-focus-border-color, var(--clr-primary-main))
+    &:not(.hasDropdown)
+      border-bottom-left-radius: 0
+      border-bottom-right-radius: 0
+
+      &:after
+        width: calc(100% + 2px)
+        height: 2px
+        background: var(--input-focus-border-color, var(--clr-primary-main))
 
   &.float
     .label
@@ -95,7 +118,8 @@
     .iconLeft
       color: var(--input-color-icon-disabled, var(--clr-primary-medium))
 
-  &.error
+
+  &.error.error.error
     border-top-left-radius: 0
     border-bottom-left-radius: 0
 
@@ -104,7 +128,6 @@
       background: var(--input-clr-error, var(--clr-primary-error))
 
   .inputLabelWrap
-    display: table
     width: 100%
     min-height: var(--font-line-height-l)
 
@@ -134,6 +157,7 @@
     background: transparent
     padding: 1px 4px
     left: 0
+    cursor: pointer
 
   .iconRight,
   .iconLeft
@@ -145,3 +169,58 @@
 
   .iconRight
     +ml(5px)
+
+
+.dropdown
+  position: absolute
+  background: var(--input-background, var(--clr-primary-white))
+  border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
+  +fontBody
+  padding: 0
+  transform: scaleY(0) scaleX(0.8)
+  opacity: 0
+  transition-duration: 0.2s
+  transition-property: transform, opacity
+  outline: 0
+  max-height: 50vh
+  height: 0
+
+  &[data-open]
+    transform: scale(1)
+    opacity: 1
+    height: fit-content
+
+    &[data-side="top"]
+      border-radius: var(--input-border-radius, 10px)
+      margin-top: -10px
+
+    &[data-side="bottom"]
+      border-radius: 0 0 var(--input-border-radius, 10px) var(--input-border-radius, 10px)
+      border-top: 0
+
+  .dropdownItem
+    display: flex
+    gap: 8px
+    border-bottom: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
+    padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
+    cursor: pointer
+    flex-wrap: nowrap
+    align-items: center
+
+    .dropdownItemLabel
+      display: block
+      width: 100%
+
+    &:last-child
+      border-bottom: 0
+
+    &[data-highlighted]
+      background: var(--input-hover-color, var(--clr-primary-dark-10-faded))
+
+    &.dropdownItemSelected
+      +fontWeightBold
+
+    &.dropdownItemDisabled
+      opacity: 0.5
+      cursor: not-allowed
+      pointer-events: none

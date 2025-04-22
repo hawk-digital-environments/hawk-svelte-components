@@ -2,7 +2,7 @@
     import {defineMeta} from '@storybook/addon-svelte-csf';
     import Button from './Button.svelte';
     import {fn} from '@storybook/test';
-    import {iconArgType} from '$lib/icon/iconDefinition.js';
+    import {iconArgType} from '$lib/icon/iconDefinition.ts';
 
     const {Story} = defineMeta({
         title: 'Handson/Button',

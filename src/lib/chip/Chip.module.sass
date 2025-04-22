@@ -1,0 +1,91 @@
+$gradient: #{var(--chip-gradient, var(--button-gradient, var(--gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))))}
+$focusColor: #{var(--chip-focus-color, var(--button-focus-color, var(--clr-primary-main)))}
+
+.chip
+  position: relative
+  display: inline-flex
+  align-items: center
+  gap: 5px
+  height: var(--chip-height, var(--button-height-small, 28px))
+  max-width: 100%
+  outline: 2px solid transparent
+  outline-offset: 0
+  border-radius: var(--chip-corner-radius, var(--button-corner-radius, 8px))
+  box-sizing: border-box
+  background: transparent
+  +fontFamilyPrimary
+  +fontSizeS
+  +fontColorLight
+  transition: box-shadow 0.3s, outline-color 0.2s, outline-offset 0.2s
+
+  &.type
+    &Filled
+      background: $gradient
+
+      .actionButton:focus .actionIcon
+        background: var(--clr-primary-white)
+        color: $focusColor
+
+    &Outlined
+      border: 1px solid var(--clr-primary-dark-10)
+      +fontColorDark
+
+      .actionButton:focus .actionIcon
+        background: $focusColor
+        +fontColorLight
+
+  &:has(:focus)
+    outline-color: $focusColor
+    outline-offset: 3px
+
+  &.disabled
+    opacity: 0.5
+
+    &,
+    button
+      cursor: not-allowed
+
+.actionIcon
+  box-sizing: content-box
+  transition-duration: 0.2s
+  transition-property: background
+  border-radius: 50%
+  padding: 2px
+
+  &.removable
+    transform: rotate(45deg)
+
+button.trigger
+  cursor: pointer
+
+.trigger
+  display: flex
+  align-items: center
+  width: fit-content
+  gap: 5px
+  margin: 0
+  padding: 4px 0 4px 8px
+  background: transparent
+  border: 0
+  font-family: inherit
+  color: inherit
+  font-size: inherit
+  line-height: inherit
+  outline: none
+  flex-shrink: 1
+  overflow: hidden
+
+  &:last-child
+    padding-right: 8px
+
+  &.actionButton
+    flex-shrink: 0
+    padding-left: 0
+
+  .label
+    display: block
+    width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    flex-shrink: 1

@@ -1,8 +1,9 @@
 <script lang="ts">
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
     import Icon from '$lib/icon/Icon.svelte';
-    import style from "./Switch.module.sass";
+    import style from './Switch.module.sass';
     import type {Snippet} from 'svelte';
+    import type {ChangeEventHandler} from 'svelte/elements';
 
     interface Props {
         /**
@@ -29,7 +30,7 @@
          * An event handler that is called when the switch value changes
          * @param event
          */
-        onchange?: (event: InputEvent) => void;
+        onchange?: ChangeEventHandler<HTMLInputElement>
     }
 
     let {
