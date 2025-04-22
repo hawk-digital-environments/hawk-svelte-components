@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.1...v0.3.2) (2025-04-22)
+
+
+### Bug Fixes
+
+* fix some issues ([6f6d3ae](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/6f6d3aed09848bc29c82a005a4bc4bf47767afb8))
+
+
+
 ## [0.3.1](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.0...v0.3.1) (2025-04-22)
 
 
