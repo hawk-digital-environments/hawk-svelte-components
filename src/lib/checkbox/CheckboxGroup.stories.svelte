@@ -1,11 +1,11 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import RadioGroup from './RadioGroup.svelte';
+    import CheckboxGroup from './CheckboxGroup.svelte';
     import {mergeProps} from '../util/mergeProps.js';
 
     const {Story} = defineMeta({
-        title: 'Handson/RadioGroup',
-        component: RadioGroup,
+        title: 'Handson/CheckboxGroup',
+        component: CheckboxGroup,
         tags: ['autodocs'],
         argTypes: {
             orientation: {
@@ -19,24 +19,23 @@
         },
         args: {
             options: [
-                {label: 'Option 1', value: '1'},
-                {label: 'Option 2', value: '2'},
-                {label: 'Option 3', value: '3', disabled: true}
+                {'label': 'Option 1', 'value': '1'},
+                {'label': 'Option 2', 'value': '2'},
+                {'label': 'Option 3', 'value': '3'}
             ]
         }
     });
 </script>
 
 <Story name="Generic" args={{}}/>
-<Story name="Selected" args={{value: '2'}}/>
+<Story name="Selected" args={{value: ['1', '3']}}/>
 <Story name="Horizontal" args={{orientation: 'horizontal'}}/>
 <Story name="Label Positions" args={{}} parameters={{controls: {exclude: ['labelPosition']}}}>
     {#snippet children({id, ...args})}
-        <RadioGroup {...mergeProps(args, {labelPosition: 'left'})}/>
-        <RadioGroup {...mergeProps(args, {labelPosition: 'right'})}/>
+        <CheckboxGroup {...mergeProps(args, {labelPosition: 'left'})}/>
+        <CheckboxGroup {...mergeProps(args, {labelPosition: 'right'})}/>
     {/snippet}
 </Story>
-
 <Story name="Extreme label length" args={{
     options: [
                 {label: 'Option 1', value: '1'},
