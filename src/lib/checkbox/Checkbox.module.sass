@@ -1,0 +1,48 @@
+.input
+  -webkit-appearance: none
+  appearance: none
+  background: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%)
+  margin: 0
+  font: inherit
+  color: currentColor
+  width: 18px
+  height: 18px
+  border: 1px solid var(--input-border-color-dark, var(--clr-primary-medium))
+  border-radius: 2px
+  display: grid
+  place-content: center
+  outline: 0 solid transparent
+  transition-duration: 0.2s
+  transition-timing-function: ease-in
+  transition-property: outline-width, outline-offset, outline-color, background, --clr-gradient-start, --clr-gradient-end
+  flex-shrink: 0
+
+  &:not(:disabled)
+    cursor: pointer
+
+  &:disabled
+    cursor: not-allowed
+
+  &:focus
+    outline: 2px solid var(--input-focus-border-color, var(--clr-primary-main))
+    outline-offset: 3px
+
+  &:not(:checked)
+    --clr-gradient-start: var(--clr-primary-white)
+    --clr-gradient-end: var(--clr-primary-white)
+
+  &:checked ~ .icon
+    transform: scale(1)
+
+.wrap
+  display: flex
+  align-items: center
+  justify-content: center
+
+.icon
+  position: absolute
+  margin-left: 1px
+  color: var(--input-color-icon, var(--clr-primary-white))
+  pointer-events: none
+  transform: scale(0)
+  transition: transform 0.3s ease

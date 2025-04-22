@@ -15,10 +15,17 @@
             error: {control: {type: 'text'}},
             description: {control: {type: 'text'}}
         },
-        args: {}
+        args: {
+            label: 'Label'
+        }
     });
 </script>
 
 <Story name="Generic" args={{}}/>
-<Story name="Error" args={{error: 'This is an error', label: 'Label'}}/>
-<Story name="Size" args={{rows: 10, label: 'Label'}}/>
+<Story name="Placeholder" args={{placeholder: 'Placeholder'}}/>
+<Story name="With value" args={{value: 'This is a value, which is set, for this textarea'}}/>
+<Story name="Description" args={{description: 'This is an error'}}/>
+<Story name="Error" args={{error: 'This is an error'}}/>
+<Story name="Required" args={{required: true}}/>
+<Story name="Disabled" args={{disabled: true}}/>
+<Story name="Size" args={{rows: 10}}/>

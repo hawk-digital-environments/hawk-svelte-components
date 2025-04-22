@@ -3,12 +3,16 @@
     import type {IconName} from '../../icon/iconDefinition.ts';
     import type {ComponentProps, Snippet} from 'svelte';
     import Icon from '../../icon/Icon.svelte';
-    import style from './FloatingFormContainer.module.sass';
+    import style from './FormLabelFloatContainer.module.sass';
     import FormMessages from '../formMessages/FormMessages.svelte';
     import {mergeProps} from '../mergeProps.ts';
     import {scale} from 'svelte/transition';
     import {useResizeObserver} from 'runed';
 
+    /**
+     * Renders a highly specialized form label with a floating layout.
+     * This is used for inputs, selects, and textareas.
+     */
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
          * The label to render for the input. The snippet will receive a list of CSS classes
@@ -150,24 +154,24 @@
         }
     };
 
-    let containerEl = $state<HTMLElement | null>(null);
-    let layoutWrapEl = $state<HTMLElement | null>(null);
-    let inputLabelWrapEl = $state<HTMLElement | null>(null);
-    let dropdownEl = $state<HTMLElement | null>(null);
+    let containerEl = $state<HTMLDivElement | null>(null);
+    let layoutWrapEl = $state<HTMLDivElement | null>(null);
+    let inputLabelWrapEl = $state<HTMLDivElement | null>(null);
+    let dropdownEl = $state<HTMLDivElement | null>(null);
 
-    export function getContainerElement(): HTMLDivElement {
+    export function getContainerElement(): HTMLDivElement | null {
         return containerEl;
     }
 
-    export function getLayoutWrapElement(): HTMLDivElement {
+    export function getLayoutWrapElement(): HTMLDivElement | null {
         return layoutWrapEl;
     }
 
-    export function getInputLabelWrapElement(): HTMLDivElement {
+    export function getInputLabelWrapElement(): HTMLDivElement | null {
         return inputLabelWrapEl;
     }
 
-    export function getDropdownElement(): HTMLDivElement | undefined {
+    export function getDropdownElement(): HTMLDivElement | null {
         return dropdownEl;
     }
 

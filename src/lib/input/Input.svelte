@@ -2,9 +2,9 @@
     import type {HTMLAttributes, HTMLInputAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
     import type {IconName} from '$lib/icon/iconDefinition.ts';
-    import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import FormLabel from '../util/formLabel/FormLabel.svelte';
     import {mergeProps} from '../util/mergeProps.ts';
+    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
 
     interface Props extends HTMLInputAttributes {
         /**
@@ -67,7 +67,7 @@
     }
 
     let {
-        label,
+        label: labelValue,
         description,
         error,
         iconLeft,
@@ -88,40 +88,37 @@
     const inputId = id || uniqueId;
 </script>
 
-{#snippet labelSnippet(floatingClass)}
-    <FormLabel for={inputId} required={required} class={floatingClass} children={label}/>
-{/snippet}
-
-{#snippet inputSnippet(floatingClass)}
-    <input {...mergeProps(
-        restProps,
-        {
-            class: floatingClass,
-            onblur: () => {
-                focused = false;
-            },
-            onfocus: () => {
-                focused = true;
-            }
-        }
-    )}
-            bind:value={value}
-            id={inputId}
-            placeholder={placeholder}
-            disabled={disabled}
-            required={required}
-    >
-{/snippet}
-
-<FloatingFormContainer
+<FormLabelFloatContainer
         float={float}
         iconLeft={iconLeft}
         iconRight={iconRight}
-        label={labelSnippet}
-        input={inputSnippet}
         description={description}
         error={error}
         disabled={disabled}
         block={block}
-        {...containerProps}
-/>
+        {...containerProps}>
+    {#snippet label(floatingClass)}
+        <FormLabel for={inputId} required={required} class={floatingClass} children={labelValue}/>
+    {/snippet}
+
+    {#snippet input(floatingClass)}
+        <input {...mergeProps(
+            restProps,
+            {
+                class: floatingClass,
+                onblur: () => {
+                    focused = false;
+                },
+                onfocus: () => {
+                    focused = true;
+                }
+            }
+        )}
+               bind:value={value}
+               id={inputId}
+               placeholder={placeholder}
+               disabled={disabled}
+               required={required}
+        >
+    {/snippet}
+</FormLabelFloatContainer>

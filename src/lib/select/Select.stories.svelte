@@ -2,7 +2,6 @@
     import {defineMeta} from '@storybook/addon-svelte-csf';
     import Select from './Select.svelte';
     import {iconArgType} from '../icon/iconDefinition.js';
-    import {mergeProps} from '../util/mergeProps.js';
 
     const {Story} = defineMeta({
         title: 'Handson/Select',
@@ -33,21 +32,33 @@
 </script>
 
 <Story name="Generic" args={{}}/>
-
-<Story name="Sizing" args={{iconLeft: 'externalLink', iconRight: 'star', required: true}}
+<Story name="Selected" args={{value: 'banana'}}/>
+<Story name="Disabled Options"
+       args={{options: [{label: 'Enabled', value: 'enabled'}, {label: 'Disabled', value: 'disabled', disabled: true}]}}/>
+<Story name="Placeholder" args={{placeholder: 'Select something'}}/>
+<Story name="Icon" args={{icon: 'eye'}}/>
+<Story name="Error" args={{error: 'Please select something'}}/>
+<Story name="Description" args={{description: 'A select field'}}/>
+<Story name="Required" args={{required: true}}/>
+<Story name="Disabled" args={{disabled: true}}/>
+<Story name="Block" args={{block: true}}/>
+<Story name="Extreme Labels" args={{
+    icon: 'externalLink',
+    required: true,
+    value: 'extremely-long',
+    options: [
+        {label: 'Short label', value: 'short'},
+        {label: 'A very long label that should be wrapped', value: 'long'},
+        {label: 'An extremely long label that should be wrapped, if possible on multiple lines with a nice layout to it', value: 'extremely-long' },
+    ]
+}}
        parameters={{controls: {exclude: ['label', 'value']}}}>
-    {#snippet children({id, value, ...args})}
+    {#snippet children({id, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
-            <Select {...mergeProps(
-                args,
-                {value: 'apple'}
-            )}/>
+            <Select {...args}/>
         </div>
         <div style="width: 100%; display: flex; gap: 20px; flex-direction: column">
-            <Select {...mergeProps(
-                args,
-                {value: 'lemon'}
-            )}/>
+            <Select {...args}/>
         </div>
     {/snippet}
 </Story>

@@ -2,12 +2,18 @@
     import {defineMeta} from '@storybook/addon-svelte-csf';
     import Switch from './Switch.svelte';
     import {fn} from '@storybook/test';
+    import {iconArgType} from '../icon/iconDefinition.js';
 
     const {Story} = defineMeta({
         title: 'Handson/Switch',
         component: Switch,
         tags: ['autodocs'],
-        argTypes: {},
+        argTypes: {
+            label: {control: 'text'},
+            labelPosition: {options: ['left', 'right'], control: 'radio'},
+            iconOff: iconArgType(),
+            iconOn: iconArgType()
+        },
         args: {
             onchange: fn()
         }
@@ -16,10 +22,11 @@
 
 <Story name="Generic" args="{{}}"></Story>
 
+{#snippet fancyLabel()}
+    <strong>Hello</strong> world!
+{/snippet}
+
 <Story name="Variants" args="{{}}">
-    {#snippet fancyLabel()}
-        <strong>Hello</strong> world!
-    {/snippet}
     {#snippet children(args)}
         <div style="display: flex; flex-wrap: wrap; gap: 0; max-width: 420px; gap: 20px">
             <div style="flex-basis: calc(50% - 20px); text-align: right">

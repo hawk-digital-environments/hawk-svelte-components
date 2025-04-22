@@ -11,7 +11,7 @@
         /**
          * The visual label on the chip. Can be either a string or a snippet
          */
-        label: string | Snippet
+        label?: string | Snippet
 
         /**
          * Determines the visual type of the chip.

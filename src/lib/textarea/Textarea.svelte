@@ -1,10 +1,10 @@
 <script lang="ts">
 
     import FormLabel from '../util/formLabel/FormLabel.svelte';
-    import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import type {HTMLAttributes, HTMLTextareaAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
-    import {mergeProps} from '../util/mergeProps';
+    import {mergeProps} from '../util/mergeProps.js';
+    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
 
     interface Props extends HTMLTextareaAttributes {
         /**
@@ -53,7 +53,7 @@
     let {
         required,
         disabled,
-        label,
+        label: labelValue,
         id,
         error,
         description,
@@ -67,11 +67,19 @@
     const uniqueId = $props.id();
     const inputId = id || uniqueId;
 </script>
-{#snippet labelSnippet(floatingClass)}
-    <FormLabel for={inputId} required={required} class={floatingClass} children={label}/>
-{/snippet}
 
-{#snippet inputSnippet(floatingClass)}
+<FormLabelFloatContainer
+        float={float}
+        description={description}
+        error={error}
+        disabled={!!disabled}
+        block={true}
+>
+    {#snippet label(floatingClass)}
+        <FormLabel for={inputId} required={required} class={floatingClass} children={labelValue}/>
+    {/snippet}
+
+    {#snippet input(floatingClass)}
     <textarea
             {...mergeProps(
                 restProps,
@@ -91,14 +99,6 @@
             disabled={disabled}
             required={required}
     ></textarea>
-{/snippet}
+    {/snippet}
 
-<FloatingFormContainer
-        float={float}
-        label={labelSnippet}
-        input={inputSnippet}
-        description={description}
-        error={error}
-        disabled={!!disabled}
-        block={true}
-/>
+</FormLabelFloatContainer>

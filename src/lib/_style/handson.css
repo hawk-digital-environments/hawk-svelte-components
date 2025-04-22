@@ -1,3 +1,18 @@
+/** Gradients **/
+/** ================================== **/
+/* These are properties so we can animate them */
+@property --clr-gradient-start {
+    syntax: '<color>';
+    initial-value: #4F61DF;
+    inherits: true;
+}
+
+@property --clr-gradient-end {
+    syntax: '<color>';
+    initial-value: #9252FF;
+    inherits: true;
+}
+
 :root {
     /** Colors **/
     /** ================================== **/
@@ -15,8 +30,10 @@
     --clr-primary-success: #48D59F;
     --clr-primary-warning: #FF5C00;
     --clr-primary-error: #FF6E94;
-    --clr-gradient-start: var(--clr-primary-main);
-    --clr-gradient-end: var(--clr-primary-accent);
+
+    /** Gradients **/
+    /** ================================== **/
+    --gradient: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%);
 
     /** Fonts **/
     /** ================================== **/

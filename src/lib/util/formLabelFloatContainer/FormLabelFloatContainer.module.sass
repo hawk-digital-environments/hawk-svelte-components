@@ -32,6 +32,7 @@ $minWidth: 200px
   border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
   background: var(--input-background, var(--clr-primary-white))
   padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
+  min-height: var(--font-line-height-m)
   max-width: 100%
   min-width: $minWidth
   width: fit-content
@@ -73,8 +74,12 @@ $minWidth: 200px
     &.disabled
       background: inherit
 
-      &.float .label
+      & .input
+        cursor: not-allowed
+
+      & .label
         background: var(--clr-primary-white)
+        cursor: not-allowed
 
   &:has(:focus),
   &.visualFocus
@@ -95,7 +100,7 @@ $minWidth: 200px
       background: var(--clr-primary-white)
       border-radius: 2px
       +fontSizeXs
-      margin-top: calc(-1 * var(--font-line-height-m) * 0.6)
+      margin-top: calc(-1 * var(--font-line-height-xs))
 
     &.hasIconLeft .label
       max-width: calc(100% + 25px)
@@ -108,7 +113,7 @@ $minWidth: 200px
       max-width: calc(100% + 50px)
 
     .label + .input
-      margin-top: 1px
+      margin-top: 0
 
   &.disabled
     cursor: not-allowed
@@ -117,7 +122,6 @@ $minWidth: 200px
     .iconRight,
     .iconLeft
       color: var(--input-color-icon-disabled, var(--clr-primary-medium))
-
 
   &.error.error.error
     border-top-left-radius: 0
@@ -156,7 +160,7 @@ $minWidth: 200px
     width: fit-content
     transform-origin: left bottom
     background: transparent
-    padding: 1px 4px
+    padding: 0 4px
     left: 0
     cursor: pointer
 
@@ -204,13 +208,11 @@ $minWidth: 200px
     gap: 8px
     border-bottom: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
     padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
-    cursor: pointer
     flex-wrap: nowrap
     align-items: center
 
-    .dropdownItemLabel
-      display: block
-      width: 100%
+    &:not(.dropdownItemDisabled)
+      cursor: pointer
 
     &:last-child
       border-bottom: 0
@@ -225,3 +227,7 @@ $minWidth: 200px
       opacity: 0.5
       cursor: not-allowed
       pointer-events: none
+
+    .dropdownItemLabel
+      display: block
+      width: 100%

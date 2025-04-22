@@ -3,34 +3,62 @@
     import Icon from '$lib/icon/Icon.svelte';
     import style from './Switch.module.sass';
     import type {Snippet} from 'svelte';
-    import type {ChangeEventHandler} from 'svelte/elements';
+    import type {FormEventHandler, HTMLAttributes} from 'svelte/elements';
+    import type {IconName} from '../icon/iconDefinition.js';
+    import {mergeProps} from '../util/mergeProps.js';
+    import FormLabelWrap, {type FormLabelPosition} from '../util/formLabelWrap/FormLabelWrap.svelte';
 
-    interface Props {
+    /**
+     * This interface is used to prevent the "onchange" attribute from being inherited
+     * from the div element, because we will actually bind it on our internal input field instead.
+     */
+    interface NonCollidingAttributes extends HTMLAttributes<HTMLDivElement> {
+        onchange?: any;
+    }
+
+    interface Props extends NonCollidingAttributes {
         /**
          * Bindable value for the switch
          */
         checked?: boolean;
+
         /**
          * If set to true, the switch will be disabled
          */
         disabled?: boolean;
+
         /**
          * If set to true, the switch will be required
          */
         required?: boolean;
+
         /**
-         * The label of the switch. May be a string or a snippet
+         * The label of the switch. Maybe a string or a snippet
          */
         label?: string | Snippet;
+
         /**
          * The position of the label relative to the switch
          */
-        labelPosition?: "left" | "right";
+        labelPosition?: FormLabelPosition;
+
         /**
          * An event handler that is called when the switch value changes
          * @param event
          */
-        onchange?: ChangeEventHandler<HTMLInputElement>
+        onchange?: FormEventHandler<HTMLInputElement>;
+
+        /**
+         * Can be used to override the default icon in the "off" state of the switch.
+         * If not set, the "close" icon will be used.
+         */
+        iconOff?: IconName;
+
+        /**
+         * Can be used to override the default icon in the "on" state of the switch.
+         * If not set, the "check" icon will be used.
+         */
+        iconOn?: IconName;
     }
 
     let {
@@ -39,45 +67,42 @@
         disabled = false,
         label,
         labelPosition = "left",
-        onchange
+        onchange,
+        iconOff = 'close',
+        iconOn = 'check',
+        ...restProps
     }: Props = $props();
-
-    const switchWrapperClasses = $derived({
-        [style.wrapper]: true,
-        [style.labelRight]: labelPosition === "right",
-        [style.disabled]: disabled
-    });
 
     const id = $props.id();
 </script>
-
-<div class={switchWrapperClasses}>
-    {#if label}
-        <FormLabel required={required} for={id} disabled={disabled}>
-            {#if typeof label === "string"}
-                {label}
-            {:else}
-                {@render label()}
-            {/if}
-        </FormLabel>
-    {/if}
-    <div class={style.slider}>
-        <input
-                class={[
-                  style.input
-          ]}
-                bind:checked
-                type="checkbox"
-                role="switch"
-                id={id}
-                {required}
-                {disabled}
-                {onchange}
-        />
-        <span class={style.handle}>
-            <Icon icon="check" class={style.iconOn}
-                  gradient={disabled ? undefined : ['var(--sgs, aqua)', 'var(--sge)']}/>
-            <Icon icon="close" class={style.iconOff}/>
-        </span>
-    </div>
+<div {...mergeProps(
+    restProps,
+    {
+        class: [
+            style.wrapper,
+            labelPosition === "right" && style.labelRight,
+            disabled && style.disabled,
+        ]
+    }
+)}>
+    <FormLabelWrap {labelPosition}>
+        <FormLabel children={label} for={id} disabled={disabled}/>
+        <div class={style.slider}>
+            <input
+                    class={[style.input]}
+                    bind:checked
+                    type="checkbox"
+                    role="switch"
+                    id={id}
+                    {required}
+                    {disabled}
+                    {onchange}
+            />
+            <span class={style.handle}>
+                <Icon icon={iconOn} class={style.iconOn}
+                      gradient={disabled ? undefined : 'default'}/>
+                <Icon icon={iconOff} class={style.iconOff}/>
+            </span>
+        </div>
+    </FormLabelWrap>
 </div>

@@ -96,7 +96,7 @@
     {#if icon}
         <Icon icon={icon} size="small" class={style.icon} gradient={iconGradient}/>
     {/if}
-    <span class="label">{@render children?.()}</span>
+    <span class={style.label}>{@render children?.()}</span>
 {/snippet}
 
 {#if link}

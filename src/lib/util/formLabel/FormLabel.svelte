@@ -1,15 +1,25 @@
 <script lang="ts">
-    import type {Snippet} from 'svelte';
     import type {HTMLLabelAttributes} from 'svelte/elements';
     import style from './FormLabel.module.sass';
     import SnippetOrString from '../snippetOrString/SnippetOrString.svelte';
+    import type {Snippet} from 'svelte';
 
-    // @ts-ignore
-    interface Props extends HTMLLabelAttributes {
+    /**
+     * This interface is here, so typescript does not cry when we extend the "children"
+     * property so it allows both snippets as well as strings.
+     */
+    interface NonCollidingAttributes extends HTMLLabelAttributes {
+        children?: any;
+    }
+
+    /**
+     * Renders a generic form label.
+     */
+    interface Props extends NonCollidingAttributes {
         /**
          * The label text. If not provided, the label will not be rendered.
          */
-        children?: Snippet | string;
+        children?: string | Snippet | undefined;
 
         /**
          * Whether the label is required.

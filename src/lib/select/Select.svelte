@@ -12,7 +12,6 @@
 </script>
 <script lang="ts">
     import {Select} from 'melt/builders';
-    import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import FormLabel from '../util/formLabel/FormLabel.svelte';
     import style from './Select.module.sass';
     import type {Snippet} from 'svelte';
@@ -20,6 +19,7 @@
     import Icon from '../icon/Icon.svelte';
     import type {HTMLAttributes} from 'svelte/elements';
     import {mergeProps} from '../util/mergeProps.ts';
+    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -107,7 +107,7 @@
             if (!hadKeydown) {
                 return;
             }
-            container.getDropdownElement()
+            container?.getDropdownElement()
                 ?.querySelector(`[data-value="${newValue}"]`)
                 ?.scrollIntoView({
                     block: 'nearest'
@@ -141,15 +141,14 @@
     });
     const inputId = $derived(id || select.ids.trigger + '-input');
     let inputEl: HTMLButtonElement;
-    let container: ReturnType<typeof FloatingFormContainer>;
+    let container = $state<ReturnType<typeof FormLabelFloatContainer> | null>(null);
 </script>
 
-<FloatingFormContainer
+<FormLabelFloatContainer
         bind:this={container}
         {...mergeProps(
             restProps,
             {
-                class: style.container,
                 onclick: (e: MouseEvent) => {
                     if (e.target instanceof HTMLButtonElement || disabled) {
                         return;
@@ -166,6 +165,7 @@
             }
         )}
         layoutWrapProps={{
+            class: style.container,
             id: containerId,
             popovertarget,
             // The next two lines are a "hack", so the select box can automatically focus
@@ -235,4 +235,4 @@
             </div>
         {/each}
     {/snippet}
-</FloatingFormContainer>
+</FormLabelFloatContainer>

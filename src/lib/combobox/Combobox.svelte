@@ -3,7 +3,6 @@
     import {Combobox} from 'melt/builders';
     import type {ComponentProps, Snippet} from 'svelte';
     import ChipList from '../chip/ChipList.svelte';
-    import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import FormLabel from '../util/formLabel/FormLabel.svelte';
     import type {HTMLAttributes} from 'svelte/elements';
     import {mergeProps} from '../util/mergeProps.js';
@@ -14,7 +13,7 @@
     import style from './Combobox.module.sass';
     import SnippetOrString from '../util/snippetOrString/SnippetOrString.svelte';
     import {SvelteSet} from 'svelte/reactivity';
-
+    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -151,7 +150,7 @@
 
     // Incoming value changes
     watch([() => externalValue], () => {
-        combobox.value = new SvelteSet(externalValue?.map(v => getInternalValue(v)) as any ?? []);
+        combobox.value = new SvelteSet(externalValue?.map(v => getInternalValue(v)) as any ?? []) as any;
     });
 
     let filterCancelCallbacks: Array<() => void> = $state([]);
@@ -222,8 +221,8 @@
         return result;
     });
 
-    let inputEl: HTMLInputElement;
-    let focusTimeout = $state(0);
+    let inputEl = $state<HTMLInputElement | null>(null);
+    let focusTimeout: any = $state(0);
     let focused = $state(false);
     const float = $derived(focused || chips.length > 0 || !!inputEl?.value || !!placeholder);
 
@@ -233,7 +232,7 @@
     });
     const inputId = $derived(id || combobox.ids.trigger + '-input');
 </script>
-<FloatingFormContainer
+<FormLabelFloatContainer
         {...restProps}
         float={float}
         layoutWrapProps={{
@@ -312,4 +311,4 @@
             {/each}
         {/if}
     {/snippet}
-</FloatingFormContainer>
+</FormLabelFloatContainer>

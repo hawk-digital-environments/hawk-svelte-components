@@ -1,13 +1,3 @@
-@property --switch-gradient-start
-  syntax: '<color>'
-  initial-value: transparent
-  inherits: true
-
-@property --switch-gradient-end
-  syntax: '<color>'
-  initial-value: transparent
-  inherits: true
-
 $switchWidth: 52px
 $switchHeight: 32px
 $switchPadding: 7px
@@ -41,8 +31,6 @@ $handleWidth: 20px
     .iconOn
       position: absolute
       padding: 3px
-      --sgs: var(--switch-gradient-start)
-      --sge: var(--switch-gradient-end)
       transition: transform 0.3s ease, opacity 0.3s ease
 
     .iconOff
@@ -60,9 +48,6 @@ $handleWidth: 20px
     align-items: center
 
     &:has(input:checked)
-      --switch-gradient-start: var(--clr-gradient-start)
-      --switch-gradient-end: var(--clr-gradient-end)
-
       .handle
         left: calc(#{$switchWidth - $handleWidth - $switchPadding})
         background: var(--switch-color-handle-on, var(--clr-primary-white))
@@ -89,8 +74,12 @@ $handleWidth: 20px
     border: 1px solid var(--switch-border-color, var(--clr-primary-dark-10))
     outline: 2px solid transparent
     outline-offset: 0
-    background: linear-gradient(90deg, var(--switch-gradient-start) -10%, var(--switch-gradient-end) 100%)
-    transition: box-shadow 0.3s, background 0.3s, outline-color 0.2s, outline-offset 0.2s, --switch-gradient-start 0.2s, --switch-gradient-end 0.4s
+    background: var(--switch-gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))
+    transition: box-shadow 0.3s, background 0.3s, outline-color 0.2s, outline-offset 0.2s, --clr-gradient-start 0.2s, --clr-gradient-end 0.4s
+
+    &:not(:checked)
+      --clr-gradient-start: transparent
+      --clr-gradient-end: transparent
 
     &:focus
       outline-color: var(--switch-focus-color, var(--clr-primary-main))
