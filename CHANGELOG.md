@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.0...v0.3.1) (2025-04-22)
+
+
+### Reverts
+
+* Revert "build: try to resolve build issues for npm release" ([e8828a9](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/e8828a9e76fc8067f229b39da4c4a0db7c01dd15))
+
+
+
 # [0.3.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.2.0...v0.3.0) (2025-04-22)
 
 
