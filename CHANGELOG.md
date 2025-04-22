@@ -1,3 +1,19 @@
+# [0.4.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.2...v0.4.0) (2025-04-22)
+
+
+### Bug Fixes
+
+* finish radio group description and disabled state ([2aa33b8](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/2aa33b8641ce95c25fdb78ac325969baa0b95d0d))
+
+
+### Features
+
+* finalize radio group ([2a5edb6](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/2a5edb65f5bad087926f447fa5279e4b1ef6fd8a))
+* finish up radio group and checkbox group ([3b3584a](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/3b3584a529fcb381b9e0e0e2028650b38740e089))
+* unify component styles and properties ([b4bdcd6](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/b4bdcd6d11a28d695088762d3389dd29bbcb8060))
+
+
+
 ## [0.3.2](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.1...v0.3.2) (2025-04-22)
 
 
@@ -32,17 +48,6 @@
 ### Features
 
 * add input and textarea ([9fde9e9](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/9fde9e95548383a2f54e069aa4ada843348e5bfe))
-
-
-
-# [0.1.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/8a0e7f1240b2ea0dc326e6d3b21c91c391037e95...v0.1.0) (2025-03-28)
-
-
-### Features
-
-* implement sass based style globals ([#1](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/issues/1)) ([feabdd2](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/feabdd2b677c5b435b86a863c2891b43f73474c9))
-* initial commit ([8a0e7f1](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/8a0e7f1240b2ea0dc326e6d3b21c91c391037e95))
-* initial setup for local development ([a11c712](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/a11c7128cac995a89e06b96c62f2f6b95bbc770b))
 
 
 
