@@ -6,9 +6,27 @@
     import style from './RadioGroup.module.sass';
 
     interface Props extends HTMLFieldsetAttributes {
+        /**
+         * Defines the options of the radio group that can be selected
+         */
         options: Array<{ value: string, label: string | Snippet, disabled?: boolean }>;
+
+        /**
+         * Sets the value of the radio group.
+         * If the value is not set, the radio group will be uncontrolled.
+         */
         value: string | undefined;
+
+        /**
+         * Defines the visual orientation of the radio group.
+         * @default 'vertical'
+         */
         orientation: 'horizontal' | 'vertical';
+
+        /**
+         * Defines the position of the label relative to the radio group.
+         * @default 'right'
+         */
         labelPosition: 'left' | 'right';
     }
 

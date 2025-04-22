@@ -10,8 +10,11 @@
         args: {
             options: [
                 {label: 'Option 1', value: '1'},
-                {label: 'Option 2', value: '2'},
-                {label: 'Option 3', value: '3'}
+                {
+                    label: 'Option 2 mit richtig langem Label das wirklich lang ist und über mehrere Zeilen gehen wird',
+                    value: '2'
+                },
+                {label: 'Option 3', value: '3', disabled: true}
             ]
         }
     });
