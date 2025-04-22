@@ -33,14 +33,14 @@
     --font-size-m: 15px;
     --font-size-l: 17px;
     --font-size-xl: 21px;
-    --font-size-xxl: 25px;
+    --font-size-xxl: 45px;
 
     --font-line-height-xs: 14px;
     --font-line-height-s: 18px;
     --font-line-height-m: 22px;
     --font-line-height-l: 25px;
     --font-line-height-xl: 30px;
-    --font-line-height-xxl: 25px;
+    --font-line-height-xxl: 50px;
 
     /** Spacing **/
     /** ================================== **/

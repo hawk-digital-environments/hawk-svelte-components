@@ -1,0 +1,57 @@
+.container
+  display: inline-flex
+  padding: 0
+  margin: 0
+  border: 0
+  gap: 28px
+  flex-direction: column
+
+  &.horizontal
+    flex-direction: row
+
+  &.labelRight
+    .set
+      flex-direction: row-reverse
+
+.set
+  display: flex
+  gap: 14px
+  align-content: center
+
+.input
+  -webkit-appearance: none
+  appearance: none
+  background-color: #fff
+  margin: 0
+  font: inherit
+  color: currentColor
+  width: 20px
+  height: 20px
+  border: 1px solid var(--input-border-color-dark, var(--clr-primary-medium))
+  border-radius: 10px
+  display: grid
+  place-content: center
+  outline: 0 solid transparent
+  transition-duration: 0.2s
+  transition-timing-function: ease-in
+  transition-property: outline-width, outline-offset, outline-color, background
+
+  &:focus
+    outline: 2px solid var(--input-focus-border-color, var(--clr-primary-main))
+    outline-offset: 3px
+
+  &:hover
+    background: var(--input-hover-color, var(--clr-primary-dark-10-faded))
+
+  &:before
+    content: ''
+    display: block
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background: var(--radio-gradient, var(--button-gradient, var(--gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))))
+    transform: scale(0)
+    transition: transform 0.2s ease
+
+  &:checked:before
+    transform: scale(1)
