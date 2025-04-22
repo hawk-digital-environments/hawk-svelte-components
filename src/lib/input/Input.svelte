@@ -4,6 +4,7 @@
     import type {IconName} from '$lib/icon/iconDefinition.ts';
     import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import FormLabel from '../util/formLabel/FormLabel.svelte';
+    import {mergeProps} from '../util/mergeProps.ts';
 
     interface Props extends HTMLInputAttributes {
         /**
@@ -74,27 +75,15 @@
         value = $bindable(''),
         disabled,
         required,
-        onblur,
-        onfocus,
         id,
         placeholder,
-        class: className,
         block,
         containerProps,
         ...restProps
     }: Props = $props();
 
     let focused = $state(false);
-    const _onfocus = $derived((e: FocusEvent) => {
-        focused = true;
-        onfocus?.(e as any);
-    });
-    const _onblur = $derived((e: FocusEvent) => {
-        focused = false;
-        onblur?.(e as any);
-    });
     let float = $derived.by(() => focused === true || !!value || !!placeholder);
-
     const uniqueId = $props.id();
     const inputId = id || uniqueId;
 </script>
@@ -104,16 +93,23 @@
 {/snippet}
 
 {#snippet inputSnippet(floatingClass)}
-    <input
-            class={[ floatingClass, className ]}
+    <input {...mergeProps(
+        restProps,
+        {
+            class: floatingClass,
+            onblur: () => {
+                focused = false;
+            },
+            onfocus: () => {
+                focused = true;
+            }
+        }
+    )}
             bind:value={value}
             id={inputId}
             placeholder={placeholder}
-            {...restProps}
             disabled={disabled}
             required={required}
-            onfocus={_onfocus}
-            onblur={_onblur}
     >
 {/snippet}
 
