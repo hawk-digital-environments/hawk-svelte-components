@@ -1,3 +1,13 @@
+# [0.3.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.2.0...v0.3.0) (2025-04-22)
+
+
+### Features
+
+* add chips, chiplist and combobox ([8ec1060](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/8ec1060ff75496944e452b73afaf9819be304a6b))
+* add chips, chiplist and combobox ([d78cbdb](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/d78cbdba622dac49836f897b38774fa3293589ee))
+
+
+
 # [0.2.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.1.0...v0.2.0) (2025-04-16)
 
 
