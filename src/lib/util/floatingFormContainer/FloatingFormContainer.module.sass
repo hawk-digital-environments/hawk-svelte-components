@@ -95,7 +95,7 @@ $minWidth: 200px
       background: var(--clr-primary-white)
       border-radius: 2px
       +fontSizeXs
-      margin-top: calc(-1 * var(--font-line-height-l) * 0.6)
+      margin-top: calc(-1 * var(--font-line-height-m) * 0.6)
 
     &.hasIconLeft .label
       max-width: calc(100% + 25px)
@@ -129,11 +129,12 @@ $minWidth: 200px
 
   .inputLabelWrap
     width: 100%
-    min-height: var(--font-line-height-l)
+    min-height: var(--font-line-height-m)
 
   .input
     +fontBody
     display: block
+    padding: 0
     border: 0
     outline: 0
     transition-timing-function: ease-in
@@ -143,7 +144,7 @@ $minWidth: 200px
     background: transparent
 
   .label + .input
-    margin-top: calc(-1 * var(--font-line-height-l))
+    margin-top: calc(-1 * var(--font-line-height-m))
 
   .label
     position: relative

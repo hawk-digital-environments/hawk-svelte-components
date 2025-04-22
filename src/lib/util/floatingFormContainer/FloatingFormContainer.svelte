@@ -7,6 +7,7 @@
     import FormMessages from '../formMessages/FormMessages.svelte';
     import {mergeProps} from '../mergeProps.ts';
     import {scale} from 'svelte/transition';
+    import {useResizeObserver} from 'runed';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -149,10 +150,10 @@
         }
     };
 
-    let containerEl: HTMLDivElement;
-    let layoutWrapEl: HTMLDivElement;
-    let inputLabelWrapEl: HTMLDivElement;
-    let dropdownEl: HTMLDivElement | undefined = $state(undefined);
+    let containerEl = $state<HTMLElement | null>(null);
+    let layoutWrapEl = $state<HTMLElement | null>(null);
+    let inputLabelWrapEl = $state<HTMLElement | null>(null);
+    let dropdownEl = $state<HTMLElement | null>(null);
 
     export function getContainerElement(): HTMLDivElement {
         return containerEl;
@@ -169,6 +170,19 @@
     export function getDropdownElement(): HTMLDivElement | undefined {
         return dropdownEl;
     }
+
+    let messageWidth = $state('');
+    useResizeObserver(
+        () => layoutWrapEl,
+        (entries) => {
+            const entry = entries[0];
+            if (!entry) {
+                return;
+            }
+
+            messageWidth = entry.contentRect.width + 'px';
+        }
+    );
 </script>
 
 <div bind:this={containerEl}
@@ -228,5 +242,5 @@
         </div>
     {/if}
     {@render beforeMessages?.()}
-    <FormMessages {description} {error} {disabled}/>
+    <FormMessages {description} {error} {disabled} style={`width: ${messageWidth}`}/>
 </div>

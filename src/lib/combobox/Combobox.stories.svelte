@@ -58,7 +58,7 @@
                    // Simulate an async delay
                     const timeout = setTimeout(() => {
                         if(values.includes('peach')) {
-                            resolve(options.filter(option => ['apple', 'orange'].includes(option.value)));
+                            resolve(options.filter(option => ['apple', 'orange'].concat(...values).includes(option.value)));
                             return;
                         }
 

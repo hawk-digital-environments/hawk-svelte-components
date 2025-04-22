@@ -5,7 +5,6 @@
     import ChipList from '../chip/ChipList.svelte';
     import FloatingFormContainer from '../util/floatingFormContainer/FloatingFormContainer.svelte';
     import FormLabel from '../util/formLabel/FormLabel.svelte';
-    import {SvelteSet} from 'svelte/reactivity';
     import type {HTMLAttributes} from 'svelte/elements';
     import {mergeProps} from '../util/mergeProps.js';
     import type {SelectOption} from '../select/Select.svelte';
@@ -14,6 +13,7 @@
     import {watch} from 'runed';
     import style from './Combobox.module.sass';
     import SnippetOrString from '../util/snippetOrString/SnippetOrString.svelte';
+    import {SvelteSet} from 'svelte/reactivity';
 
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -120,7 +120,7 @@
     const valueSeparator = '[*||*]';
     const getInternalValue = (value: string, option?: SelectOption) => {
         const optionOfValue = option ?? options.find(o => o.value === value);
-        if (!optionOfValue) {
+        if (!optionOfValue?.value) {
             return undefined;
         }
 
@@ -151,16 +151,7 @@
 
     // Incoming value changes
     watch([() => externalValue], () => {
-        const valueSet = combobox.value as any;
-        if (valueSet instanceof SvelteSet) {
-            valueSet.clear();
-            externalValue.forEach(v => {
-                const internalValue = getInternalValue(v);
-                if (internalValue) {
-                    valueSet.add(internalValue);
-                }
-            });
-        }
+        combobox.value = new SvelteSet(externalValue?.map(v => getInternalValue(v)) as any ?? []);
     });
 
     let filterCancelCallbacks: Array<() => void> = $state([]);
@@ -231,32 +222,26 @@
         return result;
     });
 
+    let inputEl: HTMLInputElement;
     let focusTimeout = $state(0);
     let focused = $state(false);
-    const float = $derived(focused || chips.length > 0 || !!placeholder);
+    const float = $derived(focused || chips.length > 0 || !!inputEl?.value || !!placeholder);
 
     const {popovertarget, containerId, inputProps} = $derived.by(() => {
         const {popovertarget, id: containerId, ...inputProps} = combobox.input;
         return {popovertarget, containerId, inputProps};
     });
     const inputId = $derived(id || combobox.ids.trigger + '-input');
-    let inputEl: HTMLInputElement;
 </script>
 <FloatingFormContainer
         {...restProps}
         float={float}
         layoutWrapProps={{
             id: containerId,
-            popovertarget,
-            // The next two lines are a "hack", so the select box can automatically focus
-            // the button again if the user hits escape or selects a value
-            // We need this, because we provide the containerId to the
-            tabindex: -1,
-            onfocus: () => inputEl?.focus()
+            popovertarget
         }}
         iconLeft={iconLeft}
         iconRight={iconRight}
-        onclick={() => combobox.open = !disabled && true}
         dropdownOpen={combobox.open}
         dropdownProps={combobox.content}
         {disabled}
@@ -289,7 +274,9 @@
                             focusTimeout = setTimeout(() => focused = false, 200);
                         },
                         onfocus: () => {
+                            clearTimeout(focusTimeout)
                             focused = true;
+                            focusTimeout = setTimeout(() => combobox.open = true, 100);
                         }
                     }
                 )}>
