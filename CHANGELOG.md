@@ -1,3 +1,13 @@
+# [0.5.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.4.0...v0.5.0) (2025-04-23)
+
+
+### Features
+
+* finish "avatar" component ([86447e0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/86447e054b642e70869f16a694e09d4c5c96a77f))
+* finish "headline", "tabs" and "typo" elements. Drop padding and margin sass helpers ([7dacc7a](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/7dacc7ac711de37d53cea1fe1679fd1891da6ca6))
+
+
+
 # [0.4.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.3.2...v0.4.0) (2025-04-22)
 
 
@@ -39,15 +49,6 @@
 
 * add chips, chiplist and combobox ([8ec1060](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/8ec1060ff75496944e452b73afaf9819be304a6b))
 * add chips, chiplist and combobox ([d78cbdb](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/d78cbdba622dac49836f897b38774fa3293589ee))
-
-
-
-# [0.2.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.1.0...v0.2.0) (2025-04-16)
-
-
-### Features
-
-* add input and textarea ([9fde9e9](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/9fde9e95548383a2f54e069aa4ada843348e5bfe))
 
 
 
