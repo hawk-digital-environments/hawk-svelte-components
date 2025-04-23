@@ -42,28 +42,3 @@
 </Story>
 <Story name="Addable" args={{label: 'Label', onaddclick: fn()}}/>
 <Story name="Removable" args={{label: 'Label', onremoveclick: fn()}}/>
-<Story name="List" args={{
-    onaddclick: fn(),
-    onremoveclick: fn()
-}} parameters={{controls: {disable: true}}}>
-    {#snippet children(args)}
-        <ChipList chips={[
-        {
-            label: 'Apple 🍎',
-        },
-        {
-            label: 'Peach 🍑',
-            onaddclick: args.onaddclick
-        },
-        {
-            label: 'Potato 🥔',
-            onremoveclick: args.onremoveclick
-        },
-        {
-            label: 'Pear 🍐',
-            onaddclick: args.onaddclick,
-            disabled: true
-        }
-    ]}/>
-    {/snippet}
-</Story>

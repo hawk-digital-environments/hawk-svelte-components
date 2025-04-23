@@ -31,10 +31,6 @@
     --clr-primary-warning: #FF5C00;
     --clr-primary-error: #FF6E94;
 
-    /** Gradients **/
-    /** ================================== **/
-    --gradient: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%);
-
     /** Fonts **/
     /** ================================== **/
     --font-weight-light: 300;

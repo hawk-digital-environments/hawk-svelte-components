@@ -1,0 +1,23 @@
+.list
+  display: flex
+  flex-wrap: nowrap
+  flex-direction: row
+
+  &.large
+    & > *:not(:first-child)
+      margin-left: -10px
+
+  &.small
+    & > *:not(:first-child)
+      margin-left: -5px
+
+    .more
+      +fontSizeS
+
+.more.more
+  display: grid
+  place-content: center
+  width: 100%
+  height: 100%
+  +fontBody
+  border-color: var(--avatar-list-more-border-color, var(--clr-primary-dark-10))
