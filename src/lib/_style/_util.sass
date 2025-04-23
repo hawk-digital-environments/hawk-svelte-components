@@ -1,9 +1,0 @@
-@use 'sass:math' as m
-@function renderValueOrMultiplied($value, $baseValue)
-  @if $value == 0
-    @return 0
-  @else
-    @if m.unit($value) == ""
-      @return calc(#{$baseValue} * #{$value})
-    @else
-      @return $value

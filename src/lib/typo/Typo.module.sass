@@ -1,0 +1,140 @@
+=highlightText
+  background: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%)
+  background-clip: text
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+
+.typo
+  +fontBody
+
+  & > p, table, ul, ol, pre, blockquote, img, svg, hr, samp
+    display: block
+
+    &:not(:last-child)
+      margin-bottom: var(--typo-element-margin, 20px)
+
+  code
+    word-break: break-word
+    color: var(--typo-code-color, var(--clr-primary-main-dark-80))
+
+  pre
+    background: var(--typo-code-background, var(--clr-primary-dark-5))
+    border: 1px solid var(--typo-code-border-color, var(--clr-primary-dark-10))
+    padding: 10px 20px
+    border-radius: var(--typo-border-radius, 10px)
+
+    code
+      color: inherit
+
+  img
+    border-radius: var(--typo-border-radius, 10px)
+
+  a
+    +highlightText
+
+    &:focus
+      outline: 0
+      border-bottom: 2px solid var(--typo-link-focus-color, var(--clr-primary-main))
+
+  hr
+    border: 0
+    border-bottom: 1px solid var(--typo-hr-border-color, var(--clr-primary-medium))
+    height: 10px
+
+  table
+    display: table
+    width: 100%
+    border-collapse: collapse
+    caption-side: bottom
+
+    th
+      border-bottom: 1px solid var(--typo-table-header-border-color, var(--clr-primary-medium))
+      background: var(--typo-table-background, var(--clr-primary-dark-10))
+      +fontWeightMedium
+      padding: 8px 10px
+      text-align: left
+
+    td
+      padding: 8px 10px
+      border-bottom: 1px solid var(--typo-table-border-color, var(--clr-primary-dark-10))
+
+  blockquote
+    +fontSizeXl
+
+    cite
+      display: block
+      +fontSizeM
+      +fontWeightLight
+
+  kbd
+    +fontWeightBold
+    padding: 1px 2px
+    border-radius: 4px
+    background: var(--typo-kbd-background, var(--clr-primary-main-dark-80))
+    color: var(--typo-kbd-color, var(--clr-primary-white))
+
+  h1
+    +fontHeadlineXxl
+
+  h2
+    +fontHeadlineXl
+
+  h3
+    +fontHeadlineL
+
+  h4
+    +fontHeadlineM
+
+  h5
+    +fontHeadlineS
+
+  h6
+    +fontHeadlineXs
+
+  em, i
+    +fontStyleItalic
+
+  strong, b
+    +fontWeightBold
+
+  // Size modifiers
+  :global(.size-xxl)
+    +fontSizeXxl
+
+  :global(.size-xl)
+    +fontSizeXl
+
+  :global(.size-l)
+    +fontSizeL
+
+  :global(.size-m)
+    +fontSizeM
+
+  :global(.size-s)
+    +fontSizeS
+
+  :global(.size-xs)
+    +fontSizeXs
+
+  // Weight modifiers
+  :global(.weight-light)
+    +fontWeightLight
+
+  :global(.weight-regular)
+    +fontWeightRegular
+
+  :global(.weight-medium)
+    +fontWeightMedium
+
+  :global(.weight-semibold)
+    +fontWeightSemibold
+
+  :global(.weight-bold)
+    +fontWeightBold
+
+  // Decorators
+  :global(.underline)
+    text-decoration: underline
+
+  :global(.strike)
+    text-decoration: line-through

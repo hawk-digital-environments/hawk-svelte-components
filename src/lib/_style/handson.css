@@ -54,13 +54,6 @@
     --font-line-height-l: 25px;
     --font-line-height-xl: 30px;
     --font-line-height-xxl: 50px;
-
-    /** Spacing **/
-    /** ================================== **/
-    --margin-base-horizonal: 10px;
-    --margin-base-vertical: 10px;
-    --padding-base-horizonal: 10px;
-    --padding-base-vertical: 10px;
 }
 
 /* montserrat-300 - latin */

@@ -17,3 +17,8 @@ export {FocusList} from './util/focusList/FocusList.svelte';
 export {default as SnippetOrString} from './util/snippetOrString/SnippetOrString.svelte';
 export {default as Avatar} from './avatar/Avatar.svelte';
 export {default as AvatarList} from './avatar/AvatarList.svelte';
+export {default as Tabs} from './tabs/Tabs.svelte';
+export {default as TabTriggers} from './tabs/TabTriggers.svelte';
+export {default as TabContent} from './tabs/TabContent.svelte';
+export {default as Typo} from './typo/Typo.svelte';
+export {default as Headline} from './headline/Headline.svelte';
