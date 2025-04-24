@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.5.0...v0.6.0) (2025-04-24)
+
+
+### Features
+
+* introduce "hawk" theme ([38a35ae](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/38a35aea2fc2bda8eca3c95fcca772334d0c3610))
+
+
+
 # [0.5.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.4.0...v0.5.0) (2025-04-23)
 
 
@@ -39,16 +48,6 @@
 ### Reverts
 
 * Revert "build: try to resolve build issues for npm release" ([e8828a9](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/e8828a9e76fc8067f229b39da4c4a0db7c01dd15))
-
-
-
-# [0.3.0](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/compare/v0.2.0...v0.3.0) (2025-04-22)
-
-
-### Features
-
-* add chips, chiplist and combobox ([8ec1060](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/8ec1060ff75496944e452b73afaf9819be304a6b))
-* add chips, chiplist and combobox ([d78cbdb](https://github.com/HAWK-Digital-Environments/hawk-svelte-components/commit/d78cbdba622dac49836f897b38774fa3293589ee))
 
 
 
