@@ -30,7 +30,7 @@
             magnam
             harum, cum molestias necessitatibus obcaecati quod esse debitis velit nemo dolores deserunt. Quia, iure
             doloremque.</p>
-        <img src="https://picsum.photos/2500/800" alt="Example image">
+        <img src="https://picsum.photos/2500/800" alt="Random example">
         <ul>
             <li>list item - 1</li>
             <li>list item - 2</li>

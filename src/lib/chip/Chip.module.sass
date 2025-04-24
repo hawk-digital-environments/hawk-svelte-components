@@ -1,6 +1,3 @@
-$gradient: #{var(--chip-gradient, var(--button-gradient, var(--gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))))}
-$focusColor: #{var(--chip-focus-color, var(--button-focus-color, var(--clr-primary-main)))}
-
 .chip
   position: relative
   display: inline-flex
@@ -20,22 +17,22 @@ $focusColor: #{var(--chip-focus-color, var(--button-focus-color, var(--clr-prima
 
   &.type
     &Filled
-      background: $gradient
+      background: var(--chip-gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))
 
       .actionButton:focus .actionIcon
         background: var(--clr-primary-white)
-        color: $focusColor
+        color: var(--chip-focus-color, var(--clr-signal-focused))
 
     &Outlined
       border: 1px solid var(--clr-primary-dark-10)
       +fontColorDark
 
       .actionButton:focus .actionIcon
-        background: $focusColor
+        background: var(--chip-focus-color, var(--clr-signal-focused))
         +fontColorLight
 
   &:has(:focus)
-    outline-color: $focusColor
+    outline-color: var(--chip-focus-color, var(--clr-signal-focused))
     outline-offset: 3px
 
   &.disabled

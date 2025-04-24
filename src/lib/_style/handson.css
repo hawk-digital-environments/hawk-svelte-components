@@ -27,9 +27,13 @@
     --clr-primary-main-light-80: #7281E5;
     --clr-primary-accent: #9252FF;
     --clr-primary-accent-light-80: #A875FF;
-    --clr-primary-success: #48D59F;
-    --clr-primary-warning: #FF5C00;
-    --clr-primary-error: #FF6E94;
+
+    /** Signal **/
+    /** ================================== **/
+    --clr-signal-success: #48D59F;
+    --clr-signal-warning: #FF5C00;
+    --clr-signal-error: #FF6E94;
+    --clr-signal-focused: var(--clr-primary-main);
 
     /** Fonts **/
     /** ================================== **/

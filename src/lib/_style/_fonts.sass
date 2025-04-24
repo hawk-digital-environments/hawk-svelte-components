@@ -1,3 +1,5 @@
+// SIZES
+// =========================================
 =fontSizeXs
   font-size: var(--font-size-xs)
   line-height: var(--font-line-height-xs)
@@ -22,7 +24,8 @@
   font-size: var(--font-size-xxl)
   line-height: var(--font-line-height-xxl)
 
-
+// WEIGHTS
+// =========================================
 =fontWeightLight
   font-weight: var(--font-weight-light)
 
@@ -38,7 +41,8 @@
 =fontWeightBold
   font-weight: var(--font-weight-bold)
 
-
+// COLORS
+// =========================================
 =fontColorDark
   color: var(--clr-primary-dark)
 
@@ -46,24 +50,34 @@
   color: var(--clr-primary-white)
 
 =fontColorError
-  color: var(--clr-primary-error)
+  color: var(--clr-signal-error)
 
-
+// FAMILIES
+// =========================================
 =fontFamilyPrimary
   font-family: var(--font-family-primary)
 
-
+// STYLES
+// =========================================
+=fontStyleHighlight
+  background: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%)
+  background-clip: text
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  
 =fontStyleItalic
   font-style: italic
 
-
+// BODY TEXT (complete set of styles)
+// =========================================
 =fontBody
   +fontFamilyPrimary
   +fontSizeM
   +fontWeightRegular
   +fontColorDark
 
-
+// HEADLINES (complete set of styles)
+// =========================================
 =fontHeadlineXxl
   +fontFamilyPrimary
   +fontSizeXxl

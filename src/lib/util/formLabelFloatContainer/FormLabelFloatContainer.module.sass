@@ -83,12 +83,11 @@ $minWidth: 200px
 
   &:has(:focus),
   &.visualFocus
-    outline-color: var(--input-focus-border-color, var(--clr-primary-main))
+    outline-color: var(--input-focus-border-color, var(--clr-signal-focused))
     outline-width: 2px
 
     &:not(.hasDropdown)
-      border-bottom-left-radius: 0
-      border-bottom-right-radius: 0
+      border-radius: 0
 
       &:after
         width: calc(100% + 2px)
@@ -129,7 +128,7 @@ $minWidth: 200px
 
     &:before
       width: 6px
-      background: var(--input-clr-error, var(--clr-primary-error))
+      background: var(--input-clr-error, var(--clr-signal-error))
 
   .inputLabelWrap
     width: 100%

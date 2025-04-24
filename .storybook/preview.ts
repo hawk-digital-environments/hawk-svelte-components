@@ -1,7 +1,12 @@
 import type {Preview} from '@storybook/svelte';
 import '../src/lib/_style/reset.css';
-import '../src/lib/_style/handson.css';
+// @ts-ignore
+import handsonCss from '../src/lib/_style/handson.css?raw';
+// @ts-ignore
+import hawkCss from '../src/lib/_style/hawk.css?raw';
 import {enhanceContextWithUrlArgs} from './enhanceContextWithUrlArgs.ts';
+import {useEffect} from '@storybook/preview-api';
+import {DecoratorHelpers} from '@storybook/addon-themes';
 
 const preview: Preview = {
     /**
@@ -17,7 +22,41 @@ const preview: Preview = {
                 date: /Date$/i
             }
         }
-    }
+    },
+    decorators: [
+        (() => {
+            const defaultTheme = 'HAWK';
+            const themes = {
+                'HAWK': hawkCss,
+                'HANDSON': handsonCss
+            };
+            DecoratorHelpers.initializeThemeState(Object.keys(themes), defaultTheme);
+
+            const setTheme = (theme: string) => {
+                const themeMarker = 'data-theme-name';
+                const currentThemes = document.head.querySelectorAll(`style[${themeMarker}]`);
+                currentThemes.forEach(theme => theme.remove());
+
+                const themeStyle = document.createElement('style');
+                themeStyle.setAttribute(themeMarker, theme);
+                themeStyle.innerHTML = themes[theme] ?? themes[defaultTheme];
+                document.head.appendChild(themeStyle);
+            };
+
+            return (storyFn, context) => {
+                useEffect(() => {
+                    const selectedTheme = DecoratorHelpers.pluckThemeFromContext(context);
+                    const {themeOverride} = context.parameters.themes ?? {};
+
+                    const selected = themeOverride || selectedTheme || 'HAWK';
+
+                    setTheme(selected);
+                });
+
+                return storyFn();
+            };
+        })()
+    ]
 };
 
 export default preview;
