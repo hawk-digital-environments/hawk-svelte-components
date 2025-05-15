@@ -1,6 +1,6 @@
 {
   "name": "@hawk-hhg/svelte-components",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
