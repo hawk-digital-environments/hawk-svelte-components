@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.1...v0.6.2) (2025-05-15)
+
+
+### Bug Fixes
+
+* fix paths so they can be loaded by installing packages ([3180670](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/31806700c07a1172a0916e93d735d9bc85405556))
+
+
+
 ## [0.6.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.0...v0.6.1) (2025-05-15)
 
 
@@ -39,15 +48,6 @@
 * finalize radio group ([2a5edb6](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2a5edb65f5bad087926f447fa5279e4b1ef6fd8a))
 * finish up radio group and checkbox group ([3b3584a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/3b3584a529fcb381b9e0e0e2028650b38740e089))
 * unify component styles and properties ([b4bdcd6](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b4bdcd6d11a28d695088762d3389dd29bbcb8060))
-
-
-
-## [0.3.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.3.1...v0.3.2) (2025-04-22)
-
-
-### Bug Fixes
-
-* fix some issues ([6f6d3ae](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/6f6d3aed09848bc29c82a005a4bc4bf47767afb8))
 
 
 
