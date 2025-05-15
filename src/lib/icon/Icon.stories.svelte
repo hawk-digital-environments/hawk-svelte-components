@@ -1,7 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Icon from './Icon.svelte';
     import {allowedIconNames, iconArgType} from '$lib/icon/iconDefinition.js';
+    import {Icon} from '$lib';
 
     // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
     const {Story} = defineMeta({

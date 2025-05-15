@@ -1,5 +1,6 @@
 <script lang="ts" module>
-    import type {IconName} from '../icon/iconDefinition.ts';
+
+    import type {IconName} from '$lib/icon/iconDefinition.js';
 
     export interface SelectOption {
         value: string;
@@ -12,14 +13,14 @@
 </script>
 <script lang="ts">
     import {Select} from 'melt/builders';
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
     import style from './Select.module.sass';
     import type {Snippet} from 'svelte';
     import {watch} from 'runed';
-    import Icon from '../icon/Icon.svelte';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.ts';
-    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import {Icon} from '$lib/index.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

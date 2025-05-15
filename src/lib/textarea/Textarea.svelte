@@ -1,10 +1,10 @@
 <script lang="ts">
 
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
     import type {HTMLAttributes, HTMLTextareaAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
-    import {mergeProps} from '../util/mergeProps.js';
-    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLTextareaAttributes {
         /**

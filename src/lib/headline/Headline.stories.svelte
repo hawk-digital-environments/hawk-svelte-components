@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Headline from './Headline.svelte';
+    import {Headline} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Headline',

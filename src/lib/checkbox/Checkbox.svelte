@@ -1,11 +1,11 @@
 <script lang="ts">
     import type {Snippet} from 'svelte';
     import type {HTMLAttributes, HTMLInputAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
     import style from './Checkbox.module.sass';
-    import Icon from '../icon/Icon.svelte';
-    import FormLabelWrap, {type FormLabelPosition} from '../util/formLabelWrap/FormLabelWrap.svelte';
+    import FormLabelWrap, {type FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import Icon from '$lib/icon/Icon.svelte';
 
     interface Props extends HTMLInputAttributes {
         /**

@@ -1,8 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Combobox from './Combobox.svelte';
-    import {iconArgType} from '../icon/iconDefinition.js';
-    import {mergeProps} from '../util/mergeProps.js';
+    import {Combobox, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Combobox',
@@ -31,6 +29,9 @@
             ]
         }
     });
+</script>
+<script>
+    import {mergeProps} from '$lib/util/mergeProps.js';
 </script>
 
 <Story name="Generic"/>

@@ -1,14 +1,14 @@
 <script lang="ts">
 
+    import type {ComponentProps} from 'svelte';
+    import type {HTMLFieldsetAttributes} from 'svelte/elements';
+    import Checkbox from '$lib/checkbox/Checkbox.svelte';
     import FormRadioCheckGroup, {
         type FormRadioCheckOrientation
-    } from '../util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
-    import type {ComponentProps} from 'svelte';
-    import type {FormLabelPosition} from '../util/formLabelWrap/FormLabelWrap.svelte';
-    import type {HTMLFieldsetAttributes} from 'svelte/elements';
-    import Checkbox from './Checkbox.svelte';
-    import {mergeProps} from '../util/mergeProps.js';
-    import {FocusList} from '../util/focusList/FocusList.svelte';
+    } from '$lib/util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
+    import type {FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
+    import {FocusList} from '$lib/util/focusList/FocusList.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLFieldsetAttributes {
         /**

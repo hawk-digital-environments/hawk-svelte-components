@@ -1,10 +1,10 @@
 <script lang="ts">
     import type {ComponentProps} from 'svelte';
-    import Avatar from './Avatar.svelte';
-    import {mergeProps} from '../util/mergeProps.js';
     import type {HTMLAttributes} from 'svelte/elements';
-    import AvatarCircle from './AvatarCircle.svelte';
     import style from './AvatarList.module.sass';
+    import Avatar from '$lib/avatar/Avatar.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import AvatarCircle from '$lib/avatar/AvatarCircle.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

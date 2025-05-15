@@ -55,18 +55,6 @@ $minWidth: 200px
     top: -1px
     transition: background 0.3s, width 0.3s
 
-  // The "after" element is used for the focus border. It is always visible but has a zero width, so we can animate it
-  &:after
-    content: ""
-    display: block
-    width: 0
-    height: 2px
-    background: transparent
-    position: absolute
-    transition: background 0.3s, width 0.3s
-    left: -1px
-    bottom: -1px
-
   &:hover
     &, .label, &.float .label
       background: var(--input-hover-color, var(--clr-primary-dark-10-faded))
@@ -85,14 +73,6 @@ $minWidth: 200px
   &.visualFocus
     outline-color: var(--input-focus-border-color, var(--clr-signal-focused))
     outline-width: 2px
-
-    &:not(.hasDropdown)
-      border-radius: 0
-
-      &:after
-        width: calc(100% + 2px)
-        height: 2px
-        background: var(--input-focus-border-color, var(--clr-primary-main))
 
   &.float
     .label

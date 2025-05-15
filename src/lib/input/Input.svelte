@@ -1,10 +1,10 @@
 <script lang="ts">
     import type {HTMLAttributes, HTMLInputAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
-    import type {IconName} from '$lib/icon/iconDefinition.ts';
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
-    import {mergeProps} from '../util/mergeProps.ts';
-    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLInputAttributes {
         /**

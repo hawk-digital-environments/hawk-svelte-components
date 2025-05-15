@@ -4,9 +4,9 @@
     import style from './Switch.module.sass';
     import type {Snippet} from 'svelte';
     import type {FormEventHandler, HTMLAttributes} from 'svelte/elements';
-    import type {IconName} from '../icon/iconDefinition.js';
-    import {mergeProps} from '../util/mergeProps.js';
-    import FormLabelWrap, {type FormLabelPosition} from '../util/formLabelWrap/FormLabelWrap.svelte';
+    import FormLabelWrap, {type FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     /**
      * This interface is used to prevent the "onchange" attribute from being inherited

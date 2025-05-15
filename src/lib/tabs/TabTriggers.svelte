@@ -1,10 +1,10 @@
 <script lang="ts">
-    import {tabContext} from './TabContext.js';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
     import style from './TabTriggers.module.sass';
     import {useResizeObserver} from 'runed';
-    import Icon from '../icon/Icon.svelte';
+    import {tabContext} from '$lib/tabs/TabContext.js';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import Icon from '$lib/icon/Icon.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

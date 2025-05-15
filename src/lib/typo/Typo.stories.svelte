@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Typo from './Typo.svelte';
+    import {Typo} from '$lib';
 
     /**
      * This component allows you to handle all common typographical elements in your HTML.

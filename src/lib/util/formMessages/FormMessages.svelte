@@ -1,10 +1,9 @@
 <script lang="ts">
-    import Icon from '../../icon/Icon.svelte';
     import type {Snippet} from 'svelte';
     import style from './FormMessages.module.sass';
     import type {HTMLAttributes} from 'svelte/elements';
     import {fly} from 'svelte/transition';
-    import SnippetOrString from '../snippetOrString/SnippetOrString.svelte';
+    import {Icon, SnippetOrString} from '$lib';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

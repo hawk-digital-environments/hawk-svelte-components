@@ -21,7 +21,7 @@ const config: StorybookConfig = {
     disableTelemetry: true
   },
   viteFinal(config) {
-    config.server.allowedHosts = true;
+    config.server!.allowedHosts = true;
     return config;
   }
 };

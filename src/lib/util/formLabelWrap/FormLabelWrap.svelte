@@ -2,9 +2,9 @@
     export type FormLabelPosition = 'right' | 'left';
 </script>
 <script lang="ts">
-    import {mergeProps} from '../mergeProps.js';
     import type {HTMLAttributes} from 'svelte/elements';
     import style from './FormLabelWrap.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     /**
      * Handles the position of a form label in relation to its element.

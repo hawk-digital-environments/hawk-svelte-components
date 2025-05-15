@@ -1,8 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Switch from './Switch.svelte';
     import {fn} from '@storybook/test';
-    import {iconArgType} from '../icon/iconDefinition.js';
+    import {iconArgType, Switch} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Switch',

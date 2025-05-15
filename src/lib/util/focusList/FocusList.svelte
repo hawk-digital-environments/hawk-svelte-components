@@ -10,7 +10,7 @@
      * Usage:
      * ```svelte
      * <script>
-     *     import {FocusList} from './FocusList.svelte';
+     *     import {FocusList} from '$lib/FocusList.svelte';
      *     const focusList = new FocusList();
      * </ script>
      * <div {...focusList.list}>

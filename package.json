@@ -27,6 +27,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "default": "./dist/index.js",
       "svelte": "./dist/index.js"
     }
   },
@@ -71,6 +72,8 @@
     "svelte"
   ],
   "dependencies": {
+    "@fontsource/fira-sans": "^5.2.5",
+    "@fontsource/montserrat": "^5.2.5",
     "melt": "^0.29.3",
     "runed": "^0.25.0",
     "tabbable": "^6.2.0"

@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
     import style from './Headline.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLAttributes<HTMLHeadingElement | HTMLSpanElement> {
         /**
@@ -37,7 +37,7 @@
         if (givenSize) {
             return givenSize;
         }
-        const sizeFromTag = Object.keys(sizeToTagMap).find(key => sizeToTagMap[key] === givenTag);
+        const sizeFromTag = Object.keys(sizeToTagMap).find((key) => sizeToTagMap[key as keyof typeof sizeToTagMap] === givenTag);
         return sizeFromTag ?? 'l';
     });
 
@@ -45,7 +45,7 @@
         if (givenTag) {
             return givenTag;
         }
-        return sizeToTagMap[size] ?? 'h3';
+        return sizeToTagMap[size as keyof typeof sizeToTagMap] ?? 'h3';
     });
 </script>
 <svelte:element this={tag} {...mergeProps(restProps, {class: [style.headline, style[size] ?? style.l]})}>

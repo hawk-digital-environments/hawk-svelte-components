@@ -2,9 +2,9 @@
     export type FormRadioCheckOrientation = 'vertical' | 'horizontal';
 </script>
 <script lang="ts">
-    import {mergeProps} from '../mergeProps.js';
     import type {HTMLFieldsetAttributes} from 'svelte/elements';
     import style from './FormRadioCheckGroup.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLFieldsetAttributes {
         orientation: FormRadioCheckOrientation;

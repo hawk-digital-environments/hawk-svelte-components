@@ -1,7 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import RadioGroup from './RadioGroup.svelte';
-    import {mergeProps} from '../util/mergeProps.js';
+    import {RadioGroup} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/RadioGroup',
@@ -25,6 +24,9 @@
             ]
         }
     });
+</script>
+<script>
+    import {mergeProps} from '$lib/util/mergeProps.js';
 </script>
 
 <Story name="Generic" args={{}}/>

@@ -1,19 +1,19 @@
 <script lang="ts">
-    import Chip from '../chip/Chip.svelte';
     import {Combobox} from 'melt/builders';
     import type {ComponentProps, Snippet} from 'svelte';
-    import ChipList from '../chip/ChipList.svelte';
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
-    import type {SelectOption} from '../select/Select.svelte';
-    import Icon from '../icon/Icon.svelte';
-    import type {IconName} from '../icon/iconDefinition.js';
     import {watch} from 'runed';
     import style from './Combobox.module.sass';
-    import SnippetOrString from '../util/snippetOrString/SnippetOrString.svelte';
     import {SvelteSet} from 'svelte/reactivity';
-    import FormLabelFloatContainer from '../util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import type {SelectOption} from '$lib/select/Select.svelte';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import Chip from '$lib/chip/Chip.svelte';
+    import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import ChipList from '$lib/chip/ChipList.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import Icon from '$lib/icon/Icon.svelte';
+    import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -135,7 +135,7 @@
         combobox.value = values.filter(v => v !== value) as any;
     };
 
-    const combobox = new Combobox<string>({
+    const combobox = new Combobox({
         multiple: true,
         onValueChange: (value) => {
             values = Array.from(value as any);

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {type IconName, icons} from './iconDefinition.ts';
     import type {SVGAttributes} from 'svelte/elements';
+    import {type IconName, icons} from '$lib/icon/iconDefinition.js';
+    import {mergeProps} from '$lib/util/mergeProps.js';
     import style from './Icon.module.sass';
-    import {mergeProps} from '../util/mergeProps.ts';
 
     interface Props extends SVGAttributes<SVGSVGElement> {
         /**

@@ -1,7 +1,7 @@
 import {Context} from 'runed';
 import type {SvelteMap} from 'svelte/reactivity';
 import type {Tabs} from 'melt/builders';
-import type {IconName} from '../icon/iconDefinition.js';
+import type {IconName} from '$lib';
 
 export type TabContentData = {
     label: string,

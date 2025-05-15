@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type {IconName} from '../icon/iconDefinition.ts';
     import type {Snippet} from 'svelte';
-    import Icon from '../icon/Icon.svelte';
-    import SnippetOrString from '../util/snippetOrString/SnippetOrString.svelte';
-    import style from './Chip.module.sass';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import Icon from '$lib/icon/Icon.svelte';
+    import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import style from './Chip.module.sass';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

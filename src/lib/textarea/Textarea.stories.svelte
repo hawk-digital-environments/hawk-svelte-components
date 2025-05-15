@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Textarea from './Textarea.svelte';
+    import {Textarea} from '$lib';
 
     /**
      * The formwrap component is a wrapper for form elements that adds some spacing and padding to the elements.

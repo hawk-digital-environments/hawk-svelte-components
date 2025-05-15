@@ -1,13 +1,13 @@
 <script lang="ts">
     import type {HTMLFieldsetAttributes, HTMLInputAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
-    import FormLabel from '../util/formLabel/FormLabel.svelte';
     import type {Snippet} from 'svelte';
     import style from './RadioGroup.module.sass';
     import FormRadioCheckGroup, {
         type FormRadioCheckOrientation
-    } from '../util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
-    import FormLabelWrap, {type FormLabelPosition} from '../util/formLabelWrap/FormLabelWrap.svelte';
+    } from '$lib/util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
+    import FormLabelWrap, {type FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
 
     interface Props extends HTMLFieldsetAttributes {
         /**

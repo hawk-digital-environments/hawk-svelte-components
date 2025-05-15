@@ -1,8 +1,8 @@
 <script lang="ts">
     import type {Snippet} from 'svelte';
-    import {type TabContentData, tabContext} from './TabContext.js';
     import {SvelteMap} from 'svelte/reactivity';
     import {Tabs} from 'melt/builders';
+    import {type TabContentData, tabContext} from '$lib/tabs/TabContext.js';
 
     interface Props {
         /**

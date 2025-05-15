@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Formwrap from './Formwrap.svelte';
+    import {Formwrap} from '$lib';
 
     /**
      * The formwrap component is a wrapper for form elements that adds some spacing and padding to the elements.
@@ -15,8 +15,7 @@
     });
 </script>
 <script>
-    import Input from '../input/Input.svelte';
-    import Switch from '../switch/Switch.svelte';
+    import {Input, Switch} from '$lib';
 </script>
 
 <Story name="Generic" args={{}}>

@@ -4,9 +4,10 @@ import '../src/lib/_style/reset.css';
 import handsonCss from '../src/lib/_style/handson.css?raw';
 // @ts-ignore
 import hawkCss from '../src/lib/_style/hawk.css?raw';
-import {enhanceContextWithUrlArgs} from './enhanceContextWithUrlArgs.ts';
+import {enhanceContextWithUrlArgs} from './enhanceContextWithUrlArgs.js';
 import {useEffect} from '@storybook/preview-api';
 import {DecoratorHelpers} from '@storybook/addon-themes';
+import {loadFiraSans, loadMonserrat} from '../src/lib/index.js';
 
 const preview: Preview = {
     /**
@@ -26,10 +27,12 @@ const preview: Preview = {
     decorators: [
         (() => {
             const defaultTheme = 'HAWK';
-            const themes = {
+            const themes: any = {
                 'HAWK': hawkCss,
                 'HANDSON': handsonCss
             };
+            loadFiraSans();
+            loadMonserrat();
             DecoratorHelpers.initializeThemeState(Object.keys(themes), defaultTheme);
 
             const setTheme = (theme: string) => {

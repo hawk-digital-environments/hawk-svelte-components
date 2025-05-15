@@ -1,8 +1,8 @@
 <script lang="ts">
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
     import style from './AvatarCircle.module.sass';
     import type {Snippet} from 'svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface NonConflictingProps extends HTMLAttributes<HTMLDivElement> {
         children: any;
@@ -34,7 +34,7 @@
         return {
             tabindex: 1,
             onclick: () => onclick(),
-            onkeydown: (event) => {
+            onkeydown: (event: KeyboardEvent) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     onclick();
                 }

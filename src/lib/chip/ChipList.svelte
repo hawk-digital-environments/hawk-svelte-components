@@ -1,11 +1,11 @@
 <script lang="ts">
     import type {ComponentProps} from 'svelte';
-    import Chip from './Chip.svelte';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {FocusList} from '../util/focusList/FocusList.svelte';
-    import {mergeProps} from '../util/mergeProps.js';
-    import style from './ChipList.module.sass';
     import {fly} from 'svelte/transition';
+    import Chip from '$lib/chip/Chip.svelte';
+    import {FocusList} from '$lib/util/focusList/FocusList.svelte';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import style from './ChipList.module.sass';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**

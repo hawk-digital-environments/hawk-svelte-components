@@ -1,13 +1,12 @@
 <script lang="ts">
     import type {HTMLAttributes} from 'svelte/elements';
-    import type {IconName} from '../../icon/iconDefinition.ts';
     import type {ComponentProps, Snippet} from 'svelte';
-    import Icon from '../../icon/Icon.svelte';
     import style from './FormLabelFloatContainer.module.sass';
-    import FormMessages from '../formMessages/FormMessages.svelte';
-    import {mergeProps} from '../mergeProps.ts';
     import {scale} from 'svelte/transition';
     import {useResizeObserver} from 'runed';
+    import {Icon, type IconName} from '$lib';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import FormMessages from '$lib/util/formMessages/FormMessages.svelte';
 
     /**
      * Renders a highly specialized form label with a floating layout.

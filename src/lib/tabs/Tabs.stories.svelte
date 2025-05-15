@@ -1,16 +1,13 @@
-<script module>
+<script module lang="ts">
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Tabs from './Tabs.svelte';
-    import TabTriggers from './TabTriggers.svelte';
-    import TabContent from './TabContent.svelte';
-    import Button from '../button/Button.svelte';
+    import {TabContent, TabTriggers} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Tabs',
         component: Tabs,
         subcomponents: {
-            TabTriggers,
-            TabContent
+            TabTriggers: TabTriggers as any,
+            TabContent: TabContent as any
         },
         tags: ['autodocs'],
         argTypes: {
@@ -20,6 +17,7 @@
             }
         },
         args: {
+            // @ts-ignore
             children: genericChildren
         }
     });
@@ -32,7 +30,7 @@
     };
 </script>
 <script>
-    import Typo from '../typo/Typo.svelte';
+    import {Button, Tabs, Typo} from '$lib';
 </script>
 
 {#snippet tabContent()}

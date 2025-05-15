@@ -1,7 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import CheckboxGroup from './CheckboxGroup.svelte';
-    import {mergeProps} from '../util/mergeProps.js';
+    import {CheckboxGroup} from '$lib';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     const {Story} = defineMeta({
         title: 'Handson/CheckboxGroup',
@@ -26,7 +26,6 @@
         }
     });
 </script>
-
 <Story name="Generic" args={{}}/>
 <Story name="Selected" args={{value: ['1', '3']}}/>
 <Story name="Horizontal" args={{orientation: 'horizontal'}}/>

@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Link from './Link.svelte';
+    import {Link} from '$lib';
 
     /**
      * A simple link component that can be used to navigate to a different page or open a new tab.

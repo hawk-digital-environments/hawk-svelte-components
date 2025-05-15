@@ -1,8 +1,9 @@
 <script lang="ts">
-    import {tabContext} from './TabContext.js';
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
-    import type {IconName} from '../icon/iconDefinition.js';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import {tabContext} from '$lib/tabs/TabContext.js';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import {onMount} from 'svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -53,9 +54,11 @@
     $effect(() => setTabData());
 
     // Ensure the first tab is selected
-    if (!ctx.tabs.value) {
-        ctx.setSelected(realKey);
-    }
+    onMount(() => {
+        if (!ctx.tabs.value) {
+            ctx.setSelected(realKey);
+        }
+    });
 </script>
 
 {#if !disabled}

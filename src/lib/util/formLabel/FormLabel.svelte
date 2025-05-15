@@ -1,8 +1,8 @@
 <script lang="ts">
     import type {HTMLLabelAttributes} from 'svelte/elements';
     import style from './FormLabel.module.sass';
-    import SnippetOrString from '../snippetOrString/SnippetOrString.svelte';
     import type {Snippet} from 'svelte';
+    import {SnippetOrString} from '$lib';
 
     /**
      * This interface is here, so typescript does not cry when we extend the "children"

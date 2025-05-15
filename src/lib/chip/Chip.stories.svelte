@@ -1,8 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Chip from './Chip.svelte';
     import {fn} from '@storybook/test';
-    import {iconArgType} from '../icon/iconDefinition.js';
+    import {Chip, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Chip',
@@ -16,7 +15,7 @@
     });
 </script>
 <script>
-    import ChipList from './ChipList.svelte';
+    import {ChipList} from '$lib';
 </script>
 
 <Story name="Generic" args={{label: 'Label'}}/>

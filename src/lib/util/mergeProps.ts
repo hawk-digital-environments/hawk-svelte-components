@@ -43,8 +43,8 @@ export function mergeProps<TA = any, TB = any, TC = any, TD = any, TE = any, TF 
         }
 
         for (const key in obj) {
-            const valueA = result[key];
-            const valueB = obj[key];
+            const valueA: any = result[key];
+            const valueB: any = (obj as any)[key];
 
             // Result does not have property -> use value as is
             if (valueA !== undefined) {

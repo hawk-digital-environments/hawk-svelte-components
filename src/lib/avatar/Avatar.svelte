@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type {IconName} from '../icon/iconDefinition.js';
     import type {HTMLAttributes, MouseEventHandler} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
     import style from './Avatar.module.sass';
     import {Avatar} from 'melt/builders';
-    import Icon from '../icon/Icon.svelte';
-    import AvatarCircle from './AvatarCircle.svelte';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import AvatarCircle from '$lib/avatar/AvatarCircle.svelte';
+    import Icon from '$lib/icon/Icon.svelte';
 
     interface NonCollidingProps extends HTMLAttributes<HTMLDivElement> {
         onclick?: any;
@@ -147,7 +147,7 @@
             ]} title={stateLabel}></span>
             {/if}
             {#if !!actionIcon}
-                <a href="#" class={style.action} onclick={(e) => {
+                <a href="#noop" class={style.action} onclick={(e) => {
                 e.preventDefault();
                 onactionclick?.(e);
             }} title={actionIconLabel} aria-label={actionIconLabel}>

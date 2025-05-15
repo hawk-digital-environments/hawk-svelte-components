@@ -1,6 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Checkbox from './Checkbox.svelte';
+    import {Checkbox} from '$lib';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     const {Story} = defineMeta({
         title: 'Handson/Checkbox',
@@ -15,9 +16,6 @@
             value: 'test'
         }
     });
-</script>
-<script>
-    import {mergeProps} from '../util/mergeProps.js';
 </script>
 
 <Story name="Generic" args={{}}/>

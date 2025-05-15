@@ -1,7 +1,6 @@
-<script module>
+<script module lang="ts">
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Select from './Select.svelte';
-    import {iconArgType} from '../icon/iconDefinition.js';
+    import {iconArgType, Select} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Select',
@@ -55,10 +54,10 @@
        parameters={{controls: {exclude: ['label', 'value']}}}>
     {#snippet children({id, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
-            <Select {...args}/>
+            <Select {...args as any}/>
         </div>
         <div style="width: 100%; display: flex; gap: 20px; flex-direction: column">
-            <Select {...args}/>
+            <Select {...(args as any)}/>
         </div>
     {/snippet}
 </Story>

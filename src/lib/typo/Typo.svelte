@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {HTMLAttributes} from 'svelte/elements';
-    import {mergeProps} from '../util/mergeProps.js';
     import style from './Typo.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
 

@@ -1,7 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import AvatarList from './AvatarList.svelte';
     import {fn} from '@storybook/test';
+    import {AvatarList} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/AvatarList',

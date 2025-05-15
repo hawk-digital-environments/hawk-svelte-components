@@ -1,8 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Input from './Input.svelte';
-    import {iconArgType} from '../icon/iconDefinition.js';
     import {fn} from '@storybook/test';
+    import {iconArgType, Input} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Input',
@@ -48,7 +47,7 @@
 </Story>
 
 {#snippet inputDescription()}
-    Description with <a href='#'>Link</a>
+    Description with <a href='#noop'>Link</a>
 {/snippet}
 
 <Story name="With Link In Description" args={{description: inputDescription, error: 'Mein Error!'}}/>

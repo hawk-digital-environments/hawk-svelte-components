@@ -1,9 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import Avatar from './Avatar.svelte';
     import {fn} from '@storybook/test';
-    import {iconArgType} from '../icon/iconDefinition.js';
-    import {mergeProps} from '../util/mergeProps.js';
+    import {Avatar, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/Avatar',
@@ -16,6 +14,9 @@
             src: 'https://picsum.photos/200'
         }
     });
+</script>
+<script>
+    import {mergeProps} from '$lib/util/mergeProps.js';
 </script>
 
 <Story name="Generic" args={{}}/>

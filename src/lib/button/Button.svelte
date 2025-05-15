@@ -1,10 +1,10 @@
 <script lang="ts">
     import {type Snippet} from 'svelte';
-    import type {IconName} from '../icon/iconDefinition.ts';
     import type {MouseEventHandler} from 'svelte/elements';
-    import Link from '../util/link/Link.svelte';
-    import Icon from '../icon/Icon.svelte';
     import style from './Button.module.sass';
+    import type {IconName} from '$lib/icon/iconDefinition.js';
+    import Icon from '$lib/icon/Icon.svelte';
+    import Link from '$lib/util/link/Link.svelte';
 
     interface Props {
         /**

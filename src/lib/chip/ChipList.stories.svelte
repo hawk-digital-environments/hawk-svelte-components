@@ -1,7 +1,7 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import ChipList from './ChipList.svelte';
     import {fn} from '@storybook/test';
+    import {ChipList} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/ChipList',
