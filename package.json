@@ -2,6 +2,7 @@
   "name": "@hawk-hhg/svelte-components",
   "version": "0.6.2",
   "license": "Apache-2.0",
+  "private": false,
   "scripts": {
     "build": "vite build && npm run prepack",
     "preview": "vite preview",
@@ -21,6 +22,8 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
@@ -29,7 +32,11 @@
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js",
       "default": "./dist/index.js"
-    }
+    },
+    "./theme-hawk.js": "./dist/_style/theme/hawk/theme-hawk.js",
+    "./theme-hawk-reset.js": "./dist/_style/theme/hawk/theme-hawk-reset.js",
+    "./theme-handson.js": "./dist/_style/theme/handson/theme-handson.js",
+    "./theme-handson-reset.js": "./dist/_style/theme/handson/theme-handson-reset.js"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"

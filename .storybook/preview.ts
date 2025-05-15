@@ -1,13 +1,16 @@
 import type {Preview} from '@storybook/svelte';
 import '../src/lib/_style/reset.css';
 // @ts-ignore
-import handsonCss from '../src/lib/_style/handson.css?raw';
+import handsonCss from '../src/lib/_style/theme/handson/handson.css?raw';
 // @ts-ignore
-import hawkCss from '../src/lib/_style/hawk.css?raw';
+import hawkCss from '../src/lib/_style/theme/hawk/hawk.css?raw';
 import {enhanceContextWithUrlArgs} from './enhanceContextWithUrlArgs.js';
 import {useEffect} from '@storybook/preview-api';
 import {DecoratorHelpers} from '@storybook/addon-themes';
-import {loadFiraSans, loadMonserrat} from '../src/lib/index.js';
+
+// Font faces
+import '@fontsource/montserrat/latin.css';
+import '@fontsource/fira-sans/latin.css';
 
 const preview: Preview = {
     /**
@@ -31,8 +34,6 @@ const preview: Preview = {
                 'HAWK': hawkCss,
                 'HANDSON': handsonCss
             };
-            loadFiraSans();
-            loadMonserrat();
             DecoratorHelpers.initializeThemeState(Object.keys(themes), defaultTheme);
 
             const setTheme = (theme: string) => {
