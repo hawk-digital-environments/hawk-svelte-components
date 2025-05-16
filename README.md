@@ -21,14 +21,14 @@ If you do not want the reset, remove the "-reset" from the import; beware, there
 ```svelte
 <script context="module">
     // With reset (recommended for new projects)
-    import '@hawk-hhg/svelte-components/theme-hawk-reset.css';
+    import '@hawk-hhg/svelte-components/theme-hawk-reset.js';
     // OR
-    import '@hawk-hhg/svelte-components/theme-handson-reset.css';
+    import '@hawk-hhg/svelte-components/theme-handson-reset.js';
 
     // Without reset (if you have issues with the reset)
-    import '@hawk-hhg/svelte-components/theme-hawk.css';
+    import '@hawk-hhg/svelte-components/theme-hawk.js';
     // OR
-    import '@hawk-hhg/svelte-components/theme-handson.css';
+    import '@hawk-hhg/svelte-components/theme-handson.js';
 </script>
 ```
 
