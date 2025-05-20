@@ -6,7 +6,9 @@
     import {mergeProps} from '$lib/util/mergeProps.js';
     import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
 
-    interface Props extends HTmlAttributes<HTMLDivElement> {
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
          * The label of the info-item
          */
@@ -18,15 +20,15 @@
         icon?: IconName;
 
         /**
-         * The link to navigate to when the info-item is clicked
+         * The text that is displayed in the info-item
          */
-        children: string|Snippet;
+        description: string|Snippet;
     }
 
     const {
         icon,
         label,
-        children,
+        description,
         ...restProps
     }: Props = $props();
 </script>
@@ -38,8 +40,12 @@
     }
 )}>
     <span class={style.label}><SnippetOrString value={label}/></span>
+
+    <div class={style.descriptionContainer}>
+   
     {#if icon}
         <Icon icon={icon} size="small" class={style.icon} />
     {/if}
-    <span class="description"><SnippetOrString value={children}/></span>
+    <span class={style.description}><SnippetOrString value={description}/></span>
+</div>
 </div>

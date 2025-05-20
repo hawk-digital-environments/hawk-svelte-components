@@ -13,44 +13,28 @@
             label: {
                 control: 'text',
             },
-            children: {
+            description: {
                 control: 'text',
             },
         },
         args: {
-            icon: 'eye',
+            icon: 'info',
             label: 'Label',
-            children: 'Information text here'
+            description: 'Information text here'
         }
     });
 </script>
-<script>
-    import {Icon} from '$lib';
-</script>
+
 
 <Story name="Generic" args={{ }}/>
 
-{#snippet myLabel()}
-    <Icon icon="eye" size="small"/>
-    My label
-{/snippet}
-{#snippet myChildren(label)}
-    <strong><a href="https://example.com">{label ?? 'kein label'}</a></strong>
-{/snippet}
 
-<Story name="Component with snippet">
+
+
+<!--Story name="Component with snippet">
     {#snippet children(args)}
-        <InfoItem icon={args.icon} label="{args.label}"><strong>{args.children}</strong></InfoItem>
-        <InfoItem icon={args.icon} label="Label 2" children={myChildren}></InfoItem>
-        <InfoItem icon={args.icon} label={myLabel}></InfoItem>
-        <InfoItem icon={args.icon}>
-            {#snippet children()}
-                <strong>My children</strong>
-            {/snippet}
-            {#snippet label()}
-                <Icon icon="eye" size="small"/>
-                My label
-            {/snippet}
-        </InfoItem>
+
+        <InfoItem label={args.label} icon={args.icon} description={args.description} />
+            
     {/snippet}
-</Story>
+</Story-->
