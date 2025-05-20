@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {allowedIconNames, iconArgType} from '$lib/icon/iconDefinition.js';
+    import {iconArgType} from '$lib/icon/iconDefinition.js';
     import {InfoItem} from '$lib';
 
     // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -12,11 +12,9 @@
             icon: iconArgType(),
             label: {
                 control: 'text',
-                description: 'The label of the info-item'
             },
             children: {
                 control: 'text',
-                description: 'The content of the info-item'
             },
         },
         args: {
@@ -25,18 +23,34 @@
             children: 'Information text here'
         }
     });
-
+</script>
+<script>
+    import {Icon} from '$lib';
 </script>
 
-<Story name="Generic" args={{ }}>
- 
- 
+<Story name="Generic" args={{ }}/>
 
+{#snippet myLabel()}
+    <Icon icon="eye" size="small"/>
+    My label
+{/snippet}
+{#snippet myChildren(label)}
+    <strong><a href="https://example.com">{label ?? 'kein label'}</a></strong>
+{/snippet}
+
+<Story name="Component with snippet">
+    {#snippet children(args)}
+        <InfoItem icon={args.icon} label="{args.label}"><strong>{args.children}</strong></InfoItem>
+        <InfoItem icon={args.icon} label="Label 2" children={myChildren}></InfoItem>
+        <InfoItem icon={args.icon} label={myLabel}></InfoItem>
+        <InfoItem icon={args.icon}>
+            {#snippet children()}
+                <strong>My children</strong>
+            {/snippet}
+            {#snippet label()}
+                <Icon icon="eye" size="small"/>
+                My label
+            {/snippet}
+        </InfoItem>
+    {/snippet}
 </Story>
-
-<Story name="Component with snippet">   
-    <InfoItem icon="eye" label="Label">
-    Information text here
-</InfoItem></Story>
-
-
