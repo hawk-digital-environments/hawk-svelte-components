@@ -5,7 +5,6 @@
     import Icon from '$lib/icon/Icon.svelte';
     import {mergeProps} from '$lib/util/mergeProps.js';
     import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
-
     import type { HTMLAttributes } from 'svelte/elements';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -39,10 +38,9 @@
         class: style.infoItem,
     }
 )}>
-    <span class={style.label}><SnippetOrString value={label}/></span>
 
+    <span class={style.label}><SnippetOrString value={label}/></span>
     <div class={style.descriptionContainer}>
-   
     {#if icon}
         <Icon icon={icon} size="small" class={style.icon} />
     {/if}
