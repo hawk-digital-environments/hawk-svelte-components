@@ -13,6 +13,7 @@
 
         /**
          * The target of the link, defaults to an empty string -> browser default
+         * @see https://github.com/sveltejs/sapper/issues/265 --> _self means ALWAYS reload for sveltekit!
          */
         target?: string;
 
