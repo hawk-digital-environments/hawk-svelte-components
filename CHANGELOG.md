@@ -1,3 +1,12 @@
+## [0.6.4](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.3...v0.6.4) (2025-05-21)
+
+
+### Bug Fixes
+
+* minor adjustments and bugfixes + additional stories for edge cases ([#11](https://github.com/hawk-digital-environments/hawk-svelte-components/issues/11)) ([2cd1a59](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2cd1a59878fb23831b208d1c176f63e5a1e1ca50))
+
+
+
 ## [0.6.3](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.2...v0.6.3) (2025-05-15)
 
 
@@ -31,16 +40,6 @@
 ### Features
 
 * introduce "hawk" theme ([38a35ae](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/38a35aea2fc2bda8eca3c95fcca772334d0c3610))
-
-
-
-# [0.5.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.4.0...v0.5.0) (2025-04-23)
-
-
-### Features
-
-* finish "avatar" component ([86447e0](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/86447e054b642e70869f16a694e09d4c5c96a77f))
-* finish "headline", "tabs" and "typo" elements. Drop padding and margin sass helpers ([7dacc7a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/7dacc7ac711de37d53cea1fe1679fd1891da6ca6))
 
 
 
