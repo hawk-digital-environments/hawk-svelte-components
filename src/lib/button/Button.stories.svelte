@@ -65,19 +65,31 @@
        parameters={{controls: {include: ['size', 'disabled']}}}>
     {#snippet children({size, disabled})}
         <div style="display: flex; flex-direction: column; gap: 20px">
-            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" disabled={disabled}>Label</Button>
-            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="right"
+            <Button size={size} link="http://www.hawk.de" type="link" linkTarget="_blank" disabled={disabled}>Label
+            </Button>
+            <Button size={size} link="http://www.hawk.de" type="link" linkTarget="_blank" icon="plus"
+                    iconPosition="right"
                     disabled={disabled}>Label
             </Button>
-            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="left"
+            <Button size={size} link="http://www.hawk.de" type="link" linkTarget="_blank" icon="plus"
+                    iconPosition="left"
                     disabled={disabled}>Label
             </Button>
-            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="above"
+            <Button size={size} link="http://www.hawk.de" type="link" icon="plus"
+                    iconPosition="above"
                     disabled={disabled}>Label
             </Button>
-            <Button size={size} link="http://www.hawk.de" linkTarget="_blank" icon="plus" iconPosition="iconOnly"
+            <Button size={size} link="http://www.hawk.de" type="link" icon="plus"
+                    iconPosition="iconOnly"
                     disabled={disabled}>Label
             </Button>
         </div>
     {/snippet}
+</Story>
+
+<Story name="In Text Context" parameters="{{controls: {include: []}}}">
+    <p style="color: purple !important; fill: purple !important;">
+        The icon inside the button should be white, even if the text surrounding it is purple.
+        <Button icon="eye" type="filled">Click me!</Button>
+    </p>
 </Story>

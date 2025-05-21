@@ -13,10 +13,9 @@
         size?: "small" | "large";
 
         /**
-         * Determines the visual type of the button. There is a "hidden" >link< type that is
-         * automatically applied when a "link" value is provided
+         * Determines the visual type of the button.
          */
-        type?: "filled" | "outlined" | "text" | "raised";
+        type?: 'filled' | 'outlined' | 'text' | 'raised' | 'link';
 
         /**
          * The label of the button can be passed as children
@@ -59,7 +58,7 @@
 
     const {
         size = 'small',
-        type: typeRaw = 'filled',
+        type = 'filled',
         link,
         linkTarget,
         icon,
@@ -69,7 +68,6 @@
         onclick
     }: Props = $props();
 
-    const type = $derived(link ? 'link' : typeRaw);
     const buttonClasses = $derived({
         [style.button]: true,
         [style.iconPositionLeft]: iconPosition === 'left',

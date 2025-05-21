@@ -12,7 +12,7 @@
         href?: string;
 
         /**
-         * The target of the link, defaults to "_self"
+         * The target of the link, defaults to an empty string -> browser default
          */
         target?: string;
 
@@ -39,7 +39,7 @@
 
     const {
         href: hrefRaw = '',
-        target = '_self',
+        target = '',
         rel: relRaw = '',
         onclick: onclickRaw,
         children,
@@ -73,15 +73,27 @@
         }
         return onclickRaw;
     })
+
+    const dynamicProps = $derived.by(() => {
+        const props: Record<string, any> = {};
+        if (target) {
+            props.target = target;
+        }
+        if (rel) {
+            props.rel = rel;
+        }
+        if (onclick) {
+            props.onclick = onclick;
+        }
+        return props;
+    });
 </script>
 
 <a href="{href}"
    class={classNames}
    class:link={true}
    class:disabled={disabled}
-   target="{target}"
-   rel="{rel}"
-   onclick="{onclick}"
+   {...dynamicProps}
    {...restProps}>
     {@render children?.()}
 </a>

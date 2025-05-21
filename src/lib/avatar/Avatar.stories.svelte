@@ -57,3 +57,13 @@
         </div>
     {/snippet}
 </Story>
+
+<Story name="Inside flex Container" parameters={{controls: {include: []}}}>
+    <div style="display: flex; gap: 10px; align-items: center">
+        <Avatar src="https://picsum.photos/200" name="Maximilian" size="small"/>
+        <div>
+            <strong style="display: block">Max Musterman</strong>
+            <small>The one doing stuff</small>
+        </div>
+    </div>
+</Story>
