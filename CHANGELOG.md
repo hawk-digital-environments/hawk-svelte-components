@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.0...v0.7.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* fix broken package.json exports ([1fead67](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/1fead671c7cb602862a627ebeec3e4e60f972300))
+
+
+
 # [0.7.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.4...v0.7.0) (2025-06-05)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fix paths so they can be loaded by installing packages ([3180670](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/31806700c07a1172a0916e93d735d9bc85405556))
-
-
-
-## [0.6.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.0...v0.6.1) (2025-05-15)
-
-
-### Bug Fixes
-
-* fix paths so they can be loaded by installing packages ([2207ee7](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2207ee73b6e4faaf6ffb3fe631695579225f4357))
 
 
 
