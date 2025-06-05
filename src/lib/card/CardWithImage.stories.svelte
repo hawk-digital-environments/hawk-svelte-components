@@ -11,40 +11,42 @@
     });
 </script>
 <script>
-    import {AvatarList, Button, Chip, Headline, Icon, Typo} from '$lib';
+    import {AvatarList, Button, Chip, Headline, Icon, InfoItem, Typo} from '$lib';
 </script>
 
-<Story name="Generic" args={{}}>
-    <CardWithImage src="https://picsum.photos/300/200" alt="A random image">
-        {#snippet overlay()}
-            <Chip type="filled" label="private"/>
-        {/snippet}
-        This is your card's content with an image.
-    </CardWithImage>
+
+<Story name="Generic" args={{src: 'https://picsum.photos/300/200', alt: 'A random image'}}>
+    {#snippet children(args)}
+        <CardWithImage {...args}>
+            {#snippet overlay()}
+                <Chip label="private"/>
+            {/snippet}
+            This is your card's content with an image.
+        </CardWithImage>
+    {/snippet}
 </Story>
 
-<Story name="Article">
-    <CardWithImage src="https://picsum.photos/300/200" alt="A random image" style="max-width: 340px">
-        {#snippet overlay()}
-            <Chip label="private" icon="eyeOff"/>
-        {/snippet}
-        <Typo>
-            <article class="size-m" style="display: flex; flex-direction: column; gap: 10px">
-                <header>
-                    <Headline size={'xl'} tag="h3">Title of content</Headline>
-                    <!-- @todo replace this address block with the new InfoItem component -->
-                    <address>
-                        <Typo style="display: flex; align-items: center;font-style: normal; display: flex; flex-direction: row; gap: 5px">
-                            <Icon icon="location"/>
-                            Streetname 12, room XYZ
-                        </Typo>
-                    </address>
-                </header>
-                <p>Croissant sweet roll tiramisu icing gummi bears gummi bears. Wafer chocolate cake chupa chups cookie
-                    gummies jelly in my belly.</p>
-                <footer class="size-xs"
-                        style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
-                    <AvatarList size="small" avatars={[{
+<Story name="Link"
+       args={{src: 'https://picsum.photos/300/200', alt: 'A random image', link: 'https://example.com', linkTarget: '_blank'}}>
+    {#snippet children(args)}
+        <CardWithImage {...args}>
+            You can assign a link to a card, which will make it clickable and focusable like a button.
+        </CardWithImage>
+    {/snippet}
+</Story>
+
+{#snippet articleContent()}
+    <Typo>
+        <article class="size-m" style="display: flex; flex-direction: column; gap: 10px">
+            <header>
+                <Headline size={'xl'} tag="h3">Title of content</Headline>
+            </header>
+            <InfoItem icon="location">Streetname 12, room XYZ</InfoItem>
+            <p>Croissant sweet roll tiramisu icing gummi bears gummi bears. Wafer chocolate cake chupa chups cookie
+                gummies jelly in my belly.</p>
+            <footer class="size-xs"
+                    style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+                <AvatarList size="small" avatars={[{
                     name: 'Prof. Dr. Annika Schmidt',
                     src: 'https://picsum.photos/80/80?random=1'
                 },
@@ -57,14 +59,35 @@
                     src: 'https://picsum.photos/80/80?random=3'
                 },
                 ]}/>
-                    <p>Erstellt von <strong>Prof. Dr. Annika Schmidt</strong> und <strong>weiteren</strong></p>
-                    <div style="display: flex; gap: 10px">
-                        <!-- @todo replace these buttons with the ToggleButton component -->
-                        <Button type="outlined" icon="heart" iconPosition="iconOnly"/>
-                        <Button type="outlined" icon="save" iconPosition="iconOnly"/>
-                    </div>
-                </footer>
-            </article>
-        </Typo>
+                <p>Erstellt von <strong>Prof. Dr. Annika Schmidt</strong> und <strong>weiteren</strong></p>
+                <div style="display: flex; gap: 10px" onclick={(e) => e.stopPropagation()}>
+                    <!-- @todo replace these buttons with the ToggleButton component -->
+                    <Button type="outlined" icon="heart" iconPosition="iconOnly"/>
+                    <Button type="outlined" icon="save" iconPosition="iconOnly"/>
+                </div>
+            </footer>
+        </article>
+    </Typo>
+{/snippet}
+
+<Story name="Article" parameters={{controls: {disable: true}}}>
+    <CardWithImage src="https://picsum.photos/300/200" alt="A random image" style="max-width: 340px">
+        {#snippet overlay()}
+            <Chip label="private" icon="eyeOff"/>
+        {/snippet}
+        {@render articleContent()}
+    </CardWithImage>
+</Story>
+
+<Story name="Article (linked)" parameters={{controls: {disable: true}}}>
+    <CardWithImage src="https://picsum.photos/300/200"
+                   alt="A random image"
+                   link="https://example.com"
+                   linkTarget="_blank"
+                   style="max-width: 340px">
+        {#snippet overlay()}
+            <Chip label="private" icon="eyeOff"/>
+        {/snippet}
+        {@render articleContent()}
     </CardWithImage>
 </Story>

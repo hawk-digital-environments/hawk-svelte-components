@@ -5,8 +5,9 @@
     import type {HTMLAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
     import {mergeProps} from '$lib/util/mergeProps.js';
+    import type {Props as CardProps} from '$lib/card/Card.svelte';
 
-    interface Props extends HTMLAttributes<HTMLDivElement> {
+    interface Props extends CardProps {
         /**
          * Image source URL for the card.
          */

@@ -1,4 +1,5 @@
 <script module>
+  import {fn} from '@storybook/test';
   import {Card} from '$lib';
   import {defineMeta} from '@storybook/addon-svelte-csf';
 
@@ -16,6 +17,13 @@
   <Card>This is your cards content</Card>
 </Story>
 
-<Story name="Focused" args={{}}>
-  <Card tabindex="{1}">This is your cards content</Card>
-</Story>
+{#snippet linkCardContent()}
+  You can assign a link to a card, which will make it clickable and focusable like a button.
+{/snippet}
+<Story name="Link" args={{children: linkCardContent, link: 'https://hawk.de', linkTarget: '_blank'}}/>
+
+{#snippet jsActionCardContent()}
+  You can also assign an "onclick" handler to a card, which will be called when the card is clicked.<br/>
+  Also the <code>ENTER</code> and <code>SPACE</code> keys will trigger the onclick handler, like on a button.
+{/snippet}
+<Story name="JS Action" args={{children: jsActionCardContent, onclick: fn()}}/>

@@ -5,11 +5,17 @@
   background: var(--clr-primary-white)
   +fontBody
 
-  &:hover
-    border: 1px solid var(--clr-primary-dark-10)
-    background: var(--clr-primary-white)
-
-
   &:focus
     outline: 2px solid var(--clr-signal-focused)
     outline-offset: -1px
+
+
+  &.link
+    cursor: pointer
+
+    &:active
+      box-shadow: #{var(--card-shadow-active, 0px 9999px 4px 9999px rgba(0, 0, 0, 0.07) inset)}
+
+    &:hover
+      border: 1px solid var(--clr-primary-dark-10)
+      background: var(--clr-primary-dark-10-faded)
