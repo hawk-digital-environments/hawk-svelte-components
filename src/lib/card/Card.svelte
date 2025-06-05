@@ -82,14 +82,24 @@
     </div>
     <header>
         <h2 class={style.card_title}>{heading}</h2>
-        <address class={style.card_address}>{address}</address>
+        
+        <address class={style.card_address}> 
+            <Icon class={style.icon} icon="location"/>
+            {address}
+        </address>
     </header>
     <section class={style.card_content}>
         <p>{text}</p>
     </section>
     <footer class={style.card_footer}>
         <ul class={style.authors} aria-label="Autor:innen">
-            <AvatarList avatars={authors}></AvatarList>
+            
+
+            <AvatarList size="small" avatars={authors.slice(0,3)} more={authors.length-3<0?0:authors.length-3}></AvatarList>
+            {#if authors.length>0}
+            <p>Erstellt von <strong>{authors[0].name}</strong> {#if authors.length > 1} und  <strong>weiteren</strong>{/if} </p>    
+            {/if}
+            
         </ul>
         <div class={style.card_actions}>
             <button
@@ -99,7 +109,7 @@
                 aria-label={liked ? "Dislike" : "Like"}
             >
             <Icon aria-hidden="true" icon={"heart"} type={liked ? "filled" : "outline"} ></Icon>
-            {likesCount}
+           <span>{likesCount}</span> 
             </button>
             <button
                 type="button"
