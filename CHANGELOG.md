@@ -1,3 +1,12 @@
+## [0.7.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.1...v0.7.2) (2025-06-05)
+
+
+### Bug Fixes
+
+* fix issues after removing custom-component boilerplate from svelte only components ([24414bf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/24414bf7070662c524de995371617e92258962f2))
+
+
+
 ## [0.7.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.0...v0.7.1) (2025-06-05)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * ensure styles can be loaded easier ([70a66cf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/70a66cfd38d87a23ad8c18a62d99b65485770c4c))
-
-
-
-## [0.6.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.1...v0.6.2) (2025-05-15)
-
-
-### Bug Fixes
-
-* fix paths so they can be loaded by installing packages ([3180670](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/31806700c07a1172a0916e93d735d9bc85405556))
 
 
 
