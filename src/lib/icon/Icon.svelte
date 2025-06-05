@@ -93,7 +93,7 @@ ${style}
          },
          restProps,
          {
-             class: [style.icon, type === 'filled' && style.filled]
+             class: [style.icon, type === 'filled' && style.filled, 'hawk-icon']
          }
      )}
      aria-labelledby="title"
