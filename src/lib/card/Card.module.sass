@@ -1,98 +1,15 @@
 .card
   border: 1px solid var(--clr-primary-dark-10)
-  border-radius: 10px
-  padding: 1em
-  background: #fff
-  max-width: 400px
-
+  border-radius: 6px
+  padding: 20px
+  background: var(--clr-primary-white)
   +fontBody
 
   &:hover
     border: 1px solid var(--clr-primary-dark-10)
     background: var(--clr-primary-white)
 
-  &_image_container 
-    position: relative
 
-  &_image
-    width: 100%
-    border-radius: 5px
-    height: 200px 
-    object-fit: cover
-    position: relative
-
-  &_title
-    margin: .5em 0 0 0
-
-  &_address
-    color: #666
-    font-size: .9em
-    display: flex
-    align-items: center
-
-    .icon
-      margin-right: .3em
-      
-
-  &_content p
-    margin-top: 10px
-    margin-bottom: 10px
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  
-
-  &_footer
-    display: flex
-    justify-content: space-between
-    align-items: center
-    flex-wrap: wrap
-    gap: .5em
-
-
-    .authors
-      margin: 0
-      padding: 0
-
-      display: flex
-      width: 250px
-      font-size: .7em
-      color: #666
-      p
-        line-height: 1
-        margin-left: 5px
-
-    .card_actions
-      display: flex
-      align-items: center
-      button
-        background: none
-        border: none
-        cursor: pointer
-        display: flex
-        align-items: center
-        span
-          font-size: .6rem
-          margin: 5px
-
-
-
-
-  .image_overlay_btn
-    border-radius: 15px
-    display: flex
-    align-items: center
-    border: none
-    padding: .3em
-    cursor: pointer
-    position: absolute
-    top: 1em
-    right: 1em
-    background: white
-
-    .icon
-      margin-right: .2em
-      
+  &:focus
+    outline: 2px solid var(--clr-signal-focused)
+    outline-offset: -1px

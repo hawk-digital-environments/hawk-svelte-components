@@ -24,3 +24,4 @@ export {default as Typo} from '$lib/typo/Typo.svelte';
 export {default as Headline} from '$lib/headline/Headline.svelte';
 export {default as InfoItem} from '$lib/info-item/InfoItem.svelte';
 export {default as Card} from '$lib/card/Card.svelte';
+export {default as CardWithImage} from '$lib/card/CardWithImage.svelte';
