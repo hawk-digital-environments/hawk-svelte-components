@@ -1,3 +1,7 @@
+<svelte:options customElement={{
+    shadow: 'none',
+    extend: makeCustomComponent
+}}/>
 <script lang="ts">
     import {type Snippet} from 'svelte';
     import type {MouseEventHandler} from 'svelte/elements';
@@ -5,6 +9,7 @@
     import type {IconName} from '$lib/icon/iconDefinition.js';
     import Icon from '$lib/icon/Icon.svelte';
     import Link from '$lib/util/link/Link.svelte';
+    import {makeCustomComponent} from '$lib/util/makeCustomComponent.js';
 
     interface Props {
         /**

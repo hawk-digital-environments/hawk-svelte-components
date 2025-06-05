@@ -13,7 +13,7 @@ export {default as Select} from '$lib/select/Select.svelte';
 export {default as Switch} from '$lib/switch/Switch.svelte';
 export {default as Textarea} from '$lib/textarea/Textarea.svelte';
 export {default as Link} from '$lib/util/link/Link.svelte';
-export {FocusList} from '$lib/util/focusList/FocusList.svelte';
+export {FocusList} from '$lib/util/focusList/FocusList.js';
 export {default as SnippetOrString} from '$lib/util/snippetOrString/SnippetOrString.svelte';
 export {default as Avatar} from '$lib/avatar/Avatar.svelte';
 export {default as AvatarList} from '$lib/avatar/AvatarList.svelte';

@@ -4,10 +4,14 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "build": "vite build && npm run prepack",
+    "build": "vite build && npm run build:svelte-components && npm run build:themes && npm run build:custom-elements && publint",
+    "build:custom-elements": "VITE_BUILD_TYPE=customElements vite build --config vite.config.custom-elements.ts",
+    "build:svelte-components": "svelte-kit sync && svelte-package",
+    "build:themes": "npm run build:theme:handson && npm run build:theme:hawk",
+    "build:theme:handson": "VITE_THEME=handson vite build --config vite.config.themes.ts && VITE_THEME_RESET=handson vite build --config vite.config.themes.ts",
+    "build:theme:hawk": "VITE_THEME=hawk vite build --config vite.config.themes.ts && VITE_THEME_RESET=hawk vite build --config vite.config.themes.ts",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && publint",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "storybook dev -p $DOCKER_PROJECT_PORT --no-open",
@@ -33,16 +37,26 @@
       "svelte": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./custom-elements.js": {
+      "types": "./dist/_custom-elements/index.d.ts",
+      "require": "./dist/_custom-elements/svelte-components.umd.js",
+      "default": "./dist/_custom-elements/svelte-components.cjs"
+    },
     "./theme-hawk.js": "./dist/_style/theme/hawk/theme-hawk.js",
+    "./theme-hawk.css": "./dist/_themes/theme-hawk.css",
     "./theme-hawk-reset.js": "./dist/_style/theme/hawk/theme-hawk-reset.js",
+    "./theme-hawk-reset.css": "./dist/_themes/theme-hawk-reset.css",
     "./theme-handson.js": "./dist/_style/theme/handson/theme-handson.js",
-    "./theme-handson-reset.js": "./dist/_style/theme/handson/theme-handson-reset.js"
+    "./theme-handson.css": "./dist/_themes/theme-handson.css",
+    "./theme-handson-reset.js": "./dist/_style/theme/handson/theme-handson-reset.js",
+    "./theme-handson-reset.css": "./dist/_themes/theme-handson-reset.css"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",
+    "@microsoft/api-extractor": "^7.52.8",
     "@storybook/addon-essentials": "^8.6.7",
     "@storybook/addon-svelte-csf": "^5.0.0-next.0",
     "@storybook/addon-themes": "^8.6.12",
@@ -56,7 +70,7 @@
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/package": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "@sveltejs/vite-plugin-svelte": "^5.1.0",
     "@types/node": "^22.13.12",
     "@types/temp": "^0.9.4",
     "@vitest/browser": "^3.0.9",
@@ -73,6 +87,7 @@
     "svgo": "^3.3.2",
     "typescript": "^5.0.0",
     "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.0.9"
   },
   "keywords": [

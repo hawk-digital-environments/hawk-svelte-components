@@ -3,7 +3,7 @@
     import type {HTMLAttributes} from 'svelte/elements';
     import {fly} from 'svelte/transition';
     import Chip from '$lib/chip/Chip.svelte';
-    import {FocusList} from '$lib/util/focusList/FocusList.svelte';
+    import {FocusList} from '$lib/util/focusList/FocusList.js';
     import {mergeProps} from '$lib/util/mergeProps.js';
     import style from './ChipList.module.sass';
 

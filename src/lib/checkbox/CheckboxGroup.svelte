@@ -7,7 +7,7 @@
         type FormRadioCheckOrientation
     } from '$lib/util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
     import type {FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
-    import {FocusList} from '$lib/util/focusList/FocusList.svelte';
+    import {FocusList} from '$lib/util/focusList/FocusList.js';
     import {mergeProps} from '$lib/util/mergeProps.js';
 
     interface Props extends HTMLFieldsetAttributes {

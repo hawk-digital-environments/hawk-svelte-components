@@ -1,3 +1,7 @@
+<svelte:options customElement={{
+    shadow: 'none',
+    extend: makeCustomComponent
+}}/>
 <script lang="ts">
     import type {HTMLAttributes, HTMLInputAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
@@ -5,6 +9,7 @@
     import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
     import {mergeProps} from '$lib/util/mergeProps.js';
+    import {makeCustomComponent} from '$lib/util/makeCustomComponent.js';
 
     interface Props extends HTMLInputAttributes {
         /**
