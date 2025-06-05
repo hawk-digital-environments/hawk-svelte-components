@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.4...v0.7.0) (2025-06-05)
+
+
+### Features
+
+* add support for custom elements ([57cdc7a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/57cdc7a139a1851abe5754824e3df2a59a9e90ec))
+
+
+
 ## [0.6.4](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.3...v0.6.4) (2025-05-21)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fix paths so they can be loaded by installing packages ([2207ee7](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2207ee73b6e4faaf6ffb3fe631695579225f4357))
-
-
-
-# [0.6.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.5.0...v0.6.0) (2025-04-24)
-
-
-### Features
-
-* introduce "hawk" theme ([38a35ae](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/38a35aea2fc2bda8eca3c95fcca772334d0c3610))
 
 
 
