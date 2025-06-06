@@ -1,3 +1,13 @@
+# [0.9.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.8.0...v0.9.0) (2025-06-06)
+
+
+### Features
+
+* **Button:** allow button to submit forms ([2589b8e](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2589b8e02c44ccc336978055971d0256c925f6b2))
+* **Checkbox:** enable checkbox as web component ([60603cd](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/60603cd9fb6e6d118823997b5e63b689cddba0b7))
+
+
+
 # [0.8.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.2...v0.8.0) (2025-06-06)
 
 
@@ -31,15 +41,6 @@
 ### Features
 
 * add support for custom elements ([57cdc7a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/57cdc7a139a1851abe5754824e3df2a59a9e90ec))
-
-
-
-## [0.6.4](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.3...v0.6.4) (2025-05-21)
-
-
-### Bug Fixes
-
-* minor adjustments and bugfixes + additional stories for edge cases ([#11](https://github.com/hawk-digital-environments/hawk-svelte-components/issues/11)) ([2cd1a59](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2cd1a59878fb23831b208d1c176f63e5a1e1ca50))
 
 
 
