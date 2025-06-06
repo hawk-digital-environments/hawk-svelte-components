@@ -1,3 +1,13 @@
+## [0.9.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.1...v0.9.2) (2025-06-06)
+
+
+### Bug Fixes
+
+* **Input:** don't use password toggle as submit button ([5ba5e4d](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/5ba5e4d2f5fd920335db954c226bf6c26aacf939))
+* remove debug output ([a3d1521](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/a3d15217b40b86b03ad7c7ef724f29a11564e93a))
+
+
+
 ## [0.9.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.0...v0.9.1) (2025-06-06)
 
 
@@ -32,15 +42,6 @@
 ### Bug Fixes
 
 * fix issues after removing custom-component boilerplate from svelte only components ([24414bf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/24414bf7070662c524de995371617e92258962f2))
-
-
-
-## [0.7.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.0...v0.7.1) (2025-06-05)
-
-
-### Bug Fixes
-
-* fix broken package.json exports ([1fead67](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/1fead671c7cb602862a627ebeec3e4e60f972300))
 
 
 
