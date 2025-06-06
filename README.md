@@ -103,6 +103,7 @@ Only the components that are listed below are available as custom elements.
 - `hawk-headline`
 - `hawk-typo`
 - `hawk-formwrap`
+- `hawk-checkbox`
 
 ### DEV-TIP: Adding custom elements:
 

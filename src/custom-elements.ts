@@ -8,5 +8,6 @@ autoloadCustomElements({
     'hawk-button': () => import('./lib/button/Button.svelte'),
     'hawk-typo': () => import('./lib/typo/Typo.svelte'),
     'hawk-headline': () => import('./lib/headline/Headline.svelte'),
-    'hawk-formwrap': () => import('./lib/formwrap/Formwrap.svelte')
+    'hawk-formwrap': () => import('./lib/formwrap/Formwrap.svelte'),
+    'hawk-checkbox': () => import('./lib/checkbox/Checkbox.svelte')
 });
