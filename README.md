@@ -104,6 +104,7 @@ Only the components that are listed below are available as custom elements.
 - `hawk-typo`
 - `hawk-formwrap`
 - `hawk-checkbox`
+- `hawk-select`
 
 ### DEV-TIP: Adding custom elements:
 

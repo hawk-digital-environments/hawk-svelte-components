@@ -29,6 +29,9 @@
         }
     });
 </script>
+<script>
+    import {fn} from '@storybook/test';
+</script>
 
 <Story name="Generic" args={{}}/>
 <Story name="Selected" args={{value: 'banana'}}/>
@@ -41,6 +44,7 @@
 <Story name="Required" args={{required: true}}/>
 <Story name="Disabled" args={{disabled: true}}/>
 <Story name="Block" args={{block: true}}/>
+<Story name="Change Handler" args={{onchange: fn()}}/>
 <Story name="Extreme Labels" args={{
     icon: 'externalLink',
     required: true,

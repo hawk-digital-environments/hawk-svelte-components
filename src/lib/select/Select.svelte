@@ -1,5 +1,32 @@
-<script lang="ts" module>
+<svelte:options customElement={{
+    shadow: 'none',
+    extend: (baseClass) => class extends makeCustomComponent(baseClass) {
+        options = [];
+        value = undefined;
+        constructor() {
+            super();
+            // @ts-ignore
+            const children = this._getStorage('children').children;
+            this.options = [];
+            for (const child of [...children]) {
+                if (child instanceof HTMLOptionElement) {
+                    // @ts-ignore
+                    this.options.push({
+                        value: child.getAttribute('value') || '',
+                        label: child.textContent || ''
+                    });
 
+                    if(child.selected){
+                        // @ts-ignore
+                        this.value = child.getAttribute('value') || '';
+                    }
+                }
+                child.remove();
+            }
+        }
+    }
+}}/>
+<script lang="ts" module>
     import type {IconName} from '$lib/icon/iconDefinition.js';
 
     export interface SelectOption {
@@ -9,7 +36,6 @@
         iconLeft?: IconName;
         iconRight?: IconName;
     }
-
 </script>
 <script lang="ts">
     import {Select} from 'melt/builders';
@@ -21,6 +47,7 @@
     import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
     import {Icon} from '$lib/index.js';
+    import {makeCustomComponent} from '$lib/util/makeCustomComponent.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -95,12 +122,23 @@
         icon,
         buttonProps,
         placeholder,
+        onchange,
         ...restProps
     }: Props = $props();
 
     const select = new Select<string>({
         value: value,
         onValueChange(newValue) {
+            if (value !== newValue) {
+                const event = new CustomEvent('change', {
+                    bubbles: true,
+                    detail: {
+                        value: newValue
+                    }
+                });
+                onchange?.(event as any);
+                container?.getContainerElement()?.dispatchEvent(event);
+            }
             value = newValue;
         },
         onHighlightChange(newValue) {

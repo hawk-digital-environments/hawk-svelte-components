@@ -22,6 +22,17 @@
 
     <hawk-checkbox label="Are you sure?" name="checkbox" checked></hawk-checkbox>
 
+    <hawk-select name="select" label="Select an option" id="select">
+        <option value="1">Option 1</option>
+        <option value="2" selected>Option 2</option>
+        <option value="3">Option 3</option>
+    </hawk-select>
+    <script>
+        document.getElementById('select').onchange = (e) => {
+            console.log('Selected value:', e.detail.value);
+        };
+    </script>
+
     <hawk-button onclick="alert('Submitting :D')">Submit</hawk-button>
 </hawk-formwrap>
 

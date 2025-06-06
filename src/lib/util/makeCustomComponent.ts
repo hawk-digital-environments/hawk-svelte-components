@@ -87,7 +87,7 @@ export function makeCustomComponent(baseClass: new () => HTMLElement): new () =>
             });
         }
 
-        private _getStorage(property: string): HTMLDivElement {
+        protected _getStorage(property: string): HTMLDivElement {
             if (!this._snippetStorage[property]) {
                 this._snippetStorage[property] = document.createElement('div');
                 if (property !== 'children') {
