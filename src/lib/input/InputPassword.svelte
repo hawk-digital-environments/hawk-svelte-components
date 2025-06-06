@@ -27,7 +27,7 @@
 </script>
 
 {#snippet afterInput()}
-    <button class={style.toggleButton} onclick={togglePasswordVisibility}>
+    <button type="button" class={style.toggleButton} onclick={togglePasswordVisibility}>
         <Icon icon={showPassword ? 'eyeOff' : 'eye'} size="small"/>
     </button>
 {/snippet}
