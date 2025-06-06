@@ -4,6 +4,7 @@ import {registerSnippetComponent} from './custom-elements/registerSnippetCompone
 registerSnippetComponent();
 autoloadCustomElements({
     'hawk-input': () => import('./lib/input/Input.svelte'),
+    'hawk-input-password': () => import('./lib/input/InputPassword.svelte'),
     'hawk-button': () => import('./lib/button/Button.svelte'),
     'hawk-typo': () => import('./lib/typo/Typo.svelte'),
     'hawk-headline': () => import('./lib/headline/Headline.svelte'),

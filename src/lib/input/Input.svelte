@@ -3,15 +3,18 @@
     extend: makeCustomComponent
 }}/>
 <script lang="ts">
-    import type {HTMLAttributes, HTMLInputAttributes} from 'svelte/elements';
+    import type {HTMLInputAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
     import type {IconName} from '$lib/icon/iconDefinition.js';
+    import type {
+        Props as FormLabelFloatContainerProps
+    } from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
     import FormLabelFloatContainer from '$lib/util/formLabelFloatContainer/FormLabelFloatContainer.svelte';
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
     import {mergeProps} from '$lib/util/mergeProps.js';
     import {makeCustomComponent} from '$lib/util/makeCustomComponent.js';
 
-    interface Props extends HTMLInputAttributes {
+    export interface Props {
         /**
          * The visual label above the input field. If there is neither a cursor in the field, nor a placeholder,
          * the label will float above the input
@@ -68,7 +71,7 @@
         /**
          * Additional props to apply to the wrapper div around the input and description/error.
          */
-        containerProps?: HTMLAttributes<HTMLDivElement>;
+        containerProps?: FormLabelFloatContainerProps;
     }
 
     let {
@@ -85,7 +88,7 @@
         block,
         containerProps,
         ...restProps
-    }: Props = $props();
+    }: Props & HTMLInputAttributes = $props();
 
     let focused = $state(false);
     let float = $derived.by(() => focused === true || !!value || !!placeholder);
@@ -124,6 +127,7 @@
                placeholder={placeholder}
                disabled={disabled}
                required={required}
+               aria-invalid="{error ? 'true' : 'false'}"
         >
     {/snippet}
 </FormLabelFloatContainer>

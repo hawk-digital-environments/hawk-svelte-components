@@ -12,7 +12,7 @@
      * Renders a highly specialized form label with a floating layout.
      * This is used for inputs, selects, and textareas.
      */
-    interface Props extends HTMLAttributes<HTMLDivElement> {
+    export interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
          * The label to render for the input. The snippet will receive a list of CSS classes
          * to apply to the <label> element.
@@ -116,6 +116,16 @@
          * Additional props to apply to the layout wrapper div
          */
         layoutWrapProps?: HTMLAttributes<HTMLDivElement> & Record<string, any>;
+
+        /**
+         * An optional snippet to render in after the input.
+         */
+        afterInput?: Snippet;
+
+        /**
+         * An optional snippet to render in before the input.
+         */
+        beforeInput?: Snippet;
     }
 
     const {
@@ -136,6 +146,8 @@
         disabled,
         visualFocus,
         layoutWrapProps,
+        afterInput,
+        beforeInput,
         ...restProps
     }: Props = $props();
 
@@ -220,7 +232,11 @@
         <div bind:this={inputLabelWrapEl} class={style.inputLabelWrap}
              onclickcapture={(e: MouseEvent) => e.preventDefault()}>
             {@render label?.(style.label)}
-            {@render input?.(style.input)}
+            <div class={style.inputWrap}>
+                {@render beforeInput?.()}
+                {@render input?.(style.input)}
+                {@render afterInput?.()}
+            </div>
         </div>
         {#if !!iconRight}
             <Icon icon={iconRight} {...iconRightProps} class={[iconRightClass, style.iconRight]}/>

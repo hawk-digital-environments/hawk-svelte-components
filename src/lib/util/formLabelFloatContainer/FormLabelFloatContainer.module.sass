@@ -91,7 +91,8 @@ $minWidth: 200px
     &.hasIconLeft.hasIconRight .label
       max-width: calc(100% + 50px)
 
-    .label + .input
+
+    .label + .inputWrap
       margin-top: 0
 
   &.disabled
@@ -114,19 +115,24 @@ $minWidth: 200px
     width: 100%
     min-height: var(--font-line-height-m)
 
+  .inputWrap
+    display: flex
+    gap: 6px
+    transition-timing-function: ease-in
+    transition-duration: 0.2s
+    transition-property: margin
+
   .input
     +fontBody
     display: block
     padding: 0
     border: 0
     outline: 0
-    transition-timing-function: ease-in
-    transition-duration: 0.2s
-    transition-property: margin
     width: 100%
     background: transparent
 
-  .label + .input
+
+  .label + .inputWrap
     margin-top: calc(-1 * var(--font-line-height-m))
 
   .label

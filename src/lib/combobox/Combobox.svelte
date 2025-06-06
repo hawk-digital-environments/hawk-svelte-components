@@ -253,6 +253,7 @@
     {/snippet}
 
     {#snippet input(floatingClass)}
+        <div>
         <ChipList chips={chips} {disabled}/>
         <input
                 type="text"
@@ -279,6 +280,7 @@
                         }
                     }
                 )}>
+        </div>
     {/snippet}
 
     {#snippet dropdown(dropdownStyle)}

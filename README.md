@@ -99,6 +99,7 @@ Only the components that are listed below are available as custom elements.
 
 - `hawk-button`
 - `hawk-input`
+- `hawk-input-password`
 - `hawk-headline`
 - `hawk-typo`
 - `hawk-formwrap`

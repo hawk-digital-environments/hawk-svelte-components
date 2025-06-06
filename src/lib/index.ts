@@ -8,6 +8,7 @@ export {default as Formwrap} from '$lib/formwrap/Formwrap.svelte';
 export {default as Icon} from '$lib/icon/Icon.svelte';
 export * from '$lib/icon/iconDefinition.js';
 export {default as Input} from '$lib/input/Input.svelte';
+export {default as InputPassword} from '$lib/input/InputPassword.svelte';
 export {default as RadioGroup} from '$lib/radio/RadioGroup.svelte';
 export {default as Select} from '$lib/select/Select.svelte';
 export {default as Switch} from '$lib/switch/Switch.svelte';
