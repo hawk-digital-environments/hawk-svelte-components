@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.2...v0.8.0) (2025-06-06)
+
+
+### Features
+
+* **Input:** add dedicated password input field ([8c7961c](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/8c7961cbceed8fd9cd80baaf4087dfc5a0249e2b))
+
+
+
 ## [0.7.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.1...v0.7.2) (2025-06-05)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * minor adjustments and bugfixes + additional stories for edge cases ([#11](https://github.com/hawk-digital-environments/hawk-svelte-components/issues/11)) ([2cd1a59](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2cd1a59878fb23831b208d1c176f63e5a1e1ca50))
-
-
-
-## [0.6.3](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.2...v0.6.3) (2025-05-15)
-
-
-### Bug Fixes
-
-* ensure styles can be loaded easier ([70a66cf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/70a66cfd38d87a23ad8c18a62d99b65485770c4c))
 
 
 
