@@ -41,7 +41,6 @@ export function makeCustomComponent(baseClass: new () => HTMLElement): new () =>
             for (const snippet of childStorage.querySelectorAll('& > hawk-snippet')) {
                 const name = snippet.getAttribute('property') || '';
                 if (name) {
-                    console.log('Storing snippet under property:', name, [...snippet.childNodes], 'of', this);
                     this._getStorage(name).append(...snippet.childNodes);
                 } else {
                     console.warn('Snippet without property attribute found:', snippet);
@@ -49,7 +48,6 @@ export function makeCustomComponent(baseClass: new () => HTMLElement): new () =>
                 snippet.remove();
             }
 
-            console.log(this._snippetStorage);
         }
 
         get children() {
@@ -107,7 +105,6 @@ function propertySnippetFactory(storage: HTMLDivElement): Snippet {
             render: () => `<div class="hawk-custom-element"></div>`,
             setup: (target) => {
                 target.append(...storage.childNodes);
-                console.log('CREATED WRAPPER', target);
                 return () => {
                     storage.append(...target.childNodes);
                 };
