@@ -93,3 +93,10 @@
         <Button icon="eye" type="filled">Click me!</Button>
     </p>
 </Story>
+
+<Story name="Form Submit">
+    <form on:submit|preventDefault={() => alert('Form submitted!')}>
+        <Button type="outlined" onclick={fn()}>Not submitting</Button>
+        <Button type="filled" submit>Submit</Button>
+    </form>
+</Story>

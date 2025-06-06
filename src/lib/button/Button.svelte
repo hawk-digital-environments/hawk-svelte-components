@@ -59,6 +59,14 @@
          * If the button is a link the e.preventDefault() method can be used to prevent the default behavior.
          */
         onclick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+
+        /**
+         * If set to true, the button will be rendered as a submit button.
+         * This will only have an effect if the button is used inside a form (which will by default not trigger a submit event).
+         * This is useful for buttons that are used to submit a form, such as "Save" or "Submit".
+         * It does not work if the button is a link!
+         */
+        submit?: boolean;
     }
 
     const {
@@ -70,6 +78,7 @@
         iconPosition = 'left',
         children,
         disabled = false,
+        submit = false,
         onclick
     }: Props = $props();
 
@@ -107,7 +116,7 @@
         {@render content()}
     </Link>
 {:else}
-    <button type="button" class={buttonClasses} disabled={disabled} onclick={onclick}>
+    <button type={!submit ? 'button' : undefined} class={buttonClasses} disabled={disabled} onclick={onclick}>
         {@render content()}
     </button>
 {/if}
