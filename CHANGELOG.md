@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.0...v0.9.1) (2025-06-06)
+
+
+### Bug Fixes
+
+* **Formwrap:** fix form wrap as custom element ([b1216ce](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b1216cebdb6b3670cb8dfbd9c0e5565f52f2c4ad))
+
+
+
 # [0.9.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.8.0...v0.9.0) (2025-06-06)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * fix broken package.json exports ([1fead67](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/1fead671c7cb602862a627ebeec3e4e60f972300))
-
-
-
-# [0.7.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.6.4...v0.7.0) (2025-06-05)
-
-
-### Features
-
-* add support for custom elements ([57cdc7a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/57cdc7a139a1851abe5754824e3df2a59a9e90ec))
 
 
 
