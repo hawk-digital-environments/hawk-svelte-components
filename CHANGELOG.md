@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.2...v0.10.0) (2025-06-06)
+
+
+### Features
+
+* **Select:** enable select component as custom element ([8f10caa](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/8f10caa901635103cc2de1d70b490c0492fc9fbf))
+
+
+
 ## [0.9.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.1...v0.9.2) (2025-06-06)
 
 
@@ -33,15 +42,6 @@
 ### Features
 
 * **Input:** add dedicated password input field ([8c7961c](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/8c7961cbceed8fd9cd80baaf4087dfc5a0249e2b))
-
-
-
-## [0.7.2](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.7.1...v0.7.2) (2025-06-05)
-
-
-### Bug Fixes
-
-* fix issues after removing custom-component boilerplate from svelte only components ([24414bf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/24414bf7070662c524de995371617e92258962f2))
 
 
 
