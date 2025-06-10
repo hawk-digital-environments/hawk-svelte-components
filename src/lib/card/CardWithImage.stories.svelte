@@ -37,7 +37,7 @@
 
 {#snippet articleContent()}
     <Typo>
-        <article class="size-m" style="display: flex; flex-direction: column; gap: 10px">
+        <article class="size-m" style="display: flex; flex-direction: column; gap: 10px; max-width: 450px">
             <header>
                 <Headline size={'xl'} tag="h3">Title of content</Headline>
             </header>
@@ -71,7 +71,7 @@
 {/snippet}
 
 <Story name="Article" parameters={{controls: {disable: true}}}>
-    <CardWithImage src="https://picsum.photos/300/200" alt="A random image" style="max-width: 340px">
+    <CardWithImage src="https://picsum.photos/300/200" alt="A random image">
         {#snippet overlay()}
             <Chip label="private" icon="eyeOff"/>
         {/snippet}
@@ -84,7 +84,7 @@
                    alt="A random image"
                    link="https://example.com"
                    linkTarget="_blank"
-                   style="max-width: 340px">
+    >
         {#snippet overlay()}
             <Chip label="private" icon="eyeOff"/>
         {/snippet}

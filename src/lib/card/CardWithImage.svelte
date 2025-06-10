@@ -40,7 +40,12 @@
     }: Props = $props();
 </script>
 
-<Card {...restProps}>
+<Card {...mergeProps(
+    {
+        class: style.card,
+    },
+    restProps
+)}>
     <div class={style.image_container}>
         <img {...mergeProps({src, alt, class: style.image}, imageProps)}/>
         {#if overlay}
