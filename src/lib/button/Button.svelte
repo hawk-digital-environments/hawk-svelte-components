@@ -38,8 +38,7 @@
         iconPosition?: "left" | "right" | "above" | "iconOnly";
 
         /**
-         * An optional link to navigate to, if set the button will render as an anchor tag,
-         * also the "type" will be set to "link"
+         * An optional link to navigate to, if set the button will render as an anchor tag.
          */
         link?: string;
 

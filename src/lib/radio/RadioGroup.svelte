@@ -34,7 +34,7 @@
         labelPosition?: FormLabelPosition;
     }
 
-    const {
+    let {
         options = [],
         value = $bindable(''),
         orientation = 'vertical',
@@ -51,16 +51,14 @@
     {#each options as {label, value: optionValue, ...option}}
         <FormLabelWrap {labelPosition}>
             <FormLabel children={label} for={baseId + '-' + optionValue} disabled={option.disabled}/>
-            <input {...mergeProps(
+            <input bind:group={value} name={baseId} {...mergeProps(
                 option,
                 {
                     class: style.input,
-                    name: baseId,
                     type: 'radio',
                     value: optionValue,
-                    checked: optionValue === value,
                     id: baseId + '-' + optionValue,
-                    disabled: option.disabled,
+                    disabled: option.disabled
                 })}/>
         </FormLabelWrap>
     {/each}

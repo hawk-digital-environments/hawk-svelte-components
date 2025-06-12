@@ -23,13 +23,18 @@
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
-    &Outlined
+
+    &Outlined,
+    &Transparent
       border: 1px solid var(--clr-primary-dark-10)
       +fontColorDark
 
       .actionButton:focus .actionIcon
         background: var(--chip-focus-color, var(--clr-signal-focused))
         +fontColorLight
+
+    &Outlined
+      background: var(--chip-background, var(--clr-primary-white))
 
   &:has(:focus)
     outline-color: var(--chip-focus-color, var(--clr-signal-focused))

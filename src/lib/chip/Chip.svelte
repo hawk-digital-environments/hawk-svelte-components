@@ -16,7 +16,7 @@
         /**
          * Determines the visual type of the chip.
          */
-        type?: 'outlined' | 'filled';
+        type?: 'outlined' | 'filled' | 'transparent';
 
         /**
          * An optional name of an icon to display on the left of the icon

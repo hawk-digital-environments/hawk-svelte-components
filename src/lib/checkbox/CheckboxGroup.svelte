@@ -35,7 +35,7 @@
         labelPosition?: FormLabelPosition;
     }
 
-    const {
+    let {
         options = [],
         value = $bindable([]),
         orientation = 'vertical',
@@ -48,6 +48,7 @@
     const baseId = id ?? uniqueId;
 
     const focusList = new FocusList();
+
 </script>
 
 <FormRadioCheckGroup id={id} {orientation} {...mergeProps(
@@ -55,13 +56,21 @@
     restProps
 )}>
     {#each options as option}
-        <Checkbox {...mergeProps(
-            {
-                name: baseId + '[]',
-                labelPosition,
-                checked: value.includes(option.value ?? ''),
-            },
-            option
-        )}/>
+        <Checkbox
+                bind:checked={() => value.includes(option.value ?? ''),
+                (checked) => {
+                    if (checked) {
+                        value = [...value, option.value ?? ''];
+                    } else {
+                        value = value.filter(v => v !== (option.value ?? ''));
+                    }
+                }}
+                {...mergeProps(
+                    {
+                        name: baseId + '[]',
+                        labelPosition,
+                    },
+                    option
+                )}/>
     {/each}
 </FormRadioCheckGroup>

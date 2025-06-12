@@ -56,9 +56,9 @@
         containerProps?: HTMLAttributes<HTMLDivElement>;
     }
 
-    const {
+    let {
         label,
-        value = $bindable(),
+        value,
         checked = $bindable(false),
         required,
         disabled,
@@ -81,19 +81,20 @@
 )}>
     <FormLabel children={label} for={baseId + '-value'} disabled={disabled} {required}/>
     <div class={style.wrap}>
-        <input {...mergeProps(
-            {
-                name: baseId
-            },
-            restProps,
-            {
-                class: [style.input],
-                type: 'checkbox',
-                value: value ?? baseId,
-                checked,
-                id: baseId + '-value',
-                disabled: disabled,
-            })}/>
+        <input
+                type="checkbox"
+                bind:checked={checked}
+                {...mergeProps(
+                    {
+                        name: baseId
+                    },
+                    restProps,
+                    {
+                        class: [style.input],
+                        value: value ?? baseId,
+                        id: baseId + '-value',
+                        disabled: disabled,
+                    })}/>
         <Icon icon="check" class={style.icon} size="small"/>
     </div>
 </FormLabelWrap>

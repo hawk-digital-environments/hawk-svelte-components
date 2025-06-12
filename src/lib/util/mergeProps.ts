@@ -64,12 +64,15 @@ export function mergeProps<TA = any, TB = any, TC = any, TD = any, TE = any, TF 
 }
 
 function mergeEvents(result: Record<any, any>, key: string, a: any, b: any): boolean {
-    if (!key.startsWith('on') || typeof a !== 'function' || typeof b !== 'function') {
+    if (!key.startsWith('on')
+        || (typeof a !== 'function' && typeof a !== 'undefined')
+        || (typeof b !== 'function' && typeof b !== 'undefined')
+    ) {
         return false;
     }
     result[key] = (e: any) => {
-        a(e);
-        b(e);
+        a?.(e);
+        b?.(e);
     };
     return true;
 }

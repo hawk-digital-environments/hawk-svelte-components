@@ -23,3 +23,7 @@ export {default as TabTriggers} from '$lib/tabs/TabTriggers.svelte';
 export {default as TabContent} from '$lib/tabs/TabContent.svelte';
 export {default as Typo} from '$lib/typo/Typo.svelte';
 export {default as Headline} from '$lib/headline/Headline.svelte';
+export {default as InfoItem} from '$lib/info-item/InfoItem.svelte';
+export {default as Card} from '$lib/card/Card.svelte';
+export {default as CardWithImage} from '$lib/card/CardWithImage.svelte';
+export {default as CardRadioGroup} from '$lib/radio-card/RadioCardGroup.svelte';
