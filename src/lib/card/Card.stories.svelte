@@ -13,9 +13,11 @@
   });
 </script>
 
-<Story name="Generic" args={{}}>
-  <Card>This is your cards content</Card>
-</Story>
+{#snippet content()}
+  This is your cards content
+{/snippet}
+<Story name="Generic" args={{children: content}}/>
+<Story name="Disabled" args={{disabled: true, link: 'https://hawk.de', linkTarget: '_blank', children: content}}/>
 
 {#snippet linkCardContent()}
   You can assign a link to a card, which will make it clickable and focusable like a button.

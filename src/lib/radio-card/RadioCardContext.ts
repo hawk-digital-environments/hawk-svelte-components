@@ -1,12 +1,9 @@
-import { Context } from "runed";
+import {Context} from 'runed';
 
-export const radioContext= new Context<{   
+interface RadioCardContext {
     getValue: () => string,
     setValue: (newValue: string) => void
-    }>("radio")
+    isDisabled: () => boolean
+}
 
-
-    
-
-
-
+export const radioCardContext = new Context<RadioCardContext>('radio');

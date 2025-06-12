@@ -1,24 +1,24 @@
-<script module>
-    import { defineMeta } from "@storybook/addon-svelte-csf";
-    import { CardRadioGroup } from "$lib";
+<script module lang="ts">
+    import {defineMeta} from '@storybook/addon-svelte-csf';
+    import {CardRadio, CardRadioGroup} from '$lib';
+    import {fn} from '@storybook/test';
 
-    import { mergeProps } from "$lib/util/mergeProps.js";
-    import CardRadio from "./RadioCard.svelte";
-    import { fn } from "@storybook/test";
-    const { Story } = defineMeta({
-        title: "Handson/CardRadioGroup",
+    const {Story} = defineMeta({
+        title: 'Handson/CardRadioGroup',
         component: CardRadioGroup,
-        tags: ["autodocs"],
+        tags: ['autodocs'],
         argTypes: {},
-        args: {onchange:fn()}
+        args: {onchange: fn()},
+        subcomponents: {
+            CardRadio: CardRadio as any
+        }
     });
 </script>
-{#snippet radiocard()}
 
-<CardRadio value="1">Value 1</CardRadio>
-<CardRadio value="2">Value 2</CardRadio>
-<CardRadio disabled value="3">Value 3</CardRadio>
+{#snippet children()}
+    <CardRadio value="1">Value 1</CardRadio>
+    <CardRadio value="2">Value 2</CardRadio>
+    <CardRadio disabled value="3">Value 3</CardRadio>
 {/snippet}
-<Story name="Generic" args={{children: radiocard, value:"2"}}/>
 
-
+<Story name="Generic" args={{children: children, value:"2"}}/>

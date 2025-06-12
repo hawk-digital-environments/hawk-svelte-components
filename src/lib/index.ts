@@ -27,3 +27,4 @@ export {default as InfoItem} from '$lib/info-item/InfoItem.svelte';
 export {default as Card} from '$lib/card/Card.svelte';
 export {default as CardWithImage} from '$lib/card/CardWithImage.svelte';
 export {default as CardRadioGroup} from '$lib/radio-card/RadioCardGroup.svelte';
+export {default as CardRadio} from '$lib/radio-card/RadioCard.svelte';

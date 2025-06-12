@@ -1,8 +1,9 @@
 <script lang="ts">
-    import type { HTMLAttributes } from "svelte/elements";
-    import style from "./RadioCardGroup.module.sass";
-    import { mergeProps } from "$lib/util/mergeProps.js";
-    import { radioContext } from "./RadioCardContext";
+    import type {HTMLAttributes} from 'svelte/elements';
+    import style from './RadioCardGroup.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import {radioCardContext} from './RadioCardContext';
+    import {FocusList} from '$lib/util/focusList/FocusList.js';
 
     interface NonConflictingProps extends HTMLAttributes<HTMLDivElement> {
         onchange?: any;
@@ -14,6 +15,15 @@
          * If the value is not set, the radio group will be uncontrolled.
          */
         value?: string;
+        /**
+         * If true, all radio cards in the group will be disabled.
+         */
+        disabled?: boolean;
+
+        /**
+         * Executed when the value of the radio group changes.
+         * @param newValue
+         */
         onchange?: (newValue: string) => void;
     }
 
@@ -21,20 +31,31 @@
         value = $bindable(""),
         children,
         onchange,
+        disabled = false,
         ...restProps
     }: Props = $props();
 
-    radioContext.set({
+    radioCardContext.set({
         getValue: () => value,
         setValue: (newValue: string) => {
-            if (value === newValue) return;
-            value = newValue;
+            if (value === newValue) {
+                return;
+            }
             onchange?.(newValue);
+            value = newValue;
         },
+        isDisabled: () => disabled
     });
+
+    const focus = new FocusList();
 </script>
 
-{value}
-<div {...mergeProps({ class: style.radio_group }, restProps)}>
+<div {...mergeProps(
+    {
+        class: [style.radio_group, disabled && style.disabled],
+    },
+    restProps,
+    focus.list
+)}>
     {@render children?.()}
 </div>

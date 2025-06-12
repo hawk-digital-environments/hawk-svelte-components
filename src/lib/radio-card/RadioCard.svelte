@@ -1,8 +1,10 @@
 <script lang="ts">
-    import type { HTMLAttributes } from "svelte/elements";
+    import type {HTMLAttributes} from 'svelte/elements';
     import style from './RadioCard.module.sass';
-    import Card from "$lib/card/Card.svelte";
-    import { radioContext } from "./RadioCardContext";
+    import Card from '$lib/card/Card.svelte';
+    import {radioCardContext} from './RadioCardContext';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import RawRadioInput from '$lib/radio/RawRadioInput.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -22,34 +24,34 @@
         name?: string;
     }
 
-    const { children, 
-        disabled, name, value, ...restProps }: Props = $props();
+    const {
+        children,
+        disabled: givenDisabled = false,
+        name,
+        value,
+        ...restProps
+    }: Props = $props();
 
-    // const realKey = $derived(key || value);
-    let ctx = radioContext.get();
+    let ctx = radioCardContext.get();
+    const disabled = $derived(givenDisabled || ctx.isDisabled());
 </script>
 
-<Card
-    onclick={disabled
-        ? undefined
-        : () => {
-              ctx.setValue(value);
-          }}
+<Card {...mergeProps(
+    {
+        onclick: () => ctx.setValue(value),
+        disabled
+    },
+    restProps
+)}
 >
-<div  class={style.radio_card} >
-    <div>  {@render children?.()}</div>
-
-
-    <input
-        class={style.radio_input}
-        type="radio"
-        {name}
-        {value}
-        {disabled}
-        checked={value === ctx.getValue()}
-        id={value}
-        tabindex="-1"
-        readonly
-    />
-</div>
+    <div class={style.radio_card}>
+        <div>  {@render children?.()}</div>
+        <RawRadioInput
+                {name}
+                {value}
+                {disabled}
+                checked={value === ctx.getValue()}
+                tabindex={-1}
+                readonly/>
+    </div>
 </Card>

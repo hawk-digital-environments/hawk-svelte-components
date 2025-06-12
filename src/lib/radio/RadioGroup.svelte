@@ -1,13 +1,13 @@
 <script lang="ts">
     import type {HTMLFieldsetAttributes, HTMLInputAttributes} from 'svelte/elements';
     import type {Snippet} from 'svelte';
-    import style from './RadioGroup.module.sass';
     import FormRadioCheckGroup, {
         type FormRadioCheckOrientation
     } from '$lib/util/formRadioCheckGroup/FormRadioCheckGroup.svelte';
     import FormLabelWrap, {type FormLabelPosition} from '$lib/util/formLabelWrap/FormLabelWrap.svelte';
     import {mergeProps} from '$lib/util/mergeProps.js';
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
+    import RawRadioInput from '$lib/radio/RawRadioInput.svelte';
 
     interface Props extends HTMLFieldsetAttributes {
         /**
@@ -51,15 +51,14 @@
     {#each options as {label, value: optionValue, ...option}}
         <FormLabelWrap {labelPosition}>
             <FormLabel children={label} for={baseId + '-' + optionValue} disabled={option.disabled}/>
-            <input bind:group={value} name={baseId} {...mergeProps(
-                option,
-                {
-                    class: style.input,
-                    type: 'radio',
-                    value: optionValue,
-                    id: baseId + '-' + optionValue,
-                    disabled: option.disabled
-                })}/>
+            <RawRadioInput bind:bindValue={value}
+                           {...mergeProps(option,
+                               {
+                                   value: optionValue,
+                                   name: baseId,
+                                   id: baseId + '-' + optionValue,
+                                   disabled: option.disabled
+                               })}/>
         </FormLabelWrap>
     {/each}
 </FormRadioCheckGroup>

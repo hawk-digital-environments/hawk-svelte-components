@@ -13,6 +13,11 @@
          * The target of the link, defaults to "_self". Omitted when the button is not a link
          */
         linkTarget?: string;
+
+        /**
+         * If true, the card will be disabled and not clickable.
+         */
+        disabled?: boolean;
     }
 
     let {
@@ -20,10 +25,11 @@
         link,
         linkTarget,
         onclick: givenOnClick,
+        disabled = false,
         ...restProps
     }: Props = $props();
 
-    const isClickable = $derived(typeof givenOnClick === 'function' || !!link);
+    const isClickable = $derived(!disabled && (typeof givenOnClick === 'function' || !!link));
     const triggerAction = $derived((e: MouseEvent | KeyboardEvent) => {
         if (isClickable) {
             givenOnClick?.(e as any);
@@ -41,10 +47,15 @@
 
 <div {...mergeProps(
     {
-        class: [style.card, isClickable ? style.link : null],
+        class: [
+            style.card,
+            isClickable && style.link,
+            disabled && style.disabled
+        ],
         onclick: triggerAction,
         onkeydown: onKeyDown,
         tabindex: isClickable ? '0' : undefined,
+        'aria-disabled': disabled ? 'true' : undefined
     },
     restProps
 )}>
