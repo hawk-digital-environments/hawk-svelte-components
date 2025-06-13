@@ -98,6 +98,7 @@
     "@fontsource/montserrat": "^5.2.5",
     "melt": "^0.29.3",
     "runed": "^0.25.0",
-    "tabbable": "^6.2.0"
+    "tabbable": "^6.2.0",
+    "vaul-svelte": "^0.3.2"
   }
 }
