@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import InputPassword from './InputPassword.svelte';
+    import {InputPassword} from '$lib';
 
     const {Story} = defineMeta({
         title: 'Handson/InputPassword',

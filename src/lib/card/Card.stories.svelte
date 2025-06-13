@@ -3,7 +3,6 @@
   import {Card} from '$lib';
   import {defineMeta} from '@storybook/addon-svelte-csf';
 
-
   const {Story} = defineMeta({
     title: 'Handson/Card',
     component: Card,
@@ -18,6 +17,16 @@
 {/snippet}
 <Story name="Generic" args={{children: content}}/>
 <Story name="Disabled" args={{disabled: true, link: 'https://hawk.de', linkTarget: '_blank', children: content}}/>
+<Story name="Info Action"
+       args={{
+         oninfoclick: fn(),
+         infoTitle: 'Get more information',
+         children: content,
+         // Also enable the link, to check if the info icon does not interfere with it
+         link: 'https://hawk.de',
+         linkTarget: '_blank'}}/>
+<Story name="Info Text" args={{infoText: '11:33 Uhr', children: content}}/>
+<Story name="Count" args={{count: 3, countTitle: 'Zahl der neuen Beiträge', children: content}}/>
 
 {#snippet linkCardContent()}
   You can assign a link to a card, which will make it clickable and focusable like a button.
