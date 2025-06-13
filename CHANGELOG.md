@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.11.0...v0.12.0) (2025-06-13)
+
+
+### Features
+
+* **Card:** add remaining card features ([6055c73](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/6055c73200976230e906703124367664b182b5f2))
+
+
+
 # [0.11.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.10.0...v0.11.0) (2025-06-12)
 
 
@@ -43,16 +52,6 @@
 ### Bug Fixes
 
 * **Formwrap:** fix form wrap as custom element ([b1216ce](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b1216cebdb6b3670cb8dfbd9c0e5565f52f2c4ad))
-
-
-
-# [0.9.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.8.0...v0.9.0) (2025-06-06)
-
-
-### Features
-
-* **Button:** allow button to submit forms ([2589b8e](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2589b8e02c44ccc336978055971d0256c925f6b2))
-* **Checkbox:** enable checkbox as web component ([60603cd](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/60603cd9fb6e6d118823997b5e63b689cddba0b7))
 
 
 
