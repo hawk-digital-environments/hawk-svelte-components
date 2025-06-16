@@ -42,13 +42,9 @@
       "require": "./dist/_custom-elements/svelte-components.umd.cjs",
       "default": "./dist/_custom-elements/svelte-components.js"
     },
-    "./theme-hawk.js": "./dist/_style/theme/hawk/theme-hawk.js",
     "./theme-hawk.css": "./dist/_themes/theme-hawk.css",
-    "./theme-hawk-reset.js": "./dist/_style/theme/hawk/theme-hawk-reset.js",
     "./theme-hawk-reset.css": "./dist/_themes/theme-hawk-reset.css",
-    "./theme-handson.js": "./dist/_style/theme/handson/theme-handson.js",
     "./theme-handson.css": "./dist/_themes/theme-handson.css",
-    "./theme-handson-reset.js": "./dist/_style/theme/handson/theme-handson-reset.js",
     "./theme-handson-reset.css": "./dist/_themes/theme-handson-reset.css"
   },
   "peerDependencies": {
