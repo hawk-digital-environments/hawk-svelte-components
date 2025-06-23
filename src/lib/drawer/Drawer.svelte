@@ -20,7 +20,7 @@
     }: Props = $props();
 </script>
 
-<div>
+<div class={style.drawer}>
     <Drawer.Root>
         <Drawer.Trigger>Open</Drawer.Trigger>
 

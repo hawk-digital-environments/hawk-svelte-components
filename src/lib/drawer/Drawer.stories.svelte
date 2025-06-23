@@ -13,6 +13,8 @@
   });
 </script>
 
+
+
 {#snippet content()}
 <p>
 But I must explain to you how all this mistaken idea of denouncing
@@ -55,5 +57,6 @@ pleasures to secure other greater pleasures, or else he endures
 pains to avoid worse pains.
 </p>
 {/snippet}
+
 <Story name="Generic" args={{heading:'Title of content', children: content}}/>
 
