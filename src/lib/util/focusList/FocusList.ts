@@ -35,8 +35,10 @@ export class FocusList {
                         setTimeout(() => target.inert = false, 0);
                     }
                 } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'Home') {
+                    e.preventDefault();
                     findNextFocusableElementIn(e.currentTarget as HTMLElement, 'previous')?.focus();
                 } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'End') {
+                    e.preventDefault();
                     findNextFocusableElementIn(e.currentTarget as HTMLElement, 'next')?.focus();
                 }
             }
