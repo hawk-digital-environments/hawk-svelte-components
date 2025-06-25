@@ -161,8 +161,25 @@ function generateIconInfo(realName: string, path: string): IconInfo | null {
         return null;
     }
 
-    const width = parseInt(svgTag.getAttribute('width') ?? '0');
-    const height = parseInt(svgTag.getAttribute('height') ?? '0');
+    let width = parseInt(svgTag.getAttribute('width') ?? '0');
+    let height = parseInt(svgTag.getAttribute('height') ?? '0');
+
+    if(isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+        const viewBox = svgTag.getAttribute('viewBox');
+        if (viewBox) {
+            const viewBoxParts = viewBox.split(' ').map(Number);
+            if (viewBoxParts.length >= 4) {
+                width = viewBoxParts[2];
+                height = viewBoxParts[3];
+            } else {
+                console.error(`Invalid viewBox in ${path}. Skipping...`);
+                return null;
+            }
+        } else {
+            console.error(`No width, height or viewBox found in ${path}. Skipping...`);
+            return null;
+        }
+    }
 
     return {w: width, h: height, c: svgTag.innerHTML, t: makeHumanReadable(realName)};
 }
