@@ -1,3 +1,21 @@
+# [0.13.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.12.0...v0.13.0) (2025-06-25)
+
+
+### Bug Fixes
+
+* ensure correctly styled icons ([2c14271](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/2c14271e2f53866ef4bffe283a2d4b8e42d52023))
+* **RadioCard:** ensure correct checked state when clicking a radio card with initial value ([f1b9cc8](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/f1b9cc8b7399ce50cfede73d0170c34d814000c4))
+* remove theme.js files, as they were treeshaken away in production builds ([22a7eaf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/22a7eaf2bec561835e5f8fd86b01f3a17785b3cf))
+* when navigating focus lists do not trigger the default of the event ([c5c4c78](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/c5c4c7865b64423627ba2c064f847d814e179aa4))
+
+
+### Features
+
+* add new illustration component ([3bc836c](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/3bc836c39a1e737d655750bac73ccb8aa5341938))
+* **Icon:** add new icons ([3347246](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/334724651fe8bcef7d1211c6cd01607a1caf1a10))
+
+
+
 # [0.12.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.11.0...v0.12.0) (2025-06-13)
 
 
@@ -43,15 +61,6 @@
 
 * **Input:** don't use password toggle as submit button ([5ba5e4d](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/5ba5e4d2f5fd920335db954c226bf6c26aacf939))
 * remove debug output ([a3d1521](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/a3d15217b40b86b03ad7c7ef724f29a11564e93a))
-
-
-
-## [0.9.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.0...v0.9.1) (2025-06-06)
-
-
-### Bug Fixes
-
-* **Formwrap:** fix form wrap as custom element ([b1216ce](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b1216cebdb6b3670cb8dfbd9c0e5565f52f2c4ad))
 
 
 
