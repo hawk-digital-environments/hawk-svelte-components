@@ -1,8 +1,8 @@
 import * as path from 'node:path';
 import * as fs from 'node:fs';
-import {optimize} from 'svgo';
 import type {ViteDevServer} from 'vite';
 import {parse as parseHtml} from 'node-html-parser';
+import {getGeneratedWarning, loadOptimizedSvg, makeHumanReadable} from './utils';
 
 interface VitePluginIconsOptions {
     /**
@@ -128,16 +128,6 @@ function makeIconName(filename: string): string {
         .replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 
-function makeHumanReadable(name: string): string {
-    return name
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/^./, (s) => s.toUpperCase());
-}
-
-function getGeneratedWarning(): string {
-    return `// THIS FILE IS GENERATED. DO NOT MODIFY IT! To refresh, restart the dev server.`;
-}
-
 function generateAllowedList(icons: IconSet[]): string {
     return `
 export const allowedIconNames = ['${icons.map(({name}) => name).join("', '")}'] as const;
@@ -159,17 +149,6 @@ export const icons = new Map<IconName, { filled: IconInfo, outline: IconInfo }>(
         `['${name}', ${JSON.stringify({filled, outline})}]`).join(',\n    ')}
 ]);
 `;
-}
-
-function loadOptimizedSvg(path: string): string {
-    const rawContent = fs.readFileSync(path, 'utf-8');
-    const result = optimize(rawContent, {
-        path: path, // recommended
-        multipass: true // all other config fields are available here
-    }).data;
-
-    // Ensure that all single quotes are escaped
-    return result.replace(/'/g, "\\'").replace(/\n/g, '');
 }
 
 function generateIconInfo(realName: string, path: string): IconInfo | null {

@@ -30,3 +30,5 @@ export {default as CardRadioGroup} from '$lib/radio-card/RadioCardGroup.svelte';
 export {default as CardRadio} from '$lib/radio-card/RadioCard.svelte';
 export {default as CountBadge} from '$lib/util/countBadge/CountBadge.svelte';
 export {default as InfoIcon} from '$lib/util/infoIcon/InfoIcon.svelte';
+export {default as Illustration} from '$lib/illustration/Illustration.svelte';
+export * from '$lib/illustration/illustrationDefinition.js';
