@@ -1,10 +1,8 @@
 <script lang="ts">
-    import type { HTMLAttributes } from "svelte/elements";
-    import style from "./Drawer.module.sass";
-    import { mergeProps } from "$lib/util/mergeProps.js";
-    import { Drawer } from "vaul-svelte";
-    import Headline from "$lib/headline/Headline.svelte";
-    import Icon from "$lib/icon/Icon.svelte";
+    import type {HTMLAttributes} from 'svelte/elements';
+    import style from './Drawer.module.sass';
+    import Headline from '$lib/headline/Headline.svelte';
+    import Icon from '$lib/icon/Icon.svelte';
 
     export interface Props extends HTMLAttributes<HTMLDivElement> {
         heading?: string;
@@ -37,8 +35,6 @@
                     {@render children?.()}
                 </div>
             </Drawer.Content>
-       
         </Drawer.Portal>
-
     </Drawer.Root>
 </div>
