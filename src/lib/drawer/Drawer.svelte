@@ -34,7 +34,7 @@
                 <Drawer.Close class={style.drawer_close}><Icon icon="close" size="large"></Icon></Drawer.Close
                 >
             </div>
-            <div class={style.drawer_body}>
+            <div class={style.drawer_body} data-vaul-no-drag>
                 {@render children?.()}
             </div>
         </Drawer.Content>
