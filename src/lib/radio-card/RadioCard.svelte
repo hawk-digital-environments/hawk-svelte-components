@@ -45,12 +45,12 @@
 )}
 >
     <div class={style.radio_card}>
-        <div>  {@render children?.()}</div>
+        <div>{@render children?.()}</div>
         <RawRadioInput
+                bindValue={ctx.getValue()}
                 {name}
                 {value}
                 {disabled}
-                checked={value === ctx.getValue()}
                 tabindex={-1}
                 readonly/>
     </div>
