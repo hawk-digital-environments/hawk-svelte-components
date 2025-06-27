@@ -8,8 +8,28 @@
     title: 'Handson/Drawer',
     component: Drawer,
     tags: ['autodocs'],
-    argTypes: {},
-    args: {}
+    argTypes: {
+      heading: {
+        control: 'text',
+  
+        defaultValue: 'Title of content'
+      },
+      state: {
+        control: 'select',
+        options: ['small', 'medium', 'large'],
+
+        defaultValue: 'large'
+      },
+      alwaysOpen: {
+        control: 'boolean',
+        defaultValue: true
+      }
+    },
+    args: { 
+      heading: 'Title of content',
+      state: 'small',
+      alwaysOpen: false
+    }
   });
 </script>
 
@@ -58,5 +78,5 @@ pains to avoid worse pains.
 </p>
 {/snippet}
 
-<Story name="Generic" args={{heading:'Title of content', children: content}}/>
+<Story name="Generic" args={{heading:'Title of content', children: content, state:"small"}}/>
 
