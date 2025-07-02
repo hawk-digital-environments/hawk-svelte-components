@@ -1,10 +1,11 @@
 <script lang="ts">
-    import type {HTMLAttributes} from 'svelte/elements';
-    import style from './RadioCard.module.sass';
-    import Card from '$lib/card/Card.svelte';
-    import {radioCardContext} from './RadioCardContext';
-    import {mergeProps} from '$lib/util/mergeProps.js';
-    import RawRadioInput from '$lib/radio/RawRadioInput.svelte';
+    import type { HTMLAttributes } from "svelte/elements";
+    import style from "./RadioCard.module.sass";
+    import Card from "$lib/card/Card.svelte";
+    import { radioCardContext } from "./RadioCardContext";
+    import { mergeProps } from "$lib/util/mergeProps.js";
+    import RawRadioInput from "$lib/radio/RawRadioInput.svelte";
+    import type { Snippet } from "svelte";
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -22,6 +23,12 @@
          * The name of the radio-card
          */
         name?: string;
+
+        /**
+         * An optional area for additional details.
+         * This can be a string or a function returning a string or Svelte component.
+         */
+        details?: Snippet | string;
     }
 
     const {
@@ -29,29 +36,49 @@
         disabled: givenDisabled = false,
         name,
         value,
+        details,
+
         ...restProps
     }: Props = $props();
 
     let ctx = radioCardContext.get();
     const disabled = $derived(givenDisabled || ctx.isDisabled());
+    const detailsHighlight = $derived(ctx.getValue() === value);
 </script>
 
-<Card {...mergeProps(
-    {
-        onclick: () => ctx.setValue(value),
-        disabled
-    },
-    restProps
-)}
+<Card
+    {...mergeProps(
+        {
+            onclick: () => ctx.setValue(value),
+            disabled,
+        },
+        restProps,
+    )}
 >
     <div class={style.radio_card}>
-        <div>  {@render children?.()}</div>
+        <div class={style.children}>{@render children?.()}</div>
         <RawRadioInput
-                {name}
-                {value}
-                {disabled}
-                checked={value === ctx.getValue()}
-                tabindex={-1}
-                readonly/>
+            {name}
+            {value}
+            {disabled}
+            checked={value === ctx.getValue()}
+            tabindex={-1}
+            readonly
+        />
     </div>
+    {#if details}
+        <hr
+            class={[
+                style.details_border,
+                detailsHighlight ? style.highlight : "",
+            ]}
+        />
+        <div class={style.details}>
+            {#if typeof details === "function"}
+                {@render details()}
+            {:else}
+                {details}
+            {/if}
+        </div>
+    {/if}
 </Card>

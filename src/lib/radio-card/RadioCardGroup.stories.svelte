@@ -16,7 +16,8 @@
 </script>
 
 {#snippet children()}
-    <CardRadio value="1">Value 1</CardRadio>
+
+    <CardRadio value="1" details="Details">Value 1</CardRadio>
     <CardRadio value="2">Value 2</CardRadio>
     <CardRadio disabled value="3">Value 3</CardRadio>
 {/snippet}
