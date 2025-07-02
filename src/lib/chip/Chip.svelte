@@ -16,7 +16,7 @@
         /**
          * Determines the visual type of the chip.
          */
-        type?: 'outlined' | 'filled' | 'transparent';
+        type?: 'outlined' | 'filled' | 'filled-light';
 
         /**
          * An optional name of an icon to display on the left of the icon
@@ -94,6 +94,7 @@
             style.chip,
             type === 'outlined' && style.typeOutlined,
             type === 'filled' && style.typeFilled,
+            type === 'filled-light' && style.typeFilledLight,
             !!disabled && style.disabled
         ]
     }

@@ -23,9 +23,18 @@
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
+    &FilledLight
+      background: var(--gradient-10, linear-gradient(90deg, var(--color-clr-gradient-start, rgba(47, 42, 191, 0.10)) 0%, var(--color-clr-gradient-end, rgba(47, 42, 191, 0.10)) 100%));
+      color: var(--clr-primary-dark) 
 
-    &Outlined,
-    &Transparent
+      &:hover
+        // ????
+     
+
+    
+
+    &Outlined
+  
       border: 1px solid var(--clr-primary-dark-10)
       +fontColorDark
 
