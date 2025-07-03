@@ -1,3 +1,9 @@
+$shadowHoverDark: #{var(--button-shadow-hover-dark, 0px 35px 4px 30px rgba(255, 255, 255, 0.25) inset)}
+$shadowHoverLight: #{var(--button-shadow-hover-light, 0px 4px 55px 0px rgba(0, 0, 0, 0.04) inset)}
+$shadowPressedDark: #{var(--button-shadow-pressed, 0px 35px 75px 0px rgba(0, 0, 0, 0.15) inset)}
+$shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 0, 0, 0.07) inset)}
+
+  
 .chip
   position: relative
   display: inline-flex
@@ -13,28 +19,12 @@
   +fontFamilyPrimary
   +fontSizeS
   +fontColorLight
-  transition: box-shadow 0.3s, outline-color 0.2s, outline-offset 0.2s
+  transition: box-shadow 0.3s, color 0.3s, outline-color 0.2s, outline-offset 0.2s 
 
   &.type
-    &Filled
-      background: var(--chip-gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))
-
-      .actionButton:focus .actionIcon
-        background: var(--clr-primary-white)
-        color: var(--chip-focus-color, var(--clr-signal-focused))
-
-    &FilledLight
-      background: var(--gradient-10, linear-gradient(90deg, var(--color-clr-gradient-start, rgba(47, 42, 191, 0.10)) 0%, var(--color-clr-gradient-end, rgba(47, 42, 191, 0.10)) 100%));
-      color: var(--clr-primary-dark) 
-
-      &:hover
-        // ????
-     
-
-    
 
     &Outlined
-  
+      background: var(--chip-background, var(--clr-primary-white))
       border: 1px solid var(--clr-primary-dark-10)
       +fontColorDark
 
@@ -42,8 +32,47 @@
         background: var(--chip-focus-color, var(--clr-signal-focused))
         +fontColorLight
 
-    &Outlined
-      background: var(--chip-background, var(--clr-primary-white))
+      &:hover
+        box-shadow: $shadowHoverLight
+
+      &:active
+        box-shadow: $shadowPressedLight
+
+    &Filled
+      background: var(--chip-gradient, linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%))
+
+      .actionButton:focus .actionIcon
+        background: var(--clr-primary-white)
+        color: var(--chip-focus-color, var(--clr-signal-focused))
+
+      &:hover
+        box-shadow: $shadowHoverDark
+
+      &:active
+        box-shadow: $shadowPressedDark
+
+     
+
+    &FilledLight
+      background: var(--chip-gradient-light, linear-gradient(90deg, var(--clr-gradient-light-start) 0%, var(--clr-gradient-light-end) 100%));
+      color: var(--clr-primary-dark) 
+
+      .actionButton:focus .actionIcon
+        background: var(--clr-primary-white)
+        color: var(--chip-focus-color, var(--clr-signal-focused))
+
+      &:hover
+        box-shadow: $shadowHoverDark
+        +fontColorMedium
+
+      &:active
+        box-shadow: $shadowPressedDark
+        +fontColorDark
+     
+
+    
+
+      
 
   &:has(:focus)
     outline-color: var(--chip-focus-color, var(--clr-signal-focused))

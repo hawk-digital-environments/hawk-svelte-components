@@ -13,6 +13,18 @@
     inherits: true;
 }
 
+@property --clr-gradient-light-start {
+    syntax: '<color>';
+    initial-value: #e8ebfb;
+    inherits: true;
+}
+
+@property --clr-gradient-light-end {
+    syntax: '<color>';
+    initial-value: #f1e9ff;
+    inherits: true;
+}
+
 :root {
     /** Colors **/
     /** ================================== **/
