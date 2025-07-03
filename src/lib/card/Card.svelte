@@ -1,8 +1,10 @@
 <script lang="ts">
-    import type { HTMLAttributes } from "svelte/elements";
-    import style from "./Card.module.sass";
-    import { mergeProps } from "$lib/util/mergeProps.js";
-    import type { Snippet } from "svelte";
+    import type {HTMLAttributes} from 'svelte/elements';
+    import style from './Card.module.sass';
+    import {mergeProps} from '$lib/util/mergeProps.js';
+    import type {Snippet} from 'svelte';
+    import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
+    import {cardContext} from '$lib/card/CardContext.js';
 
     export interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -37,52 +39,55 @@
         ...restProps
     }: Props = $props();
 
+    const ctx = cardContext.getOr(null);
     const isClickable = $derived(
-        !disabled && (typeof givenOnClick === "function" || !!link),
+        !disabled && (typeof givenOnClick === 'function' || !!link)
     );
     const triggerAction = $derived((e: MouseEvent | KeyboardEvent) => {
         if (isClickable) {
             givenOnClick?.(e as any);
             if (link) {
-                window.open(link, linkTarget || "_self");
+                window.open(link, linkTarget || '_self');
             }
         }
     });
     const onKeyDown = $derived((e: KeyboardEvent) => {
-        if (e.key === "Enter" || e.key === " ") {
+        if (e.key === 'Enter' || e.key === ' ') {
             triggerAction(e);
         }
     });
+    const isDetailsBorderHighlighted = $derived(
+        ctx?.isDetailsBorderHighlighted?.() ?? false
+    );
 </script>
 
 <div
-    {...mergeProps(
-        {
-            class: [
-                style.card,
-                isClickable && style.link,
-                disabled && style.disabled,
-            ],
-            onclick: triggerAction,
-            onkeydown: onKeyDown,
-            tabindex: isClickable ? "0" : undefined,
-            "aria-disabled": disabled ? "true" : undefined,
-        },
-        restProps,
-    )}
+        {...mergeProps(
+            {
+                class: [
+                    style.card,
+                    isClickable && style.link,
+                    disabled && style.disabled,
+                ],
+                onclick: triggerAction,
+                onkeydown: onKeyDown,
+                tabindex: isClickable ? "0" : undefined,
+                "aria-disabled": disabled ? "true" : undefined,
+            },
+            restProps,
+        )}
 >
     <div class={style.children}>
         {@render children?.()}
     </div>
 
     {#if details}
-        <div class={style.details_border}></div>
+        <div class={[
+            style.details_border,
+            isDetailsBorderHighlighted && style.details_border_highlighted
+            ]}></div>
         <div class={style.details}>
-            {#if typeof details === "function"}
-                {@render details()}
-            {:else}
-                {details}
-            {/if}
+            <SnippetOrString value={details}/>
         </div>
     {/if}
 </div>

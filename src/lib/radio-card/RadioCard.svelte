@@ -6,6 +6,7 @@
     import { mergeProps } from "$lib/util/mergeProps.js";
     import RawRadioInput from "$lib/radio/RawRadioInput.svelte";
     import type { Snippet } from "svelte";
+    import {cardContext} from '$lib/card/CardContext.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -43,7 +44,11 @@
 
     let ctx = radioCardContext.get();
     const disabled = $derived(givenDisabled || ctx.isDisabled());
-    const detailsHighlight = $derived(ctx.getValue() === value);
+    const isCurrentlySelected = $derived(ctx.getValue() === value);
+
+    cardContext.set({
+        isDetailsBorderHighlighted: () => isCurrentlySelected
+    })
 </script>
 
 <Card
@@ -51,34 +56,20 @@
         {
             onclick: () => ctx.setValue(value),
             disabled,
+            details
         },
         restProps,
     )}
 >
     <div class={style.radio_card}>
-        <div class={style.children}>{@render children?.()}</div>
+        {@render children?.()}
         <RawRadioInput
             {name}
             {value}
             {disabled}
-            checked={value === ctx.getValue()}
+            checked={isCurrentlySelected}
             tabindex={-1}
             readonly
         />
     </div>
-    {#if details}
-        <hr
-            class={[
-                style.details_border,
-                detailsHighlight ? style.highlight : "",
-            ]}
-        />
-        <div class={style.details}>
-            {#if typeof details === "function"}
-                {@render details()}
-            {:else}
-                {details}
-            {/if}
-        </div>
-    {/if}
 </Card>
