@@ -44,10 +44,10 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--chip-focus-color, var(--clr-signal-focused))
         +fontColorLight
 
-      button:hover
+      &:hover:has(button)
         box-shadow: $shadowHoverLight
 
-      button:active
+      &:active:has(button)
         box-shadow: $shadowPressedLight
 
     &Filled
@@ -57,10 +57,10 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
-      button:hover
+      &:hover:has(button)
         box-shadow: $shadowHoverDark
 
-      button:active
+      &:active:has(button)
         box-shadow: $shadowPressedDark
 
      
@@ -73,11 +73,11 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
-      button:hover
+      &:hover:has(button)
         box-shadow: $shadowHoverDark
         +fontColorMedium
 
-      button:active
+      &:active:has(button)
         box-shadow: $shadowPressedDark
         +fontColorDark
      
@@ -100,6 +100,9 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
   border-radius: 50%
   padding: 2px
 
+  .small &
+    box-sizing: border-box
+    padding: 1px
   &.removable
     transform: rotate(45deg)
 
