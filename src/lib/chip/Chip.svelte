@@ -13,6 +13,10 @@
          */
         label?: string | Snippet
 
+        /**
+         * The size of the chip.
+         * 
+         */
         size?: 'small' | 'large';
 
         /**
@@ -65,6 +69,7 @@
     const {
         label,
         type = 'outlined',
+        size = 'large',
         icon,
         onclick,
         onaddclick,
@@ -94,6 +99,8 @@
     {
         class: [
             style.chip,
+            size === 'large' && style.large,
+            size === 'small' && style.small,
             type === 'outlined' && style.typeOutlined,
             type === 'filled' && style.typeFilled,
             type === 'filled-light' && style.typeFilledLight,

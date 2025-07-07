@@ -21,6 +21,18 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
   +fontColorLight
   transition: box-shadow 0.3s, color 0.3s, outline-color 0.2s, outline-offset 0.2s 
 
+
+  &.large
+    +fontSizeS
+    height: var(--chip-height-large, var(--button-height-large, 28px))
+    gap: 5px
+
+  &.small 
+    +fontSizeXs
+    height: var(--chip-height-small, var(--button-height-small, 19px))
+    gap:2px
+
+
   &.type
 
     &Outlined
@@ -32,10 +44,10 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--chip-focus-color, var(--clr-signal-focused))
         +fontColorLight
 
-      &:hover
+      button:hover
         box-shadow: $shadowHoverLight
 
-      &:active
+      button:active
         box-shadow: $shadowPressedLight
 
     &Filled
@@ -45,10 +57,10 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
-      &:hover
+      button:hover
         box-shadow: $shadowHoverDark
 
-      &:active
+      button:active
         box-shadow: $shadowPressedDark
 
      
@@ -61,18 +73,14 @@ $shadowPressedLight: #{var(--button-shadow-pressed, 0px 4px 250px 100px rgba(0, 
         background: var(--clr-primary-white)
         color: var(--chip-focus-color, var(--clr-signal-focused))
 
-      &:hover
+      button:hover
         box-shadow: $shadowHoverDark
         +fontColorMedium
 
-      &:active
+      button:active
         box-shadow: $shadowPressedDark
         +fontColorDark
      
-
-    
-
-      
 
   &:has(:focus)
     outline-color: var(--chip-focus-color, var(--clr-signal-focused))
@@ -115,12 +123,23 @@ button.trigger
   flex-shrink: 1
   overflow: hidden
 
-  &:last-child
-    padding-right: 8px
+  .large &
+    padding: 4px 0 4px 8px
+    gap: 5px;
+    &:last-child
+      padding-right: 8px
+
+  .small &
+    padding: 2px 0 2px 5px 
+    gap: 2px
+    &:last-child
+      padding-right: 5px
 
   &.actionButton
     flex-shrink: 0
     padding-left: 0
+
+    
 
   .label
     display: block
