@@ -14,6 +14,12 @@
         chips: Array<ComponentProps<typeof Chip>>;
 
         /**
+         * The visual type of the chips in the list.
+         * If not set, the default type of the Chip component will be used.
+         */
+        type?: 'outlined' | 'filled' | 'filled-light';
+
+        /**
          * If true, the list will be disabled and all chips will be disabled as well.
          * @default false
          */
@@ -23,6 +29,7 @@
     const {
         chips = [],
         disabled = false,
+        type,
         ...restProps
     }: Props = $props();
 
@@ -39,7 +46,7 @@
     )} in:fly>
         {#each chips as chip}
             <div in:fly>
-                <Chip {...chip} {disabled}/>
+                <Chip {type} {disabled} {...chip}  />
             </div>
         {/each}
     </div>

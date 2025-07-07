@@ -7,11 +7,17 @@
         title: 'Handson/ChipList',
         component: ChipList,
         tags: ['autodocs'],
-        argTypes: {},
+        argTypes: {
+          type: {
+            control: {type: 'select', options: ['outlined', 'filled', 'filled-light']},
+            description: 'The visual type of the chips in the list. If not set, the default type of the Chip component will be used.'
+          },
+        },
         args: {
             chips: [
                 {
-                    label: 'Apple 🍎'
+                    label: 'Apple 🍎',
+                    type: 'filled',
                 },
                 {
                     label: 'Peach 🍑',
