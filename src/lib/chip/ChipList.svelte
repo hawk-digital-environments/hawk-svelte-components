@@ -17,7 +17,7 @@
          * The visual type of the chips in the list.
          * If not set, the default type of the Chip component will be used.
          */
-        type?: 'outlined' | 'filled' | 'filled-light';
+        type?: ComponentProps<typeof Chip>['type'];
 
         /**
          * If true, the list will be disabled and all chips will be disabled as well.
@@ -46,7 +46,7 @@
     )} in:fly>
         {#each chips as chip}
             <div in:fly>
-                <Chip {type} {disabled} {...chip}  />
+                <Chip {type} {...chip} disabled={disabled || chip?.disabled || false}/>
             </div>
         {/each}
     </div>
