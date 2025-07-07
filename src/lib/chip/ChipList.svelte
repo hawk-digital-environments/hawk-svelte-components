@@ -7,17 +7,21 @@
     import {mergeProps} from '$lib/util/mergeProps.js';
     import style from './ChipList.module.sass';
 
+    type ChipProps = ComponentProps<typeof Chip>;
+
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
          * A list of chip definitions to show in the list
          */
-        chips: Array<ComponentProps<typeof Chip>>;
+        chips: ChipProps[];
 
         /**
          * The visual type of the chips in the list.
          * If not set, the default type of the Chip component will be used.
          */
-        type?: ComponentProps<typeof Chip>['type'];
+        type?: ChipProps['type'];
+
+        size?: ChipProps['size'];
 
         /**
          * If true, the list will be disabled and all chips will be disabled as well.
@@ -30,6 +34,7 @@
         chips = [],
         disabled = false,
         type,
+        size,
         ...restProps
     }: Props = $props();
 
@@ -46,7 +51,7 @@
     )} in:fly>
         {#each chips as chip}
             <div in:fly>
-                <Chip {type} {...chip} disabled={disabled || chip?.disabled || false}/>
+                <Chip {type} {size} {...chip} disabled={disabled || chip?.disabled || false}/>
             </div>
         {/each}
     </div>

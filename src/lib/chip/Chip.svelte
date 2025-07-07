@@ -13,6 +13,8 @@
          */
         label?: string | Snippet
 
+        size?: 'small' | 'large';
+
         /**
          * Determines the visual type of the chip.
          */
