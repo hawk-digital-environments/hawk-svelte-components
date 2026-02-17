@@ -10,6 +10,7 @@ on:
       - '.github/workflows/release.yml'
 
 permissions:
+  id-token: write
   contents: write
 
 jobs:
@@ -28,6 +29,9 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm ci
