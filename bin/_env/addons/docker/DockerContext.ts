@@ -325,7 +325,7 @@ export class DockerContext {
             const dockerExecutable = await this.getDockerExecutable();
             const composeVersionResult = await execAsync(`${dockerExecutable} compose version`);
 
-            if (composeVersionResult.stdout.includes('v2')) {
+            if (composeVersionResult.stdout.includes('version v')) {
                 const dockerCompose = 'docker compose';
                 this._dockerComposeExecutable = dockerCompose;
                 return dockerCompose;

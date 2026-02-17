@@ -1,5 +1,10 @@
 {
   "name": "@hawk-hhg/svelte-components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hawk-digital-environments/hawk-svelte-components"
+  },
+  "homepage": "https://hawk-digital-environments.github.io/hawk-svelte-components/?path=/docs/svelte-components--docs",
   "version": "0.14.0",
   "license": "Apache-2.0",
   "private": false,

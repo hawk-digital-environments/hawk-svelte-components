@@ -1,7 +1,7 @@
 # HAWK Svelte Components
 
 A suite of Svelte components for use in HAWK projects, they are based on
-the [Handson Design System](https://www.figma.com/design/SNtAs3qx6Xvp9yUSPb3vDB/Design-System-redesign).
+the [Handson Design System](https://www.figma.com/design/SNtAs3qx6Xvp9yUSPb3vDB/Design-System-redesign). To see the components in action, check out the [Storybook](https://hawk-digital-environments.github.io/hawk-svelte-components); while you can find the source code at [GitHub](https://github.com/hawk-digital-environments/hawk-svelte-components).
 
 ## Installation
 
