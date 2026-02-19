@@ -1,5 +1,5 @@
 <script module>
-  import {fn} from '@storybook/test';
+  import {fn} from 'storybook/test';
   import {Card} from '$lib';
   import {defineMeta} from '@storybook/addon-svelte-csf';
 

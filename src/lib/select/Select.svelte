@@ -48,6 +48,7 @@
     import FormLabel from '$lib/util/formLabel/FormLabel.svelte';
     import {Icon} from '$lib/index.js';
     import {makeCustomComponent} from '$lib/util/makeCustomComponent.js';
+    import {useFormLabelFloatMeltSelect} from '$lib/util/formLabelFloatContainer/useFormLabelFloatMeltSelect.svelte.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -126,6 +127,9 @@
         ...restProps
     }: Props = $props();
 
+    let selectFloat = useFormLabelFloatMeltSelect();
+    const container = selectFloat.container;
+
     const select = new Select<string>({
         value: value,
         onValueChange(newValue) {
@@ -152,11 +156,7 @@
                     block: 'nearest'
                 });
         },
-        floatingConfig: {
-            offset: {
-                mainAxis: 0
-            }
-        }
+        floatingConfig: selectFloat.floatingConfig
     });
 
     watch([() => value], ([value]) => {
@@ -174,17 +174,12 @@
         }
         return select.value;
     });
-    const {popovertarget, containerId, triggerProps} = $derived.by(() => {
-        const {popovertarget, id: containerId, ...triggerProps} = select.trigger;
-        return {popovertarget, containerId, triggerProps};
-    });
     const inputId = $derived(id || select.ids.trigger + '-input');
     let inputEl: HTMLButtonElement;
-    let container = $state<ReturnType<typeof FormLabelFloatContainer> | null>(null);
 </script>
 
 <FormLabelFloatContainer
-        bind:this={container}
+        bind:this={selectFloat.container}
         {...mergeProps(
             restProps,
             {
@@ -192,7 +187,7 @@
                     if (e.target instanceof HTMLButtonElement || disabled) {
                         return;
                     }
-                    setTimeout(() => select.open = !select.open, 0);
+                    setTimeout(() => select.open = !select.open, 100);
                 },
                 onkeydowncapture: () => {
                     clearTimeout(hadKeydownTimeout);
@@ -205,8 +200,6 @@
         )}
         layoutWrapProps={{
             class: style.container,
-            id: containerId,
-            popovertarget,
             // The next two lines are a "hack", so the select box can automatically focus
             // the button again if the user hits escape or selects a value
             // We need this, because we provide the containerId to the
@@ -237,7 +230,7 @@
                 bind:this={inputEl}
                 {...mergeProps(
                     buttonProps,
-                    triggerProps,
+                    select.trigger,
                     {
                         id: inputId,
                         class: [floatingClass, style.button, !!placeholder && style.placeholder],
@@ -256,7 +249,7 @@
 
     {#snippet dropdown(dropdownStyle)}
         {#each options as option}
-            <div {...(option.disabled ? {} : select.getOption(option.value, {typeahead: option.label}))}
+            <div {...(option.disabled ? {} : select.getOption(option.value, option.label))}
                  class={[
                      dropdownStyle.item,
                      select.isSelected(option.value) && dropdownStyle.itemSelected,

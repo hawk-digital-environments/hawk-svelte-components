@@ -14,6 +14,7 @@
     import {mergeProps} from '$lib/util/mergeProps.js';
     import Icon from '$lib/icon/Icon.svelte';
     import SnippetOrString from '$lib/util/snippetOrString/SnippetOrString.svelte';
+    import {useFormLabelFloatMeltSelect} from '$lib/util/formLabelFloatContainer/useFormLabelFloatMeltSelect.svelte.js';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {
         /**
@@ -105,7 +106,6 @@
         value: externalValue = $bindable([]),
         placeholder,
         filter,
-        id,
         iconLeft,
         iconRight,
         required,
@@ -135,17 +135,18 @@
         combobox.value = values.filter(v => v !== value) as any;
     };
 
+    let selectFloat = useFormLabelFloatMeltSelect();
+
     const combobox = new Combobox({
         multiple: true,
         onValueChange: (value) => {
             values = Array.from(value as any);
-            externalValue = values.map(getExternalValue);
-        },
-        floatingConfig: {
-            offset: {
-                mainAxis: 0
+            const newExternalValue = values.map(getExternalValue);
+            if(newExternalValue.join(',') !== externalValue?.join(',')) {
+                externalValue = newExternalValue;
             }
-        }
+        },
+        floatingConfig: selectFloat.floatingConfig
     });
 
     // Incoming value changes
@@ -225,20 +226,11 @@
     let focusTimeout: any = $state(0);
     let focused = $state(false);
     const float = $derived(focused || chips.length > 0 || !!inputEl?.value || !!placeholder);
-
-    const {popovertarget, containerId, inputProps} = $derived.by(() => {
-        const {popovertarget, id: containerId, ...inputProps} = combobox.input;
-        return {popovertarget, containerId, inputProps};
-    });
-    const inputId = $derived(id || combobox.ids.trigger + '-input');
 </script>
 <FormLabelFloatContainer
+        bind:this={selectFloat.container}
         {...restProps}
         float={float}
-        layoutWrapProps={{
-            id: containerId,
-            popovertarget
-        }}
         iconLeft={iconLeft}
         iconRight={iconRight}
         dropdownOpen={combobox.open}
@@ -249,7 +241,7 @@
         {block}
 >
     {#snippet label(floatingClass)}
-        <FormLabel for={inputId} children={labelValue} class={floatingClass} {required}/>
+        <FormLabel for={combobox.ids.input} children={labelValue} class={floatingClass} {required}/>
     {/snippet}
 
     {#snippet input(floatingClass)}
@@ -259,9 +251,8 @@
                 type="text"
                 bind:this={inputEl}
                 {...mergeProps(
-                    inputProps,
+                    combobox.input,
                     {
-                        id: inputId,
                         placeholder,
                         disabled,
                         class: [

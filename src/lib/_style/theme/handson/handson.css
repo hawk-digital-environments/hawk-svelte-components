@@ -3,13 +3,13 @@
 /* These are properties so we can animate them */
 @property --clr-gradient-start {
     syntax: '<color>';
-    initial-value: #4F61DF;
+    initial-value: #3E80F6;
     inherits: true;
 }
 
 @property --clr-gradient-end {
     syntax: '<color>';
-    initial-value: #9252FF;
+    initial-value: #8E50F7;
     inherits: true;
 }
 
@@ -22,40 +22,129 @@
     --clr-primary-dark-10-faded: #F5F5F5;
     --clr-primary-dark-10: #E8E8EC;
     --clr-primary-dark-5: #F4F3F5;
-    --clr-primary-main: #4F61DF;
-    --clr-primary-main-dark-80: #3F4EB2;
-    --clr-primary-main-light-80: #7281E5;
-    --clr-primary-accent: #9252FF;
+    --clr-primary-main: #3E80F6;
+    --clr-primary-main-dark-80: #3266C5;
+    --clr-primary-main-light-80: #6599F8;
+    --clr-primary-accent: #8E50F7;
     --clr-primary-accent-light-80: #A875FF;
 
     /** Signal **/
     /** ================================== **/
     --clr-signal-success: #48D59F;
+    --clr-signal-success-10: #EDFBF5;
     --clr-signal-warning: #FF5C00;
+    --crl-signal-warning-10: #FFEFE5;
     --clr-signal-error: #FF6E94;
+    --clr-signal-error-10: #FFF0F4;
     --clr-signal-focused: var(--clr-primary-main);
 
     /** Fonts **/
     /** ================================== **/
+    --font-family-primary: 'Montserrat', sans-serif;
+
     --font-weight-light: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
-    --font-family-primary: 'Montserrat', sans-serif;
+    /** txt-caption-s **/
+    --txt-caption-s-font: var(--font-family-primary);
+    --txt-caption-s-color: var(--clr-primary-dark);
+    --txt-caption-s-weight: var(--font-weight-regular);
+    --txt-caption-s-mob-size: 10px;
+    --txt-caption-s-des-size: 12px;
+    --txt-caption-s-mob-line-height: 13px;
+    --txt-caption-s-des-line-height: 18px;
 
-    --font-size-xs: 10px;
-    --font-size-s: 12px;
-    --font-size-m: 15px;
-    --font-size-l: 17px;
-    --font-size-xl: 21px;
-    --font-size-xxl: 45px;
+    /** txt-marker **/
+    --txt-marker-font: var(--font-family-primary);
+    --txt-marker-color: var(--clr-primary-dark);
+    --txt-marker-weight: var(--font-weight-semibold);
+    --txt-marker-mob-size: 12px;
+    --txt-marker-des-size: 15px;
+    --txt-marker-mob-line-height: 18px;
+    --txt-marker-des-line-height: 22px;
 
-    --font-line-height-xs: 14px;
-    --font-line-height-s: 18px;
-    --font-line-height-m: 22px;
-    --font-line-height-l: 25px;
-    --font-line-height-xl: 30px;
-    --font-line-height-xxl: 50px;
+    /** txt-body-s **/
+    --txt-body-s-font: var(--font-family-primary);
+    --txt-body-s-color: var(--clr-primary-dark);
+    --txt-body-s: var(--font-weight-regular);
+    --txt-body-s-mob-weight: var(--font-weight-regular);
+    --txt-body-s-mob-size: 12px;
+    --txt-body-s-des-size: 15px;
+    --txt-body-s-mob-line-height: 18px;
+    --txt-body-s-des-line-height: 22px;
+
+    /** txt-body-m **/
+    --txt-body-m-font: var(--font-family-primary);
+    --txt-body-m-color: var(--clr-primary-dark);
+    --txt-body-m-weight: var(--font-weight-regular);
+    --txt-body-m-mob-size: 15px;
+    --txt-body-m-des-size: 17px;
+    --txt-body-m-mob-line-height: 22px;
+    --txt-body-m-des-line-height: 25px;
+
+    /** txt-button-s **/
+    --txt-button-s-font: var(--font-family-primary);
+    --txt-button-s-color: var(--clr-primary-white);
+    --txt-button-s-weight: var(--font-weight-regular);
+    --txt-button-s-mob-size: 12px;
+    --txt-button-s-des-size: 15px;
+    --txt-button-s-mob-line-height: 18px;
+    --txt-button-s-des-line-height: 22px;
+
+    /** txt-button-m **/
+    --txt-button-m-font: var(--font-family-primary);
+    --txt-button-m-color: var(--clr-primary-white);
+    --txt-button-m-weight: var(--font-weight-regular);
+    --txt-button-m-mob-size: 15px;
+    --txt-button-m-des-size: 17px;
+    --txt-button-m-mob-line-height: 22px;
+    --txt-button-m-des-line-height: 25px;
+
+    /** txt-headline-xs **/
+    --txt-headline-xs-font: var(--font-family-primary);
+    --txt-headline-xs-color: var(--clr-primary-dark);
+    --txt-headline-xs-weight: var(--font-weight-medium);
+    --txt-headline-xs-mob-size: 15px;
+    --txt-headline-xs-des-size: 17px;
+    --txt-headline-xs-mob-line-height: 18px;
+    --txt-headline-xs-des-line-height: 25px;
+
+    /** txt-headline-s **/
+    --txt-headline-s-font: var(--font-family-primary);
+    --txt-headline-s-color: var(--clr-primary-dark);
+    --txt-headline-s-weight: var(--font-weight-medium);
+    --txt-headline-s-mob-size: 17px;
+    --txt-headline-s-des-size: 21px;
+    --txt-headline-s-mob-line-height: 25px;
+    --txt-headline-s-des-line-height: 30px;
+
+    /** txt-headline-m **/
+    --txt-headline-m-font: var(--font-family-primary);
+    --txt-headline-m-color: var(--clr-primary-dark);
+    --txt-headline-m-weight: var(--font-weight-medium);
+    --txt-headline-m-mob-size: 21px;
+    --txt-headline-m-des-size: 28px;
+    --txt-headline-m-mob-line-height: 30px;
+    --txt-headline-m-des-line-height: 32px;
+
+    /** txt-headline-l **/
+    --txt-headline-l-font: var(--font-family-primary);
+    --txt-headline-l-color: var(--clr-primary-dark);
+    --txt-headline-l-weight: var(--font-weight-bold);
+    --txt-headline-l-mob-size: 28px;
+    --txt-headline-l-des-size: 60px;
+    --txt-headline-l-mob-line-height: 32px;
+    --txt-headline-l-des-line-height: 50px;
+
+    /** txt-headline-xl **/
+    --txt-headline-xl-font: var(--font-family-primary);
+    --txt-headline-xl-color: var(--clr-primary-dark);
+    --txt-headline-xl-weight: var(--font-weight-bold);
+    --txt-headline-xl-mob-size: 60px;
+    --txt-headline-xl-des-size: 68px;
+    --txt-headline-xl-mob-line-height: 50px;
+    --txt-headline-xl-des-line-height: 80px;
 }

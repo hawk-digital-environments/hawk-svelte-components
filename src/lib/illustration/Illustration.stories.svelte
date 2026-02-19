@@ -24,7 +24,7 @@
 
 <Story name="Generic" args={{}}/>
 <Story name="All Illustrations" parameters={{controls: {disable: true}}}>
-    {#snippet children()}
+    {#snippet template()}
         <div style="display: flex; max-width: 100%; width: 600px; gap: 20px; flex-wrap: wrap">
             {#each allowedIllustrationNames as iconName}
                 <div>

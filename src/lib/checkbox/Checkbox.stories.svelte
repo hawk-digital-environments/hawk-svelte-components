@@ -23,7 +23,7 @@
 <Story name="Required" args={{required: true}}/>
 <Story name="Disabled" args={{disabled: true}}/>
 <Story name="Label Positions" args={{}} parameters={{controls: {exclude: ['labelPosition']}}}>
-    {#snippet children({id, ...args})}
+    {#snippet template({id, ...args})}
         <Checkbox {...mergeProps(args, {labelPosition: 'left'})}/>
         <Checkbox {...mergeProps(args, {labelPosition: 'right'})}/>
     {/snippet}

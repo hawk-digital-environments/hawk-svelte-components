@@ -3,7 +3,7 @@
 # =====================================================
 # APP - ROOT
 # -----------------------------------------------------
-FROM node:23-alpine AS app_root
+FROM node:24-alpine AS app_root
 
 ARG APP_ENV=prod
 

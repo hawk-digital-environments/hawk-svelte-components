@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
     import {iconArgType, Input} from '$lib';
 
     const {Story} = defineMeta({
@@ -26,7 +26,7 @@
 <Story name="Error" args={{error: 'This is an error', label: 'Label'}}/>
 <Story name="Sizing" args={{iconLeft: 'externalLink', iconRight: 'star', required: true}}
        parameters={{controls: {exclude: ['label']}}}>
-    {#snippet children({id, ...args})}
+    {#snippet template({id, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
             <Input {...args}
                    label="hello mit ganz vielen tollen Worten und Umbruch und noch mehr Wörtern und noch mehr anderen Wörtern um viele Zeilen zu testen"/>

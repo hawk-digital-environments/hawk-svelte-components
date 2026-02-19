@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
     import {Chip, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
@@ -25,7 +25,7 @@
            icon: 'eye',
            onaddclick: fn()
        }}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Chip {...args}/>
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px; margin-top: 20px">
             <Chip {...args}/>

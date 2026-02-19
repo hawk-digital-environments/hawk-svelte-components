@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {HTMLAttributes} from 'svelte/elements';
     import {mergeProps} from '$lib/util/mergeProps.js';
-    import style from 'CountBadge.module.sass';
+    import style from './CountBadge.module.sass';
 
     interface Props extends HTMLAttributes<HTMLSpanElement> {
         /**

@@ -49,7 +49,7 @@
 <Story name="Generic" args={{}}/>
 <Story name="Preset Tab" args={{selected: 'Tab2'}}/>
 <Story name="Icons" args={{}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Tabs {...args}>
             <TabTriggers/>
             <TabContent key="Tab1" label="Tab 1" labelIcon="star">{@render tabContent()}</TabContent>
@@ -59,7 +59,7 @@
     {/snippet}
 </Story>
 <Story name="Block" args={{}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Tabs {...args}>
             <TabTriggers block/>
             <TabContent key="Tab1" label="Tab 1">{@render tabContent()}</TabContent>
@@ -69,7 +69,7 @@
     {/snippet}
 </Story>
 <Story name="Longer Tabs" args={{}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Tabs {...args}>
             <TabTriggers/>
             <TabContent key="Tab1" label="My first Tab">{@render tabContent()}</TabContent>
@@ -80,7 +80,7 @@
     {/snippet}
 </Story>
 <Story name="Disabled Tabs" args={{}} argTypes={{selected: {options: ['Tab1', 'Tab2', 'Tab3', 'Tab4']}}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Tabs {...args}>
             <TabTriggers/>
             <TabContent key="Tab1" label="Tab 1">{@render tabContent()}</TabContent>
@@ -93,7 +93,7 @@
     {/snippet}
 </Story>
 <Story name="Overflow" args={{}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <Tabs {...args}>
             <div style="width: 200px; overflow: hidden">
                 <TabTriggers block/>

@@ -1,0 +1,31 @@
+.footer
+  padding: 20px
+  padding-top: 15px
+  background: var(--clr-primary-white)
+  border-top: 1px solid var(--clr-primary-dark-10)
+
+.headline.headline
+  margin-bottom: -2px
+
+.content
+  height: 19px
+  margin-top: 5px
+
+  ol, ul
+    list-style: none
+    padding-left: 0
+    display: flex !important
+    flex-wrap: wrap
+
+  li:not(:last-of-type):after
+    content: "|"
+    margin: 0 5px
+
+  li > a:not(:hover):not(:focus)
+    -webkit-text-fill-color: inherit
+    background: initial
+    background-clip: initial
+    color: var(--clr-primary-dark)
+    text-decoration: none
+    transition: color 0.1s ease
+    white-space: nowrap

@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
     import {Avatar, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
@@ -22,7 +22,7 @@
 <Story name="Generic" args={{}}/>
 <Story name="Fallback" args={{src: undefined}}/>
 <Story name="Name" args={{status: 'online'}} parameters={{controls: {exclude: ['name', 'showName', 'size']}}}>
-    {#snippet children({name, ...args})}
+    {#snippet template({name, ...args})}
         <div style="display: flex; gap: 20px">
             <Avatar name="Maximilian" {...args}/>
             <Avatar name="Max" showName={true} {...args}/>
@@ -46,7 +46,7 @@
     onactionclick: fn()
 }}/>
 <Story name="Online Status" args={{}} parameters={{controls: {exclude: ['status', 'size']}}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <div style="display: flex; gap: 20px">
             <Avatar {...mergeProps(args, {status: 'online'})}/>
             <Avatar {...mergeProps(args, {status: 'offline'})}/>
@@ -59,11 +59,13 @@
 </Story>
 
 <Story name="Inside flex Container" parameters={{controls: {include: []}}}>
-    <div style="display: flex; gap: 10px; align-items: center">
-        <Avatar src="https://picsum.photos/200" name="Maximilian" size="small"/>
-        <div>
-            <strong style="display: block">Max Musterman</strong>
-            <small>The one doing stuff</small>
+    {#snippet template()}
+        <div style="display: flex; gap: 10px; align-items: center">
+            <Avatar src="https://picsum.photos/200" name="Maximilian" size="small"/>
+            <div>
+                <strong style="display: block">Max Musterman</strong>
+                <small>The one doing stuff</small>
+            </div>
         </div>
-    </div>
+    {/snippet}
 </Story>

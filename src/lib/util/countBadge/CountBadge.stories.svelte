@@ -11,7 +11,7 @@
     });
 </script>
 
-<Story name="Generic" args={{}} parameters={{controls: {disable: true}}}>
+<Story name="Generic" args={{}} parameters={{controls: {disable: true}}} asChild={true}>
     <div style="display: flex; gap: 1rem; flex-direction: column">
         <CountBadge count={5}/>
         <CountBadge count={-3}/>

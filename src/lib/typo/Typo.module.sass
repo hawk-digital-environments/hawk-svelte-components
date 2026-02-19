@@ -1,5 +1,6 @@
 .typo
-  +fontBody
+  +txtBodyM
+  +styledATags('--typo-link-hover-color', '--typo-link-focus-color')
 
   & > p, table, ul, ol, pre, blockquote, img, svg:not(:global(.hawk-icon)), hr, samp
     display: block
@@ -22,17 +23,6 @@
 
   img
     border-radius: var(--typo-border-radius, 10px)
-
-  a
-    +fontStyleHighlight
-
-    &:hover
-      text-decoration: none
-      text-shadow: 0 0 6px var(--typo-link-hover-color, var(--clr-primary-white))
-
-    &:focus
-      outline: 0
-      border-bottom: 2px solid var(--typo-link-focus-color, var(--clr-signal-focused))
 
   hr
     border: 0
@@ -57,11 +47,8 @@
       border-bottom: 1px solid var(--typo-table-border-color, var(--clr-primary-dark-10))
 
   blockquote
-    +fontSizeXl
-
     cite
       display: block
-      +fontSizeM
       +fontWeightLight
 
   kbd
@@ -72,22 +59,22 @@
     color: var(--typo-kbd-color, var(--clr-primary-white))
 
   h1
-    +fontHeadlineXxl
+    +txtHeadlineXl
 
   h2
-    +fontHeadlineXl
+    +txtHeadlineL
 
   h3
-    +fontHeadlineL
+    +txtHeadlineM
 
   h4
-    +fontHeadlineM
+    +txtHeadlineS
 
   h5
-    +fontHeadlineS
+    +txtHeadlineXs
 
   h6
-    +fontHeadlineXs
+    +txtHeadlineXs
 
   em, i
     +fontStyleItalic
@@ -97,22 +84,52 @@
 
   // Size modifiers
   :global(.size-xxl)
-    +fontSizeXxl
+    font-size: var(--typo-mod-size-xxl-des, var(--txt-headline-xl-des-size))
+    line-height: var(--typo-mod-line-height-xxl-des, var(--txt-headline-xl-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-xxl-mob, var(--txt-headline-xl-mob-size))
+      line-height: var(--typo-mod-line-height-xxl-mob, var(--txt-headline-xl-mob-line-height))
 
   :global(.size-xl)
-    +fontSizeXl
+    font-size: var(--typo-mod-size-xl-des, var(--txt-headline-l-des-size))
+    line-height: var(--typo-mod-line-height-xl-des, var(--txt-headline-l-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-xl-mob, var(--txt-headline-l-mob-size))
+      line-height: var(--typo-mod-line-height-xl-mob, var(--txt-headline-l-mob-line-height))
 
   :global(.size-l)
-    +fontSizeL
+    font-size: var(--typo-mod-size-l-des, var(--txt-headline-s-des-size))
+    line-height: var(--typo-mod-line-height-l-des, var(--txt-headline-s-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-l-mob, var(--txt-headline-s-mob-size))
+      line-height: var(--typo-mod-line-height-l-mob, var(--txt-headline-s-mob-line-height))
 
   :global(.size-m)
-    +fontSizeM
+    font-size: var(--typo-mod-size-m-des, var(--txt-body-m-des-size))
+    line-height: var(--typo-mod-line-height-m-des, var(--txt-body-m-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-m-mob, var(--txt-body-m-mob-size))
+      line-height: var(--typo-mod-line-height-m-mob, var(--txt-body-m-mob-line-height))
 
   :global(.size-s)
-    +fontSizeS
+    font-size: var(--typo-mod-size-s-des, var(--txt-body-s-des-size))
+    line-height: var(--typo-mod-line-height-s-des, var(--txt-body-s-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-s-mob, var(--txt-body-s-mob-size))
+      line-height: var(--typo-mod-line-height-s-mob, var(--txt-body-s-mob-line-height))
 
   :global(.size-xs)
-    +fontSizeXs
+    font-size: var(--typo-mod-size-xs-des, var(--txt-caption-s-des-size))
+    line-height: var(--typo-mod-line-height-xs-des, var(--txt-caption-s-des-line-height))
+
+    +bpFontMobile
+      font-size: var(--typo-mod-size-xs-mob, var(--txt-caption-s-mob-size))
+      line-height: var(--typo-mod-line-height-xs-mob, var(--txt-caption-s-mob-line-height))
 
   // Weight modifiers
   :global(.weight-light)

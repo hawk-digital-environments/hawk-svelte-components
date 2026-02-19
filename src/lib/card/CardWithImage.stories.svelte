@@ -16,7 +16,7 @@
 
 
 <Story name="Generic" args={{src: 'https://picsum.photos/300/200', alt: 'A random image'}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <CardWithImage {...args}>
             {#snippet overlay()}
                 <Chip label="private"/>
@@ -28,7 +28,7 @@
 
 <Story name="Link"
        args={{src: 'https://picsum.photos/300/200', alt: 'A random image', link: 'https://example.com', linkTarget: '_blank'}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <CardWithImage {...args}>
             You can assign a link to a card, which will make it clickable and focusable like a button.
         </CardWithImage>

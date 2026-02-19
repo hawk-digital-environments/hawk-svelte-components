@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
     import {iconArgType, Switch} from '$lib';
 
     const {Story} = defineMeta({
@@ -26,7 +26,7 @@
 {/snippet}
 
 <Story name="Variants" args="{{}}">
-    {#snippet children(args)}
+    {#snippet template(args)}
         <div style="display: flex; flex-wrap: wrap; gap: 0; max-width: 420px; gap: 20px">
             <div style="flex-basis: calc(50% - 20px); text-align: right">
                 <Switch label="Label" checked labelPosition="left"/>

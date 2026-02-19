@@ -32,7 +32,9 @@ $minWidth: 200px
   border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
   background: var(--input-background, var(--clr-primary-white))
   padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
-  min-height: var(--font-line-height-m)
+  min-height: var(--txt-body-m-des-line-height)
+  +bpFontMobile
+    min-height: var(--txt-body-m-mob-line-height)
   max-width: 100%
   min-width: $minWidth
   width: fit-content
@@ -78,8 +80,11 @@ $minWidth: 200px
     .label
       background: var(--clr-primary-white)
       border-radius: 2px
-      +fontSizeXs
-      margin-top: calc(-1 * var(--font-line-height-xs))
+      +txtCaptionS
+      margin-top: calc(-0.95 * var(--txt-caption-s-des-line-height))
+
+      +bpFontMobile
+        margin-top: calc(-1.1 * var(--txt-caption-s-mob-line-height))
 
     &.hasIconLeft .label
       max-width: calc(100% + 25px)
@@ -90,7 +95,6 @@ $minWidth: 200px
 
     &.hasIconLeft.hasIconRight .label
       max-width: calc(100% + 50px)
-
 
     .label + .inputWrap
       margin-top: 0
@@ -113,7 +117,10 @@ $minWidth: 200px
 
   .inputLabelWrap
     width: 100%
-    min-height: var(--font-line-height-m)
+    min-height: var(--txt-body-m-des-line-height)
+
+    +bpFontMobile
+      min-height: var(--txt-body-m-mob-line-height)
 
   .inputWrap
     display: flex
@@ -123,7 +130,7 @@ $minWidth: 200px
     transition-property: margin
 
   .input
-    +fontBody
+    +txtBodyM
     display: block
     padding: 0
     border: 0
@@ -132,7 +139,10 @@ $minWidth: 200px
     background: transparent
 
   .label + .inputWrap
-    margin-top: calc(-1 * var(--font-line-height-m))
+    margin-top: calc(-1 * var(--txt-body-m-des-line-height))
+
+    +bpFontMobile
+      margin-top: calc(-1 * var(--txt-body-m-mob-line-height))
 
   .label
     position: relative
@@ -163,7 +173,7 @@ $minWidth: 200px
   position: absolute
   background: var(--input-background, var(--clr-primary-white))
   border: 1px solid var(--input-border-color, var(--clr-primary-dark-10))
-  +fontBody
+  +txtBodyM
   padding: 0
   transform: scaleY(0) scaleX(0.8)
   opacity: 0
@@ -204,7 +214,7 @@ $minWidth: 200px
       background: var(--input-hover-color, var(--clr-primary-dark-10-faded))
 
     &.dropdownItemSelected
-      +fontWeightBold
+      +fontWeightSemibold
 
     &.dropdownItemDisabled
       opacity: 0.5

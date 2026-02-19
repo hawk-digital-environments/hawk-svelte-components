@@ -1,28 +1,128 @@
-// SIZES
+@use "breakPoints" as bp
+
+// TEXT Styles
 // =========================================
-=fontSizeXs
-  font-size: var(--font-size-xs)
-  line-height: var(--font-line-height-xs)
+=txtCaptionS
+  font-family: var(--txt-caption-s-font)
+  color: var(--txt-caption-s-color)
+  font-weight: var(--txt-caption-s-weight)
+  font-size: var(--txt-caption-s-des-size)
+  line-height: var(--txt-caption-s-des-line-height)
 
-=fontSizeS
-  font-size: var(--font-size-s)
-  line-height: var(--font-line-height-s)
+  +bp.bpFontMobile
+    font-size: var(--txt-caption-s-mob-size)
+    line-height: var(--txt-caption-s-mob-line-height)
 
-=fontSizeM
-  font-size: var(--font-size-m)
-  line-height: var(--font-line-height-m)
+=txtMarker
+  font-family: var(--txt-marker-font)
+  color: var(--txt-marker-color)
+  font-weight: var(--txt-marker-weight)
+  font-size: var(--txt-marker-des-size)
+  line-height: var(--txt-marker-des-line-height)
 
-=fontSizeL
-  font-size: var(--font-size-l)
-  line-height: var(--font-line-height-l)
+  +bp.bpFontMobile
+    font-size: var(--txt-marker-mob-size)
+    line-height: var(--txt-marker-mob-line-height)
 
-=fontSizeXl
-  font-size: var(--font-size-xl)
-  line-height: var(--font-line-height-xl)
+=txtBodyS
+  font-family: var(--txt-body-s-font)
+  color: var(--txt-body-s-color)
+  font-weight: var(--txt-body-s-weight)
+  font-size: var(--txt-body-s-des-size)
+  line-height: var(--txt-body-s-des-line-height)
 
-=fontSizeXxl
-  font-size: var(--font-size-xxl)
-  line-height: var(--font-line-height-xxl)
+  +bp.bpFontMobile
+    font-size: var(--txt-body-s-mob-size)
+    line-height: var(--txt-body-s-mob-line-height)
+
+=txtBodyM
+  font-family: var(--txt-body-m-font)
+  color: var(--txt-body-m-color)
+  font-weight: var(--txt-body-m-weight)
+  font-size: var(--txt-body-m-des-size)
+  line-height: var(--txt-body-m-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-body-m-mob-size)
+    line-height: var(--txt-body-m-mob-line-height)
+
+=txtButtonS
+  font-family: var(--txt-button-s-font)
+  color: var(--txt-button-s-color)
+  font-weight: var(--txt-button-s-weight)
+  font-size: var(--txt-button-s-des-size)
+  line-height: var(--txt-button-s-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-button-s-mob-size)
+    line-height: var(--txt-button-s-mob-line-height)
+
+=txtButtonM
+  font-family: var(--txt-button-m-font)
+  color: var(--txt-button-m-color)
+  font-weight: var(--txt-button-m-weight)
+  font-size: var(--txt-button-m-des-size)
+  line-height: var(--txt-button-m-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-button-m-mob-size)
+    line-height: var(--txt-button-m-mob-line-height)
+
+=txtHeadlineXs
+  font-family: var(--txt-headline-xs-font)
+  color: var(--txt-headline-xs-color)
+  font-weight: var(--txt-headline-xs-weight)
+  font-size: var(--txt-headline-xs-des-size)
+  line-height: var(--txt-headline-xs-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-headline-xs-mob-size)
+    line-height: var(--txt-headline-xs-mob-line-height)
+
+=txtHeadlineS
+  font-family: var(--txt-headline-s-font)
+  color: var(--txt-headline-s-color)
+  font-weight: var(--txt-headline-s-weight)
+  font-size: var(--txt-headline-s-des-size)
+  line-height: var(--txt-headline-s-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-headline-s-mob-size)
+    line-height: var(--txt-headline-s-mob-line-height)
+
+=txtHeadlineM
+  font-family: var(--txt-headline-m-font)
+  color: var(--txt-headline-m-color)
+  font-weight: var(--txt-headline-m-weight)
+  font-size: var(--txt-headline-m-des-size)
+  line-height: var(--txt-headline-m-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-headline-m-mob-size)
+    line-height: var(--txt-headline-m-mob-line-height)
+
+
+=txtHeadlineL
+  font-family: var(--txt-headline-l-font)
+  color: var(--txt-headline-l-color)
+  font-weight: var(--txt-headline-l-weight)
+  font-size: var(--txt-headline-l-des-size)
+  line-height: var(--txt-headline-l-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-headline-l-mob-size)
+    line-height: var(--txt-headline-l-mob-line-height)
+
+=txtHeadlineXl
+  font-family: var(--txt-headline-xl-font)
+  color: var(--txt-headline-xl-color)
+  font-weight: var(--txt-headline-xl-weight)
+  font-size: var(--txt-headline-xl-des-size)
+  line-height: var(--txt-headline-xl-des-line-height)
+
+  +bp.bpFontMobile
+    font-size: var(--txt-headline-xl-mob-size)
+    line-height: var(--txt-headline-xl-mob-line-height)
 
 // WEIGHTS
 // =========================================
@@ -46,7 +146,6 @@
 =fontColorDark
   color: var(--clr-primary-dark)
 
-
 =fontColorMedium
   color: var(--clr-primary-medium)
 
@@ -56,11 +155,6 @@
 =fontColorError
   color: var(--clr-signal-error)
 
-// FAMILIES
-// =========================================
-=fontFamilyPrimary
-  font-family: var(--font-family-primary)
-
 // STYLES
 // =========================================
 =fontStyleHighlight
@@ -68,54 +162,28 @@
   background-clip: text
   -webkit-background-clip: text
   -webkit-text-fill-color: transparent
-  
+
 =fontStyleItalic
   font-style: italic
 
-// BODY TEXT (complete set of styles)
+// Special HELPERS
 // =========================================
-=fontBody
-  +fontFamilyPrimary
-  +fontSizeM
-  +fontWeightRegular
-  +fontColorDark
+=styledATags($hoverColorVar: --link-hover-color, $focusColorVar: --link-focus-color)
+  a
+    background: linear-gradient(90deg, var(--clr-gradient-start) 0%, var(--clr-gradient-end) 100%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    text-decoration: none
 
-// HEADLINES (complete set of styles)
-// =========================================
-=fontHeadlineXxl
-  +fontFamilyPrimary
-  +fontSizeXxl
-  +fontWeightBold
-  +fontColorDark
-  margin-bottom: 10px
+    &:hover,
+    &:focus
+      outline: 0
+      background: initial
+      -webkit-background-clip: initial
+      -webkit-text-fill-color: initial
+      color: var(#{$focusColorVar}, var(--clr-signal-focused))
+      text-decoration: underline
 
-=fontHeadlineXl
-  +fontFamilyPrimary
-  +fontSizeXl
-  +fontWeightSemibold
-  +fontColorDark
-  margin-bottom: 5px
-
-=fontHeadlineL
-  +fontFamilyPrimary
-  +fontSizeL
-  +fontWeightMedium
-  +fontColorDark
-  margin-bottom: 3px
-
-=fontHeadlineM
-  +fontFamilyPrimary
-  +fontSizeM
-  +fontWeightMedium
-  +fontColorDark
-  margin-bottom: 3px
-
-=fontHeadlineS
-  +fontFamilyPrimary
-  +fontWeightRegular
-  margin-bottom: 3px
-
-=fontHeadlineXs
-  +fontFamilyPrimary
-  +fontWeightLight
-  margin-bottom: 3px
+    &:hover
+      color: var(#{$hoverColorVar}, var(--clr-signal-focused))

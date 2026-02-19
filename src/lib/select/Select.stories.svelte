@@ -30,7 +30,7 @@
     });
 </script>
 <script>
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
 </script>
 
 <Story name="Generic" args={{}}/>
@@ -56,7 +56,7 @@
     ]
 }}
        parameters={{controls: {exclude: ['label', 'value']}}}>
-    {#snippet children({id, ...args})}
+    {#snippet template({id, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
             <Select {...args as any}/>
         </div>

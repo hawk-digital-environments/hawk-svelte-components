@@ -42,12 +42,12 @@ export function mergeProps<TA = any, TB = any, TC = any, TD = any, TE = any, TF 
             continue;
         }
 
-        for (const key in obj) {
+        for (const key of Reflect.ownKeys(obj as object)) {
             const valueA: any = result[key];
             const valueB: any = (obj as any)[key];
 
             // Result does not have property -> use value as is
-            if (valueA !== undefined) {
+            if (valueA !== undefined && typeof key === 'string') {
                 if (mergeEvents(result, key, valueA, valueB)) {
                     continue;
                 }

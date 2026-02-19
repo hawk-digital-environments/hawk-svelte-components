@@ -1,6 +1,6 @@
 <script module>
     import {defineMeta} from '@storybook/addon-svelte-csf';
-    import {fn} from '@storybook/test';
+    import {fn} from 'storybook/test';
     import {Button, iconArgType} from '$lib';
 
     const {Story} = defineMeta({
@@ -24,7 +24,7 @@
 
 <Story name="Filled" args={{size: 'small', disabled: false}}
        parameters={{controls: {include: ['size', 'disabled']}}}>
-    {#snippet children({size, disabled})}
+    {#snippet template({size, disabled})}
         <div style="display: flex; flex-direction: column; gap: 20px">
             <Button size={size} disabled={disabled}>Label</Button>
             <Button size={size} icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
@@ -37,7 +37,7 @@
 
 <Story name="Outlined" args={{size: 'small', disabled: false}}
        parameters={{controls: {include: ['size', 'disabled']}}}>
-    {#snippet children({size, disabled})}
+    {#snippet template({size, disabled})}
         <div style="display: flex; flex-direction: column; gap: 20px">
             <Button size={size} type="outlined" disabled={disabled}>Label</Button>
             <Button size={size} type="outlined" icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
@@ -50,7 +50,7 @@
 
 <Story name="Text" args={{size: 'small', disabled: false}}
        parameters={{controls: {include: ['size', 'disabled']}}}>
-    {#snippet children({size, disabled})}
+    {#snippet template({size, disabled})}
         <div style="display: flex; flex-direction: column; gap: 20px">
             <Button size={size} type="text" disabled={disabled}>Label</Button>
             <Button size={size} type="text" icon="plus" iconPosition="right" disabled={disabled}>Label</Button>
@@ -63,7 +63,7 @@
 
 <Story name="Link" args={{size: 'small', disabled: false}}
        parameters={{controls: {include: ['size', 'disabled']}}}>
-    {#snippet children({size, disabled})}
+    {#snippet template({size, disabled})}
         <div style="display: flex; flex-direction: column; gap: 20px">
             <Button size={size} link="http://www.hawk.de" type="link" linkTarget="_blank" disabled={disabled}>Label
             </Button>

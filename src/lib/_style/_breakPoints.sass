@@ -16,6 +16,9 @@ $breakpointMdMax: $breakpointLgMin - 1px !default
 $breakpointLgMax: $breakpointXlMin - 1px !default
 $breakpointXlMax: 999999px !default
 
+// Special sizes
+$breakpointFontMobileMax: 850px !default
+
 // DYNAMIC
 // ==================================================
 =bpSmallerThan($width)
@@ -146,4 +149,14 @@ $breakpointXlMax: 999999px !default
 
 =bpXl()
   +bpBetween($breakpointXlMin, $breakpointXlMax)
+    @content
+
+// Special
+// ==================================================
+=bpFontMobile()
+  +bpSmallerThan($breakpointFontMobileMax)
+    @content
+
+=bpFontDesktop()
+  +bpBiggerThan($breakpointFontMobileMax + 1px)
     @content

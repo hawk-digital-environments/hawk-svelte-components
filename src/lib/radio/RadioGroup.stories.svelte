@@ -33,7 +33,7 @@
 <Story name="Selected" args={{value: '2'}}/>
 <Story name="Horizontal" args={{orientation: 'horizontal'}}/>
 <Story name="Label Positions" args={{}} parameters={{controls: {exclude: ['labelPosition']}}}>
-    {#snippet children({id, value, ...args})}
+    {#snippet template({id, value, ...args})}
         <RadioGroup {...mergeProps(args, {labelPosition: 'left'})}/>
         <RadioGroup {...mergeProps(args, {labelPosition: 'right'})}/>
     {/snippet}

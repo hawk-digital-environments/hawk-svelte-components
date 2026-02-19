@@ -30,7 +30,7 @@
 <Story name="Selected" args={{value: ['1', '3']}}/>
 <Story name="Horizontal" args={{orientation: 'horizontal'}}/>
 <Story name="Label Positions" args={{}} parameters={{controls: {exclude: ['labelPosition']}}}>
-    {#snippet children({id, ...args})}
+    {#snippet template({id, ...args})}
         <CheckboxGroup {...mergeProps(args, {labelPosition: 'left'})}/>
         <CheckboxGroup {...mergeProps(args, {labelPosition: 'right'})}/>
     {/snippet}

@@ -30,7 +30,7 @@
 <Story name="Generic" args={{ }}/>
 <Story name="Gradient" args={{ gradient: 'default'}}/>
 <Story name="All Icons" parameters={{controls: {include: ['size', 'type']}}}>
-    {#snippet children(args)}
+    {#snippet template(args)}
         <div style="display: flex; max-width: 100%; width: 600px; gap: 20px; flex-wrap: wrap">
             {#each allowedIconNames as iconName}
                 <div>

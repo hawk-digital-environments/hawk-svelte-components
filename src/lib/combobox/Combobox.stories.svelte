@@ -39,7 +39,7 @@
 <Story name="Filtered"
        args={{
            label: 'Filtered Values',
-           description: 'If "Apfel" is selected, only "Ananas and Kiwi" can be selected',
+           description: 'If "Apfel" is selected, only "Banane and Kiwi" can be selected',
            filter: (options, values) => {
                 if(values.includes('apple')) {
                     return options.filter(option => ['banana', 'kiwi'].includes(option.value));
@@ -73,7 +73,7 @@
 
 <Story name="Sizing" args={{iconLeft: 'externalLink', iconRight: 'star', required: true}}
        parameters={{controls: {exclude: ['label', 'value']}}}>
-    {#snippet children({id, value, ...args})}
+    {#snippet template({id, value, ...args})}
         <div style="width: 400px; display: flex; gap: 20px; flex-direction: column; margin-bottom: 20px">
             <Combobox {...mergeProps(
                 args,

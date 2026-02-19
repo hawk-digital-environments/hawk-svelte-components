@@ -17,8 +17,8 @@
     });
 </script>
 
-{#snippet children()}
+{#snippet template()}
     Link Label
 {/snippet}
 
-<Story name="Primary" args={{ children: children }}/>
+<Story name="Primary" args={{ template: template }}/>
