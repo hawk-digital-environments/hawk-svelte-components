@@ -1,3 +1,19 @@
+# [1.0.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.14.0...v1.0.0) (2026-02-20)
+
+
+### Features
+
+* introduce +txtBodySBold and +txtBodyMBold text styles ([a8a5542](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/a8a55425d8aca5f00b5392f07e3eba55ffbec3b7))
+* upgrade dependencies + align component styles with updated design system ([3accb6d](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/3accb6d805f91f6e5f71bcf9b074fdcfe57b8989))
+
+
+### BREAKING CHANGES
+
+* removes now unnecessary font weight mixins
+* Dependency Updates + Variable removal
+
+
+
 # [0.14.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.13.0...v0.14.0) (2026-02-16)
 
 
@@ -51,15 +67,6 @@
 * **Card:** restructure card component ([5800daf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/5800daf6317769d117c7f73498847d0ec8e7ca86))
 * **Chip:** allow dedicated "transparent" chip, make default one white ([1bbe168](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/1bbe168e75a8328421fa268cf432c02546cc9334))
 * finetuning for the radio card component ([b8738fb](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b8738fb438995717b634dbdf041624b7f7bd0439))
-
-
-
-# [0.10.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.9.2...v0.10.0) (2025-06-06)
-
-
-### Features
-
-* **Select:** enable select component as custom element ([8f10caa](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/8f10caa901635103cc2de1d70b490c0492fc9fbf))
 
 
 
