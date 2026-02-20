@@ -69,8 +69,8 @@
     /** txt-body-s **/
     --txt-body-s-font: var(--font-family-primary);
     --txt-body-s-color: var(--clr-primary-dark);
-    --txt-body-s: var(--font-weight-regular);
-    --txt-body-s-mob-weight: var(--font-weight-regular);
+    --txt-body-s-weight: var(--font-weight-regular);
+    --txt-body-s-weight-bold: var(--font-weight-semibold);
     --txt-body-s-mob-size: 12px;
     --txt-body-s-des-size: 15px;
     --txt-body-s-mob-line-height: 18px;
@@ -80,6 +80,7 @@
     --txt-body-m-font: var(--font-family-primary);
     --txt-body-m-color: var(--clr-primary-dark);
     --txt-body-m-weight: var(--font-weight-regular);
+    --txt-body-m-weight-bold: var(--font-weight-semibold);
     --txt-body-m-mob-size: 15px;
     --txt-body-m-des-size: 17px;
     --txt-body-m-mob-line-height: 22px;
