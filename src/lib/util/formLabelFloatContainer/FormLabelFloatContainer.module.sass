@@ -33,7 +33,7 @@ $minWidth: 200px
   background: var(--input-background, var(--clr-primary-white))
   padding: var(--input-padding-vertical, 8px) var(--input-padding-horizontal, 10px)
   min-height: var(--txt-body-m-des-line-height)
-  +bpFontMobile
+  +bpModeMobile
     min-height: var(--txt-body-m-mob-line-height)
   max-width: 100%
   min-width: $minWidth
@@ -83,7 +83,7 @@ $minWidth: 200px
       +txtCaptionS
       margin-top: calc(-0.95 * var(--txt-caption-s-des-line-height))
 
-      +bpFontMobile
+      +bpModeMobile
         margin-top: calc(-1.1 * var(--txt-caption-s-mob-line-height))
 
     &.hasIconLeft .label
@@ -119,7 +119,7 @@ $minWidth: 200px
     width: 100%
     min-height: var(--txt-body-m-des-line-height)
 
-    +bpFontMobile
+    +bpModeMobile
       min-height: var(--txt-body-m-mob-line-height)
 
   .inputWrap
@@ -141,7 +141,7 @@ $minWidth: 200px
   .label + .inputWrap
     margin-top: calc(-1 * var(--txt-body-m-des-line-height))
 
-    +bpFontMobile
+    +bpModeMobile
       margin-top: calc(-1 * var(--txt-body-m-mob-line-height))
 
   .label

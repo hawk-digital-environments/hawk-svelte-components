@@ -153,10 +153,10 @@ $breakpointFontMobileMax: 850px !default
 
 // Special
 // ==================================================
-=bpFontMobile()
+=bpModeMobile()
   +bpSmallerThan($breakpointFontMobileMax)
     @content
 
-=bpFontDesktop()
+=bpModeDesktop()
   +bpBiggerThan($breakpointFontMobileMax + 1px)
     @content

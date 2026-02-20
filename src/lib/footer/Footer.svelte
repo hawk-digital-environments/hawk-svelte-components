@@ -38,8 +38,10 @@
         class: style.footer
     }
 )}>
-    <Headline size="xs" tag="span" class={style.headline}>{headline}</Headline>
-    <Headline size="xs" tag="span">{subHeadline}</Headline>
+    <div class={style.headlineContainer}>
+        <Headline size="xs" tag="span" class={style.headlinePart}>{headline}</Headline>
+        <Headline size="xs" tag="span" class={style.headlinePart}>{subHeadline}</Headline>
+    </div>
     <div class={style.content}>
         <Typo>
             {@render children?.()}
