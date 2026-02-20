@@ -9,8 +9,7 @@
 
 ### BREAKING CHANGES
 
-* removes now unnecessary font weight mixins
-* Dependency Updates + Variable removal
+* The fonts in the figma styleguide have been consolidated. I reflected the changes back into the component library. So if you read `name: txt-body-s` in the figma typography part. You can now simply use the `+txtBodyS` mixin in your sass code. However, this means some variables have been removed and new ones have been introduced. I also removed a lot of the original mixins, because they no longer aligned with the updated rules; including all fonts like `textBody` or the modifiers for `fontSize...` or `fontWeight...`. This also reflects on custom css properties, that are now grouped into their font styles instead of distinct variables. The Headline element also lost its `xxl` size but should back gracefully to `xl` for backward compatibility. **TLDR** Breaking changes around SASS mixins and CSS variables.
 
 
 
