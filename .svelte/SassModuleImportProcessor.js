@@ -63,6 +63,9 @@ export function sassModuleImportProcessor(options) {
 
                     dependencies.add(sassFilePath);
 
+                    // Add all sub-dependencies to the set
+                    sassResult.dependencies.forEach(dep => dependencies.add(dep));
+
                     return fullMatch.replace(fullMatch, replacedImport);
                 });
             });
