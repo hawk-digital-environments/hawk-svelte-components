@@ -16,7 +16,6 @@ export default defineConfig({
         modules: false,
         preprocessorOptions: {
             sass: {
-                outputStyle: 'compressed',
                 verbose: false
             }
         }

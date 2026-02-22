@@ -14,7 +14,8 @@ export default defineConfig({
         outDir: 'dist/_custom-elements',
         lib: {
             entry: 'src/custom-elements.ts',
-            name: 'SvelteCustomElements'
+            name: 'CustomElements',
+            fileName: 'custom-elements'
         }
     },
     plugins: [
@@ -27,7 +28,6 @@ export default defineConfig({
         modules: false,
         preprocessorOptions: {
             sass: {
-                outputStyle: 'compressed',
                 verbose: false
             }
         }

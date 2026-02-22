@@ -44,8 +44,8 @@
     },
     "./custom-elements.js": {
       "types": "./dist/_custom-elements/index.d.ts",
-      "require": "./dist/_custom-elements/svelte-components.umd.cjs",
-      "default": "./dist/_custom-elements/svelte-components.js"
+      "require": "./dist/_custom-elements/custom-elements.umd.cjs",
+      "default": "./dist/_custom-elements/custom-elements.js"
     },
     "./custom-elements-fouc.css": {
         "require": "./dist/_custom-elements/custom-elements-fouc.css",

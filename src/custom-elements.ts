@@ -10,5 +10,6 @@ autoloadCustomElements({
     'hawk-headline': () => import('./lib/headline/Headline.svelte'),
     'hawk-formwrap': () => import('./lib/formwrap/Formwrap.svelte'),
     'hawk-checkbox': () => import('./lib/checkbox/Checkbox.svelte'),
-    'hawk-select': () => import('./lib/select/Select.svelte')
+    'hawk-select': () => import('./lib/select/Select.svelte'),
+    'hawk-footer': () => import('./lib/footer/Footer.svelte'),
 });

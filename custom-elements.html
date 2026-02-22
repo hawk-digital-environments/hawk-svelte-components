@@ -4,37 +4,47 @@
     <meta charset="UTF-8">
     <title>Custom Elements Demo</title>
     <link rel="stylesheet" href="./dist/_themes/theme-hawk-reset.css"/>
-    <script src="./dist/_custom-elements/svelte-components.js" type="module"></script>
+    <link rel="stylesheet" href="./dist/_custom-elements/custom-elements-fouc.css"/>
+    <script src="./dist/_custom-elements/custom-elements.js" type="module"></script>
 </head>
-<body style="padding:30px">
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<div style="padding:20px; flex-grow: 1;">
 
-<hawk-typo>
-    <h1>Hello world</h1>
-    <p>This is a paragraph <a href="#foo">with link</a></p>
-</hawk-typo>
-<br/>
-<hawk-formwrap>
-    <hawk-input name="input" iconLeft="eye">
-        <hawk-snippet property="label"><strong>Hello Label!</strong></hawk-snippet>
-    </hawk-input>
+    <hawk-typo>
+        <h1>Hello world</h1>
+        <p>This is a paragraph <a href="#foo">with link</a></p>
+    </hawk-typo>
+    <br/>
+    <hawk-formwrap>
+        <hawk-input name="input" iconLeft="eye">
+            <hawk-snippet property="label"><strong>Hello Label!</strong></hawk-snippet>
+        </hawk-input>
 
-    <hawk-input-password name="password" label="Password"></hawk-input-password>
+        <hawk-input-password name="password" label="Password"></hawk-input-password>
 
-    <hawk-checkbox label="Are you sure?" name="checkbox" checked></hawk-checkbox>
+        <hawk-checkbox label="Are you sure?" name="checkbox" checked></hawk-checkbox>
 
-    <hawk-select name="select" label="Select an option" id="select">
-        <option value="1">Option 1</option>
-        <option value="2" selected>Option 2</option>
-        <option value="3">Option 3</option>
-    </hawk-select>
-    <script>
-        document.getElementById('select').onchange = (e) => {
-            console.log('Selected value:', e.detail.value);
-        };
-    </script>
+        <hawk-select name="select" label="Select an option" id="select">
+            <option value="1">Option 1</option>
+            <option value="2" selected>Option 2</option>
+            <option value="3">Option 3</option>
+        </hawk-select>
+        <script>
+            document.getElementById('select').onchange = (e) => {
+                console.log('Selected value:', e.detail.value);
+            };
+        </script>
 
-    <hawk-button onclick="alert('Submitting :D')">Submit</hawk-button>
-</hawk-formwrap>
+        <hawk-button onclick="alert('Submitting :D')">Submit</hawk-button>
+    </hawk-formwrap>
+    <br/>
+</div>
 
+    <hawk-footer>
+        <ul>
+            <li><a href="#noop">Imprint</a></li>
+            <li><a href="#noop">Privacy Policy</a></li>
+        </ul>
+    </hawk-footer>
 </body>
 </html>

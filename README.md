@@ -71,7 +71,7 @@ All [caveats](https://svelte.dev/docs/svelte/custom-elements#Caveats-and-limitat
 
 ### Custom features
 
-We extended the default behaviours of svelte's custom elements to support some additional features
+We extended the default behaviors of svelte's custom elements to support some additional features
 for more convenient usage.
 
 #### Passing content (children)
@@ -113,6 +113,7 @@ Only the components that are listed below are available as custom elements.
 - `hawk-formwrap`
 - `hawk-checkbox`
 - `hawk-select`
+- `hawk-footer`
 
 ### DEV-TIP: Adding custom elements:
 
