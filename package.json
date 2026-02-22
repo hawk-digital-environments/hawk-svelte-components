@@ -47,6 +47,10 @@
       "require": "./dist/_custom-elements/svelte-components.umd.cjs",
       "default": "./dist/_custom-elements/svelte-components.js"
     },
+    "./custom-elements-fouc.css": {
+        "require": "./dist/_custom-elements/custom-elements-fouc.css",
+        "default": "./dist/_custom-elements/custom-elements-fouc.css"
+    },
     "./theme-hawk.css": "./dist/_themes/theme-hawk.css",
     "./theme-hawk-reset.css": "./dist/_themes/theme-hawk-reset.css",
     "./theme-handson.css": "./dist/_themes/theme-handson.css",

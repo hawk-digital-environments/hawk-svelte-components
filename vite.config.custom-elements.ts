@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite';
 import {VitePluginIcons} from './.vite/VitePluginIcons.js';
+import {VitePluginHiddenCustomElements} from './.vite/VitePluginHiddenCustomElements.js';
 import {svelte} from '@sveltejs/vite-plugin-svelte';
 import dtsPlugin from 'vite-plugin-dts';
 
@@ -17,6 +18,7 @@ export default defineConfig({
         }
     },
     plugins: [
+        VitePluginHiddenCustomElements(),
         svelte(),
         VitePluginIcons(),
         dtsPlugin({rollupTypes: true})

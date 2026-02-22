@@ -93,6 +93,14 @@ It accepts a single `property` attribute, which is the name of the property you 
 </hawk-input>
 ```
 
+#### Flicker of unstyled content (FOUC) prevention
+
+When using custom elements, there is a possibility of a flicker of unstyled content (FOUC) when the component is first rendered.
+To prevent this you can include the `<link rel="stylesheet" href="@hawk-hhg/svelte-components/custom-elements-fouc.css"/>` in your page header.
+
+This stylesheet contains styles that hide the custom elements until they are fully loaded and styled, preventing any unstyled content from being visible to the user.
+Once the loading is complete, the elements will fade in smoothly, providing a better user experience.
+
 ### Supported components
 
 Only the components that are listed below are available as custom elements.
