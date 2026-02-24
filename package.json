@@ -5,7 +5,7 @@
     "url": "git+https://github.com/hawk-digital-environments/hawk-svelte-components.git"
   },
   "homepage": "https://hawk-digital-environments.github.io/hawk-svelte-components/?path=/docs/svelte-components--docs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {

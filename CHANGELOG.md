@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v1.1.0...v1.1.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* **footer:** fix height definition for footer ([a448d62](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/a448d62a5212cde1f71dfdf334983cb11b185d4b))
+
+
+
 # [1.1.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v1.0.0...v1.1.0) (2026-02-22)
 
 
@@ -55,15 +64,6 @@
 
 * add new illustration component ([3bc836c](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/3bc836c39a1e737d655750bac73ccb8aa5341938))
 * **Icon:** add new icons ([3347246](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/334724651fe8bcef7d1211c6cd01607a1caf1a10))
-
-
-
-# [0.12.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.11.0...v0.12.0) (2025-06-13)
-
-
-### Features
-
-* **Card:** add remaining card features ([6055c73](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/6055c73200976230e906703124367664b182b5f2))
 
 
 
