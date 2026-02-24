@@ -1,3 +1,20 @@
+# [1.1.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v1.0.0...v1.1.0) (2026-02-22)
+
+
+### Bug Fixes
+
+* **svelte:** hot reload on changes to sass mixins ([4a7ad9d](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/4a7ad9dc03fe8c7824d21777d80e22ba04e96930))
+* various build adjustments and fixes ([d8dc16a](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/d8dc16aeec08c3b05a27b909448cb897f736bd42))
+* various smaller layout fixes ([dc675b4](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/dc675b4dd723ba43fcd82a8a2cdbc81a99347aa2))
+
+
+### Features
+
+* allow workaround for FOUC for custom elements ([5264cb2](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/5264cb2a09bc4aa3f25875e6dd22a9968925aa25))
+* dependency updates ([95e6aa2](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/95e6aa28fe938dbbb675927110ad579b8ee188d6))
+
+
+
 # [1.0.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.14.0...v1.0.0) (2026-02-20)
 
 
@@ -9,7 +26,8 @@
 
 ### BREAKING CHANGES
 
-* The fonts in the figma styleguide have been consolidated. I reflected the changes back into the component library. So if you read `name: txt-body-s` in the figma typography part. You can now simply use the `+txtBodyS` mixin in your sass code. However, this means some variables have been removed and new ones have been introduced. I also removed a lot of the original mixins, because they no longer aligned with the updated rules; including all fonts like `textBody` or the modifiers for `fontSize...` or `fontWeight...`. This also reflects on custom css properties, that are now grouped into their font styles instead of distinct variables. The Headline element also lost its `xxl` size but should back gracefully to `xl` for backward compatibility. **TLDR** Breaking changes around SASS mixins and CSS variables.
+* removes now unnecessary font weight mixins
+* Dependency Updates + Variable removal
 
 
 
@@ -46,26 +64,6 @@
 ### Features
 
 * **Card:** add remaining card features ([6055c73](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/6055c73200976230e906703124367664b182b5f2))
-
-
-
-# [0.11.0](https://github.com/hawk-digital-environments/hawk-svelte-components/compare/v0.10.0...v0.11.0) (2025-06-12)
-
-
-### Bug Fixes
-
-* **Button:** ensure Typo component does not mess with icons ([7fb66c2](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/7fb66c23c4b71fe0bba01f8014d2b9fd2387474b))
-* ensure radio and checkbox values are actually bindable ([f742498](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/f742498f09f1133a13708041cd5ac3986050bd45))
-* **Icon:** reliably ensure icons are not affected by the Typo component ([46390bd](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/46390bd72b45911098052ad35b8ec980decb1ffa))
-
-
-### Features
-
-* **Card:** allow clicks on the card component ([6f8f682](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/6f8f682dea703adde202bb8679ef6d7f99164711))
-* **Card:** minimal desktop layout ([82989c0](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/82989c03bfb3775bbb038e8530c51cc06ec29378))
-* **Card:** restructure card component ([5800daf](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/5800daf6317769d117c7f73498847d0ec8e7ca86))
-* **Chip:** allow dedicated "transparent" chip, make default one white ([1bbe168](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/1bbe168e75a8328421fa268cf432c02546cc9334))
-* finetuning for the radio card component ([b8738fb](https://github.com/hawk-digital-environments/hawk-svelte-components/commit/b8738fb438995717b634dbdf041624b7f7bd0439))
 
 
 
